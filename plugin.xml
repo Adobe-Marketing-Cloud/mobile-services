@@ -30,14 +30,14 @@
 	 <platform name="android">
 		 <config-file target="res/xml/config.xml" parent="/*">
 			 <feature name="ADBMobile_PhoneGap">
-				 <param name="android-package" value="com.adobe.PhoneGapPlugin.ADBMobile_PhoneGap" />
+				 <param name="android-package" value="com.adobe.ADBMobile_PhoneGap" />
 			 </feature>
 		 </config-file>
 		 <config-file target="AndroidManifest.xml" parent="/manifest">
 	         <uses-permission android:name="android.permission.INTERNET" />
 	         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 		 </config-file>
-		 <source-file src="sdks/Cordova/ADBMobile/Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/PhoneGapPlugin" />
+		 <source-file src="sdks/Cordova/ADBMobile/Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/" />
 		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary.jar" target-dir="libs" />
          <source-file src="sdks/Android/AdobeMobileLibrary/ADBMobileConfig.json" target-dir="assets" />
 	 </platform>
