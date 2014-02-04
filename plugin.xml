@@ -6,7 +6,7 @@
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
  
-	<js-module src="Shared/ADBHelper.js" name="ADBHelper">
+	<js-module src="sdks/Cordova/ADBMobile/Shared/ADBHelper.js" name="ADBHelper">
 	    <clobbers target="ADB"/>
 	</js-module>
 	
@@ -17,11 +17,11 @@
 				 <param name="ios-package" value="ADBMobile_PhoneGap" />
 			 </feature>
 		 </config-file>
-		 <header-file src="iOS/ADBMobile_PhoneGap.h" />
-		 <source-file src="iOS/ADBMobile_PhoneGap.m" />
-		 <header-file src="../iOS/AdobeMobileLibrary/ADBMobile.h" />
-		 <source-file src="../iOS/AdobeMobileLibrary/AdobeMobileLibrary.a" framework="true" />        
-		 <resource-file src="../iOS/AdobeMobileLibrary/ADBMobileConfig.json" />
+		 <header-file src="sdks/Cordova/ADBMobile/iOS/ADBMobile_PhoneGap.h" />
+		 <source-file src="sdks/Cordova/ADBMobile/iOS/ADBMobile_PhoneGap.m" />
+		 <header-file src="sdks/iOS/AdobeMobileLibrary/ADBMobile.h" />
+		 <source-file src="sdks/iOS/AdobeMobileLibrary/AdobeMobileLibrary.a" framework="true" />        
+		 <resource-file src="sdks/iOS/AdobeMobileLibrary/ADBMobileConfig.json" />
 		 <framework src="libsqlite3.dylib" />
 		 <framework src="SystemConfiguration.framework" />
 	 </platform>
@@ -37,8 +37,8 @@
 	         <uses-permission android:name="android.permission.INTERNET" />
 	         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 		 </config-file>
-		 <source-file src="Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/PhoneGapPlugin" />
-		 <source-file src="../Android/AdobeMobileLibrary/adobeMobileLibrary.jar" target-dir="libs" />
-         <source-file src="../Android/AdobeMobileLibrary/ADBMobileConfig.json" target-dir="assets" />
+		 <source-file src="sdks/Cordova/ADBMobile/Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/PhoneGapPlugin" />
+		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary.jar" target-dir="libs" />
+         <source-file src="sdks/Android/AdobeMobileLibrary/ADBMobileConfig.json" target-dir="assets" />
 	 </platform>
 </plugin>
