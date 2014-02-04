@@ -1,4 +1,4 @@
-package com.sample.phonegap;
+package com.adobe;
 
 import android.location.Location;
 import android.util.Log;
