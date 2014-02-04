@@ -1,0 +1,18 @@
+Release Notes for Android App Measurement Library version 4.x:
+
+Included are notes from the latest major revision to current.
+
+For full 4.x SDK documentation, please visit:
+http://microsite.omniture.com/t2/help/en_US/mobile/android/
+
+4.0.2 (30 Jan, 2014)
+- Resolved issue that could cause multiple hits to be sent when database was 
+	corrupted.
+- Resolved issue that could cause large session length averages if a device had
+ 	incorrect time settings.
+
+4.0.1 (14 Nov, 2013)
+- Resolved incorrect formatting of trackLocation data in specific locales.
+
+4.0.0 (26 Sept, 2013)
+- Initial Release to production of version 4.0
