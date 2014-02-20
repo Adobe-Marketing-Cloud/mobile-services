@@ -5,6 +5,8 @@ Included are notes from the latest major revision to current.
 For full 4.0 SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/ios/
 
+4.0.2 (20 Feb, 2014)
+- Resolved issue that caused incorrect behavior when the same media item was opened in sequence without closing previous item.
 
 4.0.1 (30 Jan, 2014)
 - Resolved issue that could cause multiple hits to be sent when database was corrupted.
