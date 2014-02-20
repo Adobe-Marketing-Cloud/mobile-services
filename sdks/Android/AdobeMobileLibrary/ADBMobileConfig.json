@@ -6,7 +6,7 @@
         "charset" : "UTF-8",
         "ssl" : false,
 		"offlineEnabled" : false,
-        "lifecycleTimeout" : 5,
+        "lifecycleTimeout" : 300,
         "batchLimit" : 0,
         "privacyDefault" : "optedin",
 		"poi" : []

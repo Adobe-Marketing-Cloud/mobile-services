@@ -6,8 +6,8 @@
         "charset" : "UTF-8",
         "ssl" : false,
 		"offlineEnabled" : false,
-        "lifecycleTimeout" : 5,
-        "batchLimit" : 50,
+        "lifecycleTimeout" : 300,
+        "batchLimit" : 0,
         "privacyDefault" : "optedin",
 		"poi" : []
     },

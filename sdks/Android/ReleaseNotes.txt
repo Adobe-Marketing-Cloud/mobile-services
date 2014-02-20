@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full 4.x SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/android/
 
+4.0.3 (20 Feb, 2014)
+- Added safety to network code to prevent crash caused by Android bug:
+    https://code.google.com/p/android/issues/detail?id=54072
+
 4.0.2 (30 Jan, 2014)
 - Resolved issue that could cause multiple hits to be sent when database was 
 	corrupted.
