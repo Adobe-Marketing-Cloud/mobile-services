@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full 4.x SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/android/
 
+4.0.4 (24 Feb, 2014)
+- Resolved issue that could cause extended media time played if stop was called
+	and close was called later with no calls in between.
+- Resolved issue where a media close hit was sent even if the media was not
+	played for any length of time.
+
 4.0.3 (20 Feb, 2014)
 - Added safety to network code to prevent crash caused by Android bug:
     https://code.google.com/p/android/issues/detail?id=54072
