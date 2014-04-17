@@ -7,15 +7,20 @@
         "ssl" : false,
 		"offlineEnabled" : false,
         "lifecycleTimeout" : 300,
+		"referrerTimeout" : 0,
         "batchLimit" : 0,
         "privacyDefault" : "optedin",
 		"poi" : []
     },
 	"target" : {
 		"clientCode" : "",
-		"timeout" : 2
+		"timeout" : 5
 	},
 	"audienceManager" : {
 		"server" : ""
+	},
+	"acquisition" : {
+		"server" : "",
+		"appid" : ""
 	}
 }
