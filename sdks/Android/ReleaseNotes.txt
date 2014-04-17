@@ -16,12 +16,18 @@ http://microsite.omniture.com/t2/help/en_US/mobile/android/
 - Performance enhancements.
 - Resloved an issue that could very rarely cause the library to lock if certain methods were called in a specific order.
 
+4.0.4 (24 Feb, 2014)
+- Resolved issue that could cause extended media time played if stop was called
+	and close was called later with no calls in between.
+- Resolved issue where a media close hit was sent even if the media was not
+	played for any length of time.
+
 4.0.3 (20 Feb, 2014)
 - Added safety to network code to prevent crash caused by Android bug:
     https://code.google.com/p/android/issues/detail?id=54072
 
 4.0.2 (30 Jan, 2014)
-- Resolved issue that could cause multiple hits to be sent when database was 
+- Resolved issue that could cause multiple hits to be sent when database was
 	corrupted.
 - Resolved issue that could cause large session length averages if a device had
  	incorrect time settings.
