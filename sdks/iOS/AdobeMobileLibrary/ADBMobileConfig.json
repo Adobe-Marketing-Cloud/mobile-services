@@ -7,6 +7,7 @@
         "ssl" : false,
 		"offlineEnabled" : false,
         "lifecycleTimeout" : 300,
+		"referrerTimeout" : 0,
         "batchLimit" : 0,
         "privacyDefault" : "optedin",
 		"poi" : []
@@ -17,5 +18,9 @@
 	},
 	"audienceManager" : {
 		"server" : ""
+	},
+	"acquisition" : {
+		"server" : "",
+		"appid" : ""
 	}
 }

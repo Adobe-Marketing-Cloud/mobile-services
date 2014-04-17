@@ -5,7 +5,7 @@
 //  Copyright 1996-2013. Adobe, Inc. All Rights Reserved
 
 #import <Foundation/Foundation.h>
-@class CLLocation, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
+@class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
 
 #pragma mark - ADBMobile
 
@@ -126,6 +126,20 @@ typedef enum ADBMobilePrivacyStatus : NSUInteger {
  *  @note This method does not increment page views.
  */
 + (void) trackLocation:(CLLocation *)location data:(NSDictionary *)data;
+
+/**
+ * 	@brief Tracks a beacon with context data.
+ * 	@param beacon a CLBeacon pointer containing the beacon information to be tracked.
+ * 	@param data a dictionary pointer containing the context data to be tracked.
+ *  @note This method does not increment page views.
+ */
++ (void) trackBeacon:(CLBeacon *)beacon data:(NSDictionary *)data;
+
+/**
+ * 	@brief Clears beacon data persisted for Target
+ */
++ (void) trackingClearCurrentBeacon;
+
 /**
  * 	@brief Tracks an increase in a user's lifetime value.
  * 	@param amount a positive NSDecimalNumber detailing the amount to increase lifetime value by.
@@ -172,6 +186,11 @@ typedef enum ADBMobilePrivacyStatus : NSUInteger {
  *	@return an NSString value containing the tracking identifier
  */
 + (NSString *) trackingIdentifier;
+
+/**
+ *	@brief Force library to send all queued hits regardless of current batch options
+ */
++ (void) trackingSendQueuedHits;
 
 /**
  *	@brief Clears any hits out of the tracking queue and removes them from the database
