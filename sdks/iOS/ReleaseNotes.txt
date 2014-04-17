@@ -2,8 +2,15 @@ Release Notes for iOS App Measurement Library version 4:
 
 Included are notes from the latest major revision to current.
 
-For full 4.0 SDK documentation, please visit:
+For full SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/ios/
+
+4.1.0 (17 April, 2014)
+- New - Bluetooth beacon tracking
+- New - App acquisition analytics
+- New - Apps that are timestamp enabled, crash hits are backdated to the correct session
+- New - Apps that are timestamp enabled, previous session is sent in a hit that is backdated to the correct session. (no longer previous session)
+- New - Batching
 
 4.0.2 (20 Feb, 2014)
 - Resolved issue that caused incorrect behavior when the same media item was opened in sequence without closing previous item.
