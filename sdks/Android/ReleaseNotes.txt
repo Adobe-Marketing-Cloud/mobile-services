@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/android/
 
+4.1.1 (23 April, 2014)
+- Fixed a potential issue that could occur if referrer tracking is enabled and a tracking call is made prior to lifecycle.
+
 4.1.0 (17 April, 2014)
 - New - Bluetooth beacon tracking
 - New - Apps that are timestamp enabled, crash hits are backdated to the correct session.
