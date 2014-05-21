@@ -1,0 +1,26 @@
+Release Notes for Windows 8 App Measurement Library version 4.x:
+
+Included are notes from the latest major revision to current.
+
+For full 4.x SDK documentation please visit:
+http://microsite.omniture.com/t2/help/en_US/mobile/win8/
+
+4.0.0 (22 May, 2014)
+
+- Release of 4.0.0
+
+
+4.0.0BETA2 (25 Apr, 2014)
+
+- Added revision to application version.  New AppId has the following format: Major.Minor.Revision (Build)
+- Bug fixes
+
+
+4.0.0Beta1 (4 Apr, 2014)
+
+- Bug fixes and performance improvements
+
+
+4.0.0Beta (20 Feb, 2014)
+
+- Initial release for Windows 8
