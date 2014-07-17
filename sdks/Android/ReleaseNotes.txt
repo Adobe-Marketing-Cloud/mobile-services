@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/android/
 
+4.1.6 (17 July, 2014)
+- Added protections around exceptions that occur if the database become corrupted, or could not be created.
+- Added protections for issues that could occur when config cannot be loaded (generally due to a null context).
+- Added protections for exceptions that could occur when updating the context data of a timed action.
+
 4.1.1 (23 April, 2014)
 - Fixed a potential issue that could occur if referrer tracking is enabled and a tracking call is made prior to lifecycle.
 
