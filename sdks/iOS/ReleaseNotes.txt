@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/ios/
 
+4.1.2 (5 Aug, 2014)
+- Resolved deadlock issue that could occur with the specific configuration of privacyStatus:optunknown and offlineEnabled:false
+
 4.1.1 (4 Aug, 2014)
 - Resolved issue that could cause Lifecycle hit to not get sent when referrer timeout was >= 5 seconds and offline tracking was disabled.
 
