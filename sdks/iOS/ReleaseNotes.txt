@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/ios/
 
+4.1.1 (4 Aug, 2014)
+- Resolved issue that could cause Lifecycle hit to not get sent when referrer timeout was >= 5 seconds and offline tracking was disabled.
+
 4.1.0 (17 April, 2014)
 - New - Bluetooth beacon tracking
 - New - App acquisition analytics
@@ -20,8 +23,8 @@ http://microsite.omniture.com/t2/help/en_US/mobile/ios/
 - Resolved issue that could cause large previous session lengths when device time was incorrect.
 
 4.0.0 (20 Sept, 2013)
-- Initial release to production of version 4.0 
-- Initial platform support: 
+- Initial release to production of version 4.0
+- Initial platform support:
 	arm64
 	armv7
 	armv7s
@@ -32,5 +35,3 @@ http://microsite.omniture.com/t2/help/en_US/mobile/ios/
 	SystemConfiguration.framework
 	CoreLocation.framework (optional, required for geo tracking capaibilites)
   See documentation if you need further information.
-		
-
