@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/android/
 
+4.1.7 (4 Aug, 2014)
+- Resolved issue that could cause Lifecycle hit to not get sent when referrer timeout was >= 5 seconds and offline tracking was disabled.
+
 4.1.6 (17 July, 2014)
 - Added protections around exceptions that occur if the database become corrupted, or could not be created.
 - Added protections for issues that could occur when config cannot be loaded (generally due to a null context).
