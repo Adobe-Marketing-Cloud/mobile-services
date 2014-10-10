@@ -114,7 +114,7 @@ typedef enum ADBMobilePrivacyStatus : NSUInteger {
  * 	@brief Tracks an action with context data.
  * 	@param action a string pointer containing the action value to be tracked.
  * 	@param data a dictionary pointer containing the context data to be tracked.
- *  @note This method does not increment page views. 
+ *  @note This method does not increment page views.
  *  @note This method is intended to be called while your app is in the background(it will not cause lifecycle data to send if the session timeout has been exceeded)
  */
 + (void) trackActionFromBackground:(NSString *)action data:(NSDictionary *)data;
@@ -224,7 +224,7 @@ typedef enum ADBMobilePrivacyStatus : NSUInteger {
  *  @param name name of media item.
  *  @param length length of media (in seconds).
  * 	@param parentName name of the ads parent video.
- * 	@param pod of the media item that the media ad is playing in.
+ * 	@param parentPod of the media item that the media ad is playing in.
  * 	@param parentPodPosition position of parent pod (in seconds).
  * 	@param CPM .
  *  @return An ADBMediaSettings pointer.
@@ -313,7 +313,7 @@ typedef enum ADBMobilePrivacyStatus : NSUInteger {
  * 	@param name a string pointer containing the value of the order name.
  * 	@param orderId a string pointer containing the value of the order id.
  * 	@param orderTotal a string pointer containing the value of the order total.
- * 	@param productPurchaseId a string pointer containing the value of the product purchased id.
+ * 	@param productPurchasedId a string pointer containing the value of the product purchased id.
  *  @param parameters a dictionary of key-value pairs that will be added to the request.
  *  @return A ADBTargetLocationRequest pointer.
  *  @see targetLoadRequest:callback: for processing the returned ADBTargetLocationRequest pointer.
