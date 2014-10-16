@@ -5,6 +5,14 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 http://microsite.omniture.com/t2/help/en_US/mobile/ios/
 
+4.2.0 (16 Oct, 2014)
+- New - In App Messaging Capabilities.
+- New - Location for config file can now be specified during app startup.
+- New - Points of Interest can now be updated automatically without requiring a new config file.
+- New - Analytics calls are now sent as HTTP POST requests.
+- Cleared up log messages, added more verbose logging when debugLogging is enabled.
+- Multiple performance and stability enhancements.
+
 4.1.3 (18 Sep, 2014)
 - Resolved potential crash that could occur if Audience Manager Submit Signal call or Target Load Request call failed due to an unknown network error.
 
