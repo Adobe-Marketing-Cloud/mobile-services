@@ -4,7 +4,7 @@
     "version": "0.0.16",
     "private": true,
     
-    "versions": {
+    "versions": { 
 		"sdks": {
 			"ios": "4.2.0",
 			"osx": null,
