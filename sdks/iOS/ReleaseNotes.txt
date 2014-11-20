@@ -3,7 +3,11 @@ Release Notes for iOS App Measurement Library version 4:
 Included are notes from the latest major revision to current.
 
 For full SDK documentation, please visit:
-http://microsite.omniture.com/t2/help/en_US/mobile/ios/
+https://marketing.adobe.com/resources/help/en_US/mobile/ios/
+
+4.3.0 (20 Nov, 2014)
+- New - Adobe Marketing Cloud ID integration
+- Improved debug logs for clarity
 
 4.2.0 (16 Oct, 2014)
 - New - In App Messaging Capabilities.

@@ -3,7 +3,12 @@ Release Notes for Android App Measurement Library version 4.x:
 Included are notes from the latest major revision to current.
 
 For full SDK documentation, please visit:
-http://microsite.omniture.com/t2/help/en_US/mobile/android/
+https://marketing.adobe.com/resources/help/en_US/mobile/android/
+
+4.3.0 (20 Nov, 2014)
+- New - Adobe Marketing Cloud ID integration
+- Improved debug logs for clarity
+- Resolved potential crash when checking for in-app messages
 
 4.2.0 (16 Oct, 2014)
 - New - In App Messaging Capabilities.
