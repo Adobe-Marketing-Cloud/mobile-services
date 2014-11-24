@@ -1,0 +1,10 @@
+Steps to update pod spec:
+1. Copy released iOS SDK to this folder, and rename AdobeMobileLibrary.a to libAdobeMobile.a
+2. Update the version and tag number in podspec file 
+3. Push the change to branch cocoapod
+4. Tag the code with name vx.x.x-cocoapod, and push
+5. pod trunk push
+
+Note:
+* add contributors
+  pod trunk add-owner AdobeMobileSDK email@email.com
