@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
 
   s.source_files  = "AdobeMobileLibrary/*.h"
   s.resource  = "AdobeMobileLibrary/ADBMobileConfig.json"
-  s.preserve_paths = "AdobeMobileLibrary/libAdobeMobileLibrary.a", "AdobeMobileLibrary/ADBMobileConfig.json"
+  s.preserve_paths = "AdobeMobileLibrary/libAdobeMobile.a", "AdobeMobileLibrary/ADBMobileConfig.json"
   s.frameworks = "UIKit", "SystemConfiguration"
-  s.libraries = "AdobeMobileLibrary","sqlite3.0"
+  s.libraries = "AdobeMobile","sqlite3.0"
   s.requires_arc = false
   s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "\"$(PODS_ROOT)/AdobeMobileSDK/AdobeMobileLibrary\"" }
 end
