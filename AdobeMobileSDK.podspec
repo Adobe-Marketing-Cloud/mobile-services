@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/Adobe-Marketing-Cloud/mobile-services/releases"
 
   s.license      = {:type => "Commercial", :text => "Adobe Systems Incorporated All Rights Reserved"}
-  s.author             = { "Adobe Mobile Team"  }
+  s.author       = "Adobe Mobile SDK Team"
   s.source       = { :git => "https://github.com/Adobe-Marketing-Cloud/mobile-services.git", :tag => "v4.3.0-cocoapod" }
 
   s.source_files  = "AdobeMobileLibrary/*.h"
