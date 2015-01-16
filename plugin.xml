@@ -6,7 +6,7 @@
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
  
-	<js-module src="sdks/Cordova/ADBMobile/Shared/ADBHelper.js" name="ADBHelper">
+	<js-module src="sdks/Cordova/ADBMobile/Shared/ADB_Helper.js" name="ADB">
 	    <clobbers target="ADB"/>
 	</js-module>
 	
@@ -38,7 +38,7 @@
 	         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 		 </config-file>
 		 <source-file src="sdks/Cordova/ADBMobile/Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/" />
-		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary.jar" target-dir="libs" />
+		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.4.0.jar" target-dir="libs" />
          <source-file src="sdks/Android/AdobeMobileLibrary/ADBMobileConfig.json" target-dir="assets" />
 	 </platform>
 </plugin>
