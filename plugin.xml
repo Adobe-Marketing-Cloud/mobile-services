@@ -6,7 +6,7 @@
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
  
-	<js-module src="sdks/Cordova/ADBMobile/Shared/ADBHelper.js" name="ADBHelper">
+	<js-module src="sdks/Cordova/ADBMobile/Shared/ADB_Helper.js" name="ADB">
 	    <clobbers target="ADB"/>
 	</js-module>
 	
