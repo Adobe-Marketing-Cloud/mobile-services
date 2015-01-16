@@ -143,3 +143,5 @@ var ADB = (function () {
 
 	return ADB;
 }());
+
+module.exports = ADB;
