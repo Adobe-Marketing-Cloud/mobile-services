@@ -8,7 +8,7 @@ sed -i "" "s/\\(s.version[[:space:]]*=[[:space:]]*\"\\).*\\(\"\\)/\\1$1\\2/g" Ad
 sed -i "" "s/\\(\"v\).*\\(-cocoapod\"\\)/\\1$1\\2/g" AdobeMobileSDK.podspec
 
 echo "Rename AdobeMobileLibrary"
-mv AdobeMobileLibrary/AdobeMobileLibrary.a AdobeMobileLibrary/libMobileLibrary.a
+mv AdobeMobileLibrary/AdobeMobileLibrary.a AdobeMobileLibrary/libAdobeMobile.a
 
 echo "Commit the changes to git"
 git add *
