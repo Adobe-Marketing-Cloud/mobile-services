@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Adobe-Marketing-Cloud/mobile-services.git", :tag => "v4.3.0-cocoapod" }
 
   s.source_files  = "AdobeMobileLibrary/*.h"
-  s.resource  = "AdobeMobileLibrary/ADBMobileConfig.json"
   s.preserve_paths = "AdobeMobileLibrary/libAdobeMobile.a", "AdobeMobileLibrary/ADBMobileConfig.json"
   s.frameworks = "UIKit", "SystemConfiguration"
   s.libraries = "AdobeMobile","sqlite3.0"
