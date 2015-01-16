@@ -322,7 +322,7 @@
 
         if ([[command.arguments objectAtIndex: 0] isKindOfClass:[NSString class]] && [[command.arguments objectAtIndex: 3] isKindOfClass:[NSNumber class]]) {
             [beacon setProximityUUID:[[NSUUID alloc] initWithUUIDString:[command.arguments objectAtIndex: 0]]];
-            beacon setProximity:(CLProximity)((NSNumber*)[command.arguments objectAtIndex: 3]).intValue];
+            [beacon setProximity:(CLProximity)((NSNumber*)[command.arguments objectAtIndex: 3]).intValue];
         } else {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"unable to parse arguments, arguments should be [String, Number, Number, Number, Dictionary]"];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
