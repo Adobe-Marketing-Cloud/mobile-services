@@ -1,10 +1,9 @@
-package com.adobe;
+package com.sample.phonegap;
 
 import android.location.Location;
-import android.util.Log;
-import android.widget.Switch;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
 
 import org.json.JSONArray;
@@ -75,6 +74,12 @@ public class ADBMobile_PhoneGap extends CordovaPlugin {
             return true;
         } else if (action.equals("trackLocation")) {
             this.trackLocation(args, callbackContext);
+            return true;
+        } else if (action.equals("trackBeacon")) {
+            this.trackBeacon(args, callbackContext);
+            return true;
+        } else if (action.equals("trackingClearCurrentBeacon")) {
+            this.trackingClearCurrentBeacon(callbackContext);
             return true;
         } else if (action.equals("trackLifetimeValueIncrease")) {
             this.trackLifetimeValueIncrease(args, callbackContext);
@@ -326,6 +331,55 @@ public class ADBMobile_PhoneGap extends CordovaPlugin {
                 }
 
                 Analytics.trackLocation(location, cData);
+                callbackContext.success();
+            }
+        }));
+    }
+
+    private void trackBeacon(final JSONArray args, final CallbackContext callbackContext) {
+        cordova.getThreadPool().execute((new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    HashMap<String, Object> cData = null;
+                    String uuid = args.getString(0);
+                    String major = args.getString(1);
+                    String minor = args.getString(2);
+                    int proxInt = Integer.parseInt(args.getString(3));
+                    Analytics.BEACON_PROXIMITY prox = proxInt >= 0 && proxInt  < Analytics.BEACON_PROXIMITY.values().length ?
+                    Analytics.BEACON_PROXIMITY.values()[proxInt]: Analytics.BEACON_PROXIMITY.values()[0];
+
+
+                    // set cData if it is passed in along with action
+                    if (args.get(4) != JSONObject.NULL)
+                    {
+                        JSONObject cDataJSON = args.getJSONObject(4);
+                        if (cDataJSON != null && cDataJSON.length() > 0)
+                            cData = GetHashMapFromJSON(cDataJSON);
+                    }
+
+                    Analytics.trackBeacon(uuid, major, minor, prox, cData);
+                    callbackContext.success();
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                    callbackContext.error(e.getMessage());
+                }
+                catch (NumberFormatException e) {
+                    e.printStackTrace();
+                    callbackContext.error(e.getMessage());
+                }
+
+
+            }
+        }));
+    }
+
+    private void trackingClearCurrentBeacon(final CallbackContext callbackContext) {
+        cordova.getThreadPool().execute((new Runnable() {
+            @Override
+            public void run() {
+                Analytics.clearBeacon();
                 callbackContext.success();
             }
         }));
@@ -586,5 +640,26 @@ public class ADBMobile_PhoneGap extends CordovaPlugin {
         HashMap<String, Object> table = new HashMap<String, Object>();
         table.putAll(map);
         return table;
+    }
+
+    // =====================
+    // Plugin life cycle events
+    // =====================
+    @Override
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+        com.adobe.mobile.Config.setContext(this.cordova.getActivity().getApplicationContext());
+    }
+
+    @Override
+    public void onPause(boolean multitasking) {
+        super.onPause(multitasking);
+        com.adobe.mobile.Config.pauseCollectingLifecycleData();
+    }
+
+    @Override
+    public void onResume(boolean multitasking) {
+        super.onResume(multitasking);
+        com.adobe.mobile.Config.collectLifecycleData(this.cordova.getActivity());
     }
 }
