@@ -1,10 +1,9 @@
-Release Notes for Windows 8 App Measurement Library version 4.x:
+Release Notes for Windows Store App Measurement Library version 4.x:
 
 Included are notes from the latest major revision to current.
 
 For full 4.x SDK documentation please visit:
-http://microsite.omniture.com/t2/help/en_US/mobile/win8/
+https://marketing.adobe.com/resources/help/en_US/mobile/winu/
 
-4.0.0 (29 May, 2014)
-
-- Release of 4.0.0
+4.0.0 (15 Jan, 2015)
+- Initial Release of 4.x SDK for Windows Store Universal Apps

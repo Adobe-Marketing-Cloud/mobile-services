@@ -35,6 +35,8 @@
 - (void)trackAction:(CDVInvokedUrlCommand*)command;
 - (void)trackActionFromBackground:(CDVInvokedUrlCommand*)command;
 - (void)trackLocation:(CDVInvokedUrlCommand*)command;
+- (void)trackBeacon:(CDVInvokedUrlCommand*)command;
+- (void)trackingClearCurrentBeacon:(CDVInvokedUrlCommand*)command;
 - (void)trackLifetimeValueIncrease:(CDVInvokedUrlCommand*)command;
 - (void)trackTimedActionStart:(CDVInvokedUrlCommand*)command;
 - (void)trackTimedActionUpdate:(CDVInvokedUrlCommand*)command;
@@ -43,7 +45,6 @@
 - (void)trackingIdentifier:(CDVInvokedUrlCommand*)command;
 - (void)trackingClearQueue:(CDVInvokedUrlCommand*)command;
 - (void)trackingGetQueueSize:(CDVInvokedUrlCommand*)command;
-
 - (void)targetLoadRequest:(CDVInvokedUrlCommand*)command;
 - (void)targetLoadOrderConfirmRequest:(CDVInvokedUrlCommand*)command;
 @end

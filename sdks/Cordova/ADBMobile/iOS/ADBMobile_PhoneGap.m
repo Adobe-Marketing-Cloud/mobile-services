@@ -21,6 +21,16 @@
 #import "ADBMobile_PhoneGap.h"
 #import "ADBMobile.h"
 
+@interface ADBBeacon : NSObject
+    @property (nonatomic, strong) NSUUID *proximityUUID;
+    @property (nonatomic, strong) NSNumber *major;
+    @property (nonatomic, strong) NSNumber *minor;
+    @property (nonatomic) CLProximity proximity;
+@end
+
+@implementation ADBBeacon : NSObject
+@end
+
 @implementation ADBMobile_PhoneGap
 
 - (void)getVersion:(CDVInvokedUrlCommand*)command {
@@ -296,6 +306,66 @@
 			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR ];
 		}
 	}];
+}
+
+- (void)trackBeacon:(CDVInvokedUrlCommand *)command {
+    [self.commandDelegate runInBackground:^{
+        CDVPluginResult* pluginResult = nil;
+        if(!NSClassFromString(@"CLLocation")) {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"CLLocation could not be found"];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            return;
+        }
+        
+        ADBBeacon *beacon = [[ADBBeacon alloc] init];
+        NSDictionary *cData = [NSDictionary dictionary];
+
+        if ([[command.arguments objectAtIndex: 0] isKindOfClass:[NSString class]] && [[command.arguments objectAtIndex: 3] isKindOfClass:[NSNumber class]]) {
+            [beacon setProximityUUID:[[NSUUID alloc] initWithUUIDString:[command.arguments objectAtIndex: 0]]];
+            beacon setProximity:(CLProximity)((NSNumber*)[command.arguments objectAtIndex: 3]).intValue];
+        } else {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"unable to parse arguments, arguments should be [String, Number, Number, Number, Dictionary]"];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            return;
+        }
+        
+        if ([[command.arguments objectAtIndex: 1] isKindOfClass:[NSNumber class]]
+            && [[command.arguments objectAtIndex: 2] isKindOfClass:[NSNumber class]]) {
+            [beacon setMajor:[command.arguments objectAtIndex: 1]];
+            [beacon setMinor:[command.arguments objectAtIndex: 2]];
+        } else if ([[command.arguments objectAtIndex: 1] isKindOfClass:[NSString class]]
+                   && [[command.arguments objectAtIndex: 2] isKindOfClass:[NSString class]]) {
+            NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+            [formatter setNumberStyle:NSNumberFormatterNoStyle];
+            
+            [beacon setMajor:[formatter numberFromString:[command.arguments objectAtIndex: 1]]];
+            [beacon setMinor:[formatter numberFromString:[command.arguments objectAtIndex: 2]]];
+        }
+        else {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"unable to parse arguments, arguments should be [String, Number, Number, Number, Dictionary]"];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            return;
+        }
+        
+        if ([[command.arguments objectAtIndex:4] isKindOfClass:[NSDictionary class]]) {
+            cData = [command.arguments objectAtIndex:4];
+        }
+        
+        [ADBMobile trackBeacon:(CLBeacon *)beacon data:cData];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+    }];
+}
+
+- (void)trackingClearCurrentBeacon:(CDVInvokedUrlCommand*)command {
+    [self.commandDelegate runInBackground:^{
+        CDVPluginResult* pluginResult = nil;
+        
+        [ADBMobile trackingClearCurrentBeacon];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Current beacon cleared."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
 }
 
 - (void)trackLifetimeValueIncrease:(CDVInvokedUrlCommand*)command {
