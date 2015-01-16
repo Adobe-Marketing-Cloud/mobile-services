@@ -17,8 +17,7 @@
 *
 **************************************************************************/
 var ADB = (function () {
-		var ADB = {
-		};
+    var ADB = (typeof exports !== 'undefined') && exports || {};
 
 	ADB.doNothing = function () {};
 
