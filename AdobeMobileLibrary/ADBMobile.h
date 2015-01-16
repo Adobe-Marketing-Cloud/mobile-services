@@ -2,7 +2,9 @@
 //  ADBMobile.h
 //  Adobe Digital Marketing Suite -- iOS Application Measurement Library
 //
-//  Copyright 1996-2013. Adobe, Inc. All Rights Reserved
+//  Copyright 1996-2015. Adobe, Inc. All Rights Reserved
+//
+//  SDK Version: 4.4.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -91,6 +93,14 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @note This should be the first method called upon app launch.
  */
 + (void) collectLifecycleData;
+
+
+/**
+ * 	@brief Begins the collection of lifecycle data.
+ *  @note This should be the first method called upon app launch.
+ *  @param data a dictionary pointer containing the context data to be added to the lifecycle hit.
+ */
++ (void) collectLifecycleDataWithAdditionalData:(NSDictionary *)data;
 
 /**
  *	@brief allows one-time override of the path for the json config file
