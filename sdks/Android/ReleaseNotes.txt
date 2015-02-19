@@ -5,9 +5,14 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.4.1 (26 Jan, 2015)
+- Fixed an issue where ssl connections could cause a full connection on every call
+
 4.4.0 (15 Jan, 2015)
 - New - Ability to add custom context data to lifecycle
-- Version is now included in the jar file name.
+- Large number of performance enhancements, both in cpu usage and memory footprint
+- Significantly improved performance of SSL analytics calls
+- Version is now included in the jar file name
 
 4.3.0 (20 Nov, 2014)
 - New - Adobe Marketing Cloud ID integration
