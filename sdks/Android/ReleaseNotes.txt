@@ -5,7 +5,7 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
-4.4.1 (26 Jan, 2015)
+4.4.1 (19 Feb, 2015)
 - Fixed an issue where ssl connections could cause a full connection on every call
 
 4.4.0 (15 Jan, 2015)
