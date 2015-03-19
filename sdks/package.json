@@ -9,11 +9,13 @@
 		"sdks": {
 			"ios": "4.4.0",
 			"osx": null,
-			"android": "4.4.0",
+			"android": "4.4.1",
 			"winu": "4.0.0",
 			"xboxone": null,
 			"blackberry": "4.0.0",
-			"phonegap": null
+			"phonegap": null,
+			"unity": null,
+			"xamarin": null
 		},
 		"sample-apps": {
 			"ios": "1.1",
@@ -23,12 +25,14 @@
 			"winphone8": null,
 			"xboxone": null,
 			"blackberry": null,
-			"phonegap": null
+			"phonegap": null,
+			"unity": null,
+			"xamarin": null
 		},
 		"tools": {
 			"bloodhound": {
 				"osx": "3.0Beta",
-				"windows": "2.1"
+				"windows": "2.2"
 			}
 		}
 	}

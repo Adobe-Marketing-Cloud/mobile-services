@@ -2,7 +2,7 @@
  
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
            id="com.adobe.ADBMobile"
-      version="1.0.0">
+      version="4.4.1">
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
  
@@ -14,7 +14,7 @@
 	 <platform name="ios">
 		 <config-file target="config.xml" parent="/*">
 			 <feature name="ADBMobile_PhoneGap">
-				 <param name="ios-package" value="ADBMobile_PhoneGap" />
+				 <param name="ios-package" value="ADBMobile_PhoneGap" onload="true" />
 			 </feature>
 		 </config-file>
 		 <header-file src="sdks/Cordova/ADBMobile/iOS/ADBMobile_PhoneGap.h" />
@@ -30,7 +30,8 @@
 	 <platform name="android">
 		 <config-file target="res/xml/config.xml" parent="/*">
 			 <feature name="ADBMobile_PhoneGap">
-				 <param name="android-package" value="com.adobe.ADBMobile_PhoneGap" />
+				 <param name="android-package" value="com.adobe.ADBMobile_PhoneGap" onload="true" />
+				 <param name="onload" value="true" />
 			 </feature>
 		 </config-file>
 		 <config-file target="AndroidManifest.xml" parent="/manifest">

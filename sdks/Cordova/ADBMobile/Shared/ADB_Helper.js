@@ -17,7 +17,7 @@
 *
 **************************************************************************/
 var ADB = (function () {
-    var ADB = (typeof exports !== 'undefined') && exports || {};
+	var ADB = (typeof exports !== 'undefined') && exports || {};
 
 	ADB.doNothing = function () {};
 
@@ -27,10 +27,10 @@ var ADB = (function () {
 	ADB.optedOut = 2;
 	ADB.optUnknown = 3;
 
-  ADB.beaconUnknown = 0;
-  ADB.beaconImmediate = 1;
-  ADB.beaconNear = 2;
-  ADB.beaconFar = 3;
+	ADB.beaconUnknown = 0;
+	ADB.beaconImmediate = 1;
+	ADB.beaconNear = 2;
+	ADB.beaconFar = 3;
 
 	ADB.trackAppState = function (stateName) {
 	   return cordova.exec(ADB.doNothing, ADB.doNothing, "ADBMobile_PhoneGap", "myMethod", [stateName]);

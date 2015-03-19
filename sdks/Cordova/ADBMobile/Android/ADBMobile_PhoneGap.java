@@ -649,6 +649,7 @@ public class ADBMobile_PhoneGap extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         com.adobe.mobile.Config.setContext(this.cordova.getActivity().getApplicationContext());
+        com.adobe.mobile.Config.collectLifecycleData(this.cordova.getActivity());
     }
 
     @Override

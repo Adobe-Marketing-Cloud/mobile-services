@@ -5,5 +5,8 @@ Included are notes from the latest major revision to current.
 For full 4.x SDK documentation please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/winu/
 
+4.0.0 (19 Mar, 2015)
+- Added Visual Studio Extensions for 4.0.0 SDK
+
 4.0.0 (15 Jan, 2015)
 - Initial Release of 4.x SDK for Windows Store Universal Apps
