@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADBMobile.XamarinAndroidBinding", "ADBMobile.XamarinAndroidBinding\ADBMobile.XamarinAndroidBinding.csproj", "{E4D6F614-5C66-4B93-94CE-C47C67A9B79A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADBMobile.XamarinIOSBinding", "ADBMobile.XamariniOSBinding\ADBMobile.XamarinIOSBinding.csproj", "{13C471DF-8A91-44AD-BEA8-4A136A0A0C60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13C471DF-8A91-44AD-BEA8-4A136A0A0C60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C471DF-8A91-44AD-BEA8-4A136A0A0C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C471DF-8A91-44AD-BEA8-4A136A0A0C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C471DF-8A91-44AD-BEA8-4A136A0A0C60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4D6F614-5C66-4B93-94CE-C47C67A9B79A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D6F614-5C66-4B93-94CE-C47C67A9B79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D6F614-5C66-4B93-94CE-C47C67A9B79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D6F614-5C66-4B93-94CE-C47C67A9B79A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

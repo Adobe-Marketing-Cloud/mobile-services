@@ -1,0 +1,1 @@
+# ADBMobile license
