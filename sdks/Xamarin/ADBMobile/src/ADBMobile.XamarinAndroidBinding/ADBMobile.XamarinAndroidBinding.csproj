@@ -53,6 +53,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Xamarin.Android.Bindings.targets" />
   <ItemGroup>
-    <EmbeddedJar Include="Jars\adobeMobileLibrary.jar" />
+    <EmbeddedJar Include="Jars\adobeMobileLibrary-4.4.2.jar" />
   </ItemGroup>
 </Project>

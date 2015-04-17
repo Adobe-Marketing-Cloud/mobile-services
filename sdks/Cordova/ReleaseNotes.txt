@@ -1,0 +1,11 @@
+Release Notes for the Adobe Cordova Plugin for App Measurement Library version 4.x:
+
+Included are notes from the latest major revision to current.
+
+For full SDK documentation, please visit:
+https://marketing.adobe.com/resources/help/en_US/mobile/ios/phonegap.html
+https://marketing.adobe.com/resources/help/en_US/mobile/android/phonegap.html
+
+4.4.2 (16 Apr, 2015)
+- Updated Plugin to use iOS Adobe Mobile Library 4.4.1
+- Updated Plugin to use Android Adobe Mobile Library 4.4.2

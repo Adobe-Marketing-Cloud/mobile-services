@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.4.2 (16 Apr, 2015)
+- Added Locale to in-app messaging traits
+- Added custom data on lifecycle to in-app messaging traits
+- Added ssl support for Target calls
+
 4.4.1 (19 Feb, 2015)
 - Fixed an issue where ssl connections could cause a full connection on every call
 

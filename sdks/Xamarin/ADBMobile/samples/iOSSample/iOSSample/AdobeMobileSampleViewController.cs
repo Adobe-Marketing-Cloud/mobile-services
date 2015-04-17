@@ -26,6 +26,8 @@ namespace AdobeMobileSample
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			NSDictionary cData = NSDictionary.FromObjectAndKey (NSObject.FromObject("val1"), NSObject.FromObject("key1"));
+			ADBMobile.collectLifecycleDataWithAdditionalData (cData);
 
 			table = new UITableView(View.Bounds); // defaults to Plain style
 			string[] tableItems = new string[] {
