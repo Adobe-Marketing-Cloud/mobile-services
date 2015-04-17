@@ -48,6 +48,10 @@ namespace Com.Adobe.Mobile {
 		[Static, Export ("keepLifecycleSessionAlive")]
 		void KeepLifecycleSessionAlive ();
 
+		// +(void)collectLifecycleDataWithAdditionalData:(NSDictionary *)data;
+		[Static, Export ("collectLifecycleDataWithAdditionalData:")]
+		void collectLifecycleDataWithAdditionalData ([NullAllowed] NSDictionary data);
+
 		// +(void)collectLifecycleData;
 		[Static, Export ("collectLifecycleData")]
 		void CollectLifecycleData ();

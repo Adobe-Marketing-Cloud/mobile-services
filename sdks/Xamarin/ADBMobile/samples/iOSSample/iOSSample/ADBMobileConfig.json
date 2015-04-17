@@ -2,7 +2,7 @@
     "version" : "1.0",
     "analytics" : {
         "rsids" : "adobemobiledemo",
-        "server" : "10.30.93.52:50001",
+        "server" : "adobemobiledemo.d1.sc.omtrdc.net",
         "charset" : "UTF-8",
         "ssl" : false,
 		"offlineEnabled" : true,
