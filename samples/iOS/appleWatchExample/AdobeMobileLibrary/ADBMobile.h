@@ -7,7 +7,7 @@
 //  SDK Version: 4.5.0
 
 #import <Foundation/Foundation.h>
-@class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState, ADBApplicationOnlyFunctionality;
+@class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
 
 #pragma mark - ADBMobile
 
