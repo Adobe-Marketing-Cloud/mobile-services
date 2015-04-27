@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.5.0 (27 Apr, 2015)
+- New - Added support for iOS Extension Apps 
+- Check out our Apple Watch Example in GitHub: https://github.com/Adobe-Marketing-Cloud/mobile-services/releases/tag/AppleWatchExample-v1.0-iOS-watch
+
 4.4.1 (16 Apr, 2015)
 - Added Locale(NSLocale) to in-app messaging traits
 - Added custom data on lifecycle to in-app messaging traits

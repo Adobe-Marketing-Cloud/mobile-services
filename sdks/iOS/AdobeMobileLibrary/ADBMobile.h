@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2015. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.4.1
+//  SDK Version: 4.5.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -93,8 +93,6 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @note This should be the first method called upon app launch.
  */
 + (void) collectLifecycleData;
-
-
 /**
  * 	@brief Begins the collection of lifecycle data.
  *  @note This should be the first method called upon app launch.
@@ -109,6 +107,12 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  */
 + (void) overrideConfigPath: (NSString *) path;
 
+/**
+ *	@brief set the app group used to sharing user defaults and files among containing app and extension apps
+ *	@note This *must* be called prior to AppDidFinishLaunching (or Activate for Watch Extension) has completed and before any other interactions with the Adobe Mobile library have happened.
+ *		Only the first call to this function will have any effect.
+ */
++ (void) setAppGroup: (NSString *) appGroup;
 #pragma mark - Analytics
 
 /**
