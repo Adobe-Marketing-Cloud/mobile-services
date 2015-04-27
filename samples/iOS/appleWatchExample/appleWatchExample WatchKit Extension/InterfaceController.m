@@ -1,10 +1,15 @@
-//
-//  InterfaceController.m
-//  appleWatchExample WatchKit Extension
-//
-//  Created by Stephen Benedick on 4/24/15.
-//  Copyright (c) 2015 adobe. All rights reserved.
-//
+/*************************************************************************
+
+ADOBE SYSTEMS INCORPORATED
+Copyright 2015 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the
+terms of the Adobe license agreement accompanying it.  If you have received this file from a
+source other than Adobe, then your use, modification, or distribution of it requires the prior
+written permission of Adobe.
+
+**************************************************************************/
 
 #import "InterfaceController.h"
 #import "ADBMobile.h"
@@ -16,7 +21,7 @@
 
 	// set your AppGroup in ADBMobile
     [ADBMobile setAppGroup:@"group.adb.appleWatchExample"];
-	
+
 	// turn on logging in ADBMobile
 	[ADBMobile setDebugLogging:YES];
 }
@@ -34,6 +39,3 @@
 }
 
 @end
-
-
-
