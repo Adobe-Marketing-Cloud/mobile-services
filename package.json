@@ -1,7 +1,7 @@
 {
     "name": "mobile-mc-sdk",
     "description": "Mobile SDKs, Sample Apps, and Bloodhound",
-    "version": "0.0.27",
+    "version": "0.0.28",
     "private": true,
     
     "versions": { 
