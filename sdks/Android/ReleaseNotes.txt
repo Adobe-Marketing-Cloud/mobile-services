@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.5.0 (29 Apr, 2015)
+- Added support for Android Wear devices
+- Check out our Android Wear Example in GitHub: https://github.com/Adobe-Marketing-Cloud/mobile-services/releases/tag/v1.0-Android-wear
+
 4.4.2 (16 Apr, 2015)
 - Added Locale to in-app messaging traits
 - Added custom data on lifecycle to in-app messaging traits
