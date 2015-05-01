@@ -2,7 +2,7 @@
  
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
            id="com.adobe.ADBMobile"
-      version="4.4.2">
+      version="4.5.0">
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
  
@@ -39,7 +39,7 @@
 	         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 		 </config-file>
 		 <source-file src="sdks/Cordova/ADBMobile/Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/" />
-		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.4.2.jar" target-dir="libs" />
+		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.5.0.jar" target-dir="libs" />
          <source-file src="sdks/Android/AdobeMobileLibrary/ADBMobileConfig.json" target-dir="assets" />
 	 </platform>
 </plugin>
