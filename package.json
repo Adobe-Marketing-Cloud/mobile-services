@@ -6,7 +6,7 @@
     
     "versions": { 
 		"sdks": {
-			"ios": "4.5.0",
+			"ios": "4.5.1",
 			"osx": null,
 			"android": "4.5.0",
 			"windows": "4.0.0",
