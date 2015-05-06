@@ -5,7 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
-4.5.1 (1 Mar, 2015)
+4.5.2 (6 May, 2015)
+- Fixed a crashing issue for iOS versions lower than 8.
+
+4.5.1 (1 May, 2015)
 - iOS Extension SDK - Fixed a issue that could cause out of order hits for timestamp enabled report suite.
 
 4.5.0 (27 Apr, 2015)
