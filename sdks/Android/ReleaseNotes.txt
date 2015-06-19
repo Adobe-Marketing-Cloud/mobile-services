@@ -5,6 +5,14 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+
+4.5.1 (18 June, 2015)
+- In App Messaging - fixed a bug where messages were incorrectly triggered if all messages were disabled at once
+- In App Messaging - fixed a bug where messages were not being triggered after their showrule was changed
+- In App Messaging - fixed a bug where an Activity reference could cause memory leaks
+- Visitor ID Service - fixed an issue causing location hint to be set incorrectly for visitor id service on analytics calls
+- Analytics - Added an optional config item to allow for disabling backdating on the session info hit
+
 4.5.0 (29 Apr, 2015)
 - Added support for Android Wear devices
 - Check out our Android Wear Example in GitHub: https://github.com/Adobe-Marketing-Cloud/mobile-services/releases/tag/v1.0-Android-wear

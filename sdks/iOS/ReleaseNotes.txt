@@ -5,6 +5,13 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.5.3 (18 June, 2015)
+- In App Messaging - fixed a bug where messages were incorrectly triggered if all messages were disabled at once
+- In App Messaging - fixed clickthrough url issues for fullscreen messages
+- In App Messaging - fixed a bug where messages were not being triggered after their showrule was changed
+- Visitor ID Service - fixed an issue causing location hint to be set incorrectly for visitor id service on analytics calls
+- Analytics - Added an optional config item to better handle backdating session info hit
+
 4.5.2 (6 May, 2015)
 - Fixed a crashing issue for iOS versions lower than 8.
 
