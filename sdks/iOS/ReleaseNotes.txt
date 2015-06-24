@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.5.4 (23 June, 2015)
+- In App Messaging - fixed a bug where messages were being inappropriately removed from the blacklist on launch
+
 4.5.3 (18 June, 2015)
 - In App Messaging - fixed a bug where messages were incorrectly triggered if all messages were disabled at once
 - In App Messaging - fixed clickthrough url issues for fullscreen messages
