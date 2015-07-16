@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.5.3 (16 July, 2015)
+- Analytics - fixed a bug where unsuccessful close of HTTP connection could result in failure of sending non-ssl Analytics requests in older Android Versions
+
 4.5.2 (26 June, 2015)
 - Audience Manager - fixed a bug where lack of destination urls in AAM response could result in no visitor profile being available locally
 
