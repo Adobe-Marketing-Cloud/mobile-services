@@ -6,10 +6,10 @@
     
     "versions": { 
 		"sdks": {
-			"ios": "4.5.4",
+			"ios": "4.5.5",
 			"osx": null,
-			"android": "4.5.3",
-			"windows": "4.0.0",
+			"android": "4.5.4",
+			"windows": "4.0.0a",
 			"xboxone": null,
 			"blackberry": "4.0.0",
 			"phonegap": "4.4.2",
@@ -17,7 +17,7 @@
 			"xamarin": "4.4.2"
 		},
 		"sample-apps": {
-			"ios": "1.3",
+			"ios": "1.4",
 			"osx": null,
 			"android": "1.3",
 			"windows8": null,
