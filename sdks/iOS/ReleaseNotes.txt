@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.5.5 (20 Aug, 2015)
+- Added support for iOS 9 / Xcode 7 bitcode builds
+- Configuration - made a small change to configuration loading to support better integration with PhoneGap
+- Analytics - Fixed a issue that could cause sqlite exception.
+
 4.5.4 (23 June, 2015)
 - In App Messaging - fixed a bug where messages were being inappropriately removed from the blacklist on launch
 

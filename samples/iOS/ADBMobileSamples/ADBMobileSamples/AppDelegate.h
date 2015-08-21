@@ -1,25 +1,18 @@
 /*************************************************************************
- *
- * ADOBE CONFIDENTIAL
- * ___________________
- *
- *  Copyright 2013 Adobe Systems Incorporated
- *  All Rights Reserved.
- *
- * NOTICE:  All information contained herein is, and remains
- * the property of Adobe Systems Incorporated and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to Adobe Systems Incorporated and its
- * suppliers and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Adobe Systems Incorporated.
- *
- **************************************************************************/
+
+ADOBE SYSTEMS INCORPORATED
+Copyright 2015 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the
+terms of the Adobe license agreement accompanying it.  If you have received this file from a
+source other than Adobe, then your use, modification, or distribution of it requires the prior
+written permission of Adobe.
+ 
+**************************************************************************/
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-
 
 #define kPhoneStoryboard @"MainStoryboard_iPhone"
 #define kPadStoryboard @"MainStoryboard_iPad"
@@ -28,7 +21,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UIStoryboard *storyboard;
-@property (readonly) NSString *storyboardName;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (readonly) NSString *storyboardName;
 
 @end
