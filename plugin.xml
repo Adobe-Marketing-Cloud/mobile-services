@@ -5,8 +5,6 @@
       version="4.5.5">
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
- 
-    <hook type="after_plugin_install" src="sdks/Cordova/ADBMobile/hooks/copy_config.js" />
     
 	<js-module src="sdks/Cordova/ADBMobile/Shared/ADB_Helper.js" name="ADB">
 	    <clobbers target="ADB"/>
