@@ -12,8 +12,8 @@
 		"appid": "ffe0e94e-6734-4938-bbf7-3aeb4d0023ff"
 	},
 	"analytics": {
-		"rsids": "adobemobiledemo",
-		"server": "obumobile1.sc.omtrdc.net",
+		"rsids": "adobemobiledemo_bloodhound",
+		"server": "localhost:50000",
 		"ssl": false,
 		"offlineEnabled": true,
 		"charset": "ISO-8859-1",

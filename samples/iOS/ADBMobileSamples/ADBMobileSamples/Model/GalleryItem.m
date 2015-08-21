@@ -11,13 +11,26 @@ written permission of Adobe.
  
 **************************************************************************/
 
-#import <UIKit/UIKit.h>
+#import "GalleryItem.h"
 
-#import "AppDelegate.h"
+@implementation GalleryItem
 
-int main(int argc, char *argv[])
-{
-	@autoreleasepool {
-	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+- (id)initWithTitle:(NSString *)title description:(NSString *)description asset:(NSString *)asset params:(NSString *)params{
+	self = [super init];
+	if (self){
+		self.title = title;
+		self.theDescription = description;
+		self.assetName = asset;
+        self.s7params = params;
+		
+		self.liked = [[NSUserDefaults standardUserDefaults] boolForKey:self.title];
 	}
+	return self;
 }
+
+- (void)setLiked:(BOOL)liked{
+	_liked = liked;
+	[[NSUserDefaults standardUserDefaults] setBool:liked forKey:self.title];
+}
+
+@end

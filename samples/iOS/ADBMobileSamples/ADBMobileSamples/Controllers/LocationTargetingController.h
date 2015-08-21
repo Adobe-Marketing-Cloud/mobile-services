@@ -14,14 +14,15 @@ written permission of Adobe.
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-#define kPhoneStoryboard @"MainStoryboard_iPhone"
-#define kPadStoryboard @"MainStoryboard_iPad"
+@interface LocationTargetingController : UIViewController
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+@property (assign) IBOutlet UIView *backgroundView;
+@property (assign) IBOutlet UITextView *textView;
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIStoryboard *storyboard;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (readonly) NSString *storyboardName;
+@property (strong) CLLocation *seattle;
+@property (strong) CLLocation *sanJose;
+@property (strong) CLLocation *nyc;
+@property (strong) CLLocation *dallas;
+@property (strong) CLLocation *miami;
 
 @end

@@ -11,17 +11,10 @@ written permission of Adobe.
  
 **************************************************************************/
 
-#import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+#import <Foundation/Foundation.h>
 
-#define kPhoneStoryboard @"MainStoryboard_iPhone"
-#define kPadStoryboard @"MainStoryboard_iPad"
+@interface NSString (Color)
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIStoryboard *storyboard;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (readonly) NSString *storyboardName;
+-(UIColor *) color;
 
 @end

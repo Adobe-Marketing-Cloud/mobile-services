@@ -11,17 +11,17 @@ written permission of Adobe.
  
 **************************************************************************/
 
-#import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+#import <Foundation/Foundation.h>
+#import "ADBMobile.h"
 
-#define kPhoneStoryboard @"MainStoryboard_iPhone"
-#define kPadStoryboard @"MainStoryboard_iPad"
+@interface GalleryItem : NSObject
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+@property (strong) NSString *title;
+@property (strong) NSString *theDescription;
+@property (strong) NSString *assetName;
+@property (strong) NSString *s7params;
+@property (nonatomic, assign) BOOL liked;
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIStoryboard *storyboard;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (readonly) NSString *storyboardName;
+- (id)initWithTitle:(NSString *)title description:(NSString *)description asset:(NSString *)asset params:(NSString *)params;
 
 @end

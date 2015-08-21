@@ -12,16 +12,14 @@ written permission of Adobe.
 **************************************************************************/
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 
-#define kPhoneStoryboard @"MainStoryboard_iPhone"
-#define kPadStoryboard @"MainStoryboard_iPad"
+@interface MediaViewController : UIViewController
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIStoryboard *storyboard;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (readonly) NSString *storyboardName;
+@property (assign) IBOutlet UIView *blackBackground;
+@property (weak, nonatomic) IBOutlet UISwitch *swTrackMilestones;
+@property (weak, nonatomic) IBOutlet UISwitch *swSegmentByMilestones;
+@property (weak, nonatomic) IBOutlet UISwitch *swTrackOffsetMilestones;
+@property (weak, nonatomic) IBOutlet UISwitch *swSegmentByOffsetMilestones;
+@property (weak, nonatomic) IBOutlet UISwitch *swTrackSeconds;
 
 @end

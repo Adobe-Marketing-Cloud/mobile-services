@@ -2,7 +2,9 @@
 //  ADBMobile.h
 //  Adobe Digital Marketing Suite -- iOS Application Measurement Library
 //
-//  Copyright 1996-2013. Adobe, Inc. All Rights Reserved
+//  Copyright 1996-2015. Adobe, Inc. All Rights Reserved
+//
+//  SDK Version: 4.4.1
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -91,6 +93,14 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @note This should be the first method called upon app launch.
  */
 + (void) collectLifecycleData;
+
+
+/**
+ * 	@brief Begins the collection of lifecycle data.
+ *  @note This should be the first method called upon app launch.
+ *  @param data a dictionary pointer containing the context data to be added to the lifecycle hit.
+ */
++ (void) collectLifecycleDataWithAdditionalData:(NSDictionary *)data;
 
 /**
  *	@brief allows one-time override of the path for the json config file
@@ -191,6 +201,7 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
 /**
  *	@brief Retrieves the analytics tracking identifier
  *	@return an NSString value containing the tracking identifier
+ *	@note This method can cause a blocking network call and should not be used from a UI thread.
  */
 + (NSString *) trackingIdentifier;
 
@@ -231,7 +242,7 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @param name name of media item.
  *  @param length length of media (in seconds).
  * 	@param parentName name of the ads parent video.
- * 	@param pod of the media item that the media ad is playing in.
+ * 	@param parentPod of the media item that the media ad is playing in.
  * 	@param parentPodPosition position of parent pod (in seconds).
  * 	@param CPM .
  *  @return An ADBMediaSettings pointer.
@@ -320,7 +331,7 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  * 	@param name a string pointer containing the value of the order name.
  * 	@param orderId a string pointer containing the value of the order id.
  * 	@param orderTotal a string pointer containing the value of the order total.
- * 	@param productPurchaseId a string pointer containing the value of the product purchased id.
+ * 	@param productPurchasedId a string pointer containing the value of the product purchased id.
  *  @param parameters a dictionary of key-value pairs that will be added to the request.
  *  @return A ADBTargetLocationRequest pointer.
  *  @see targetLoadRequest:callback: for processing the returned ADBTargetLocationRequest pointer.
@@ -374,6 +385,20 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  * 	@brief Resets audience manager UUID and purges current visitor profile
  */
 + (void) audienceReset;
+
+#pragma mark - Visitor ID Service
+/**
+ *	@brief Retrieves the Marketing Cloud Identifier from the Visitor ID Service
+ *	@return an NSString value containing the Marketing Cloud ID
+ *	@note This method can cause a blocking network call and should not be used from a UI thread.
+ */
++ (NSString *) visitorMarketingCloudID;
+
+/**
+ *	@brief Synchronizes the provided identifiers to the visitor id service
+ *	@param dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
+ */
++ (void) visitorSyncIdentifiers: (NSDictionary *) identifiers;
 
 @end
 
