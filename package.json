@@ -1,12 +1,12 @@
 {
     "name": "mobile-mc-sdk",
     "description": "Mobile SDKs, Sample Apps, and Bloodhound",
-    "version": "0.0.33",
+    "version": "0.0.34",
     "private": true,
     
     "versions": { 
 		"sdks": {
-			"ios": "4.5.5",
+			"ios": "4.5.6",
 			"osx": null,
 			"android": "4.5.4",
 			"windows": "4.0.0",
