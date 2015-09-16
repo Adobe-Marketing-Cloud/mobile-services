@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2015. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.5.6
+//  SDK Version: 4.6.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -70,6 +70,19 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
 + (void) setUserIdentifier:(NSString *)identifier;
 
 /**
+ * 	@brief Sets the IDFA.
+ *  @param identifier a string pointer containing the IDFA value.
+ */
++ (void) setAdvertisingIdentifier:(NSString *)identifier;
+
+/**
+ * 	@brief Sets the device token for push notifications
+ *  @param deviceToken an NSData pointer containing the deviceToken value.
+ *	@note This method should only be used within the application:didRegisterForRemoteNotificationsWithDeviceToken: method
+ */
++ (void) setPushIdentifier:(NSData *)deviceToken;
+
+/**
  * 	@brief Gets the preference for debug log output.
  *  @return a bool value indicating the preference for debug log output.
  */
@@ -102,17 +115,31 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
 
 /**
  *	@brief allows one-time override of the path for the json config file
- *	@note This *must* be called prior to AppDidFinishLaunching has completed and before any other interactions with the Adobe Mobile library have happened.  
+ *	@note This *must* be called prior to AppDidFinishLaunching has completed and before any other interactions with the Adobe Mobile library have happened.
  *		Only the first call to this function will have any effect.
  */
 + (void) overrideConfigPath: (NSString *) path;
 
 /**
  *	@brief set the app group used to sharing user defaults and files among containing app and extension apps
- *	@note This *must* be called prior to AppDidFinishLaunching (or Activate for Watch Extension) has completed and before any other interactions with the Adobe Mobile library have happened.
+ *	@note This *must* be called in AppDidFinishLaunching and before any other interactions with the Adobe Mobile library have happened.
  *		Only the first call to this function will have any effect.
  */
 + (void) setAppGroup: (NSString *) appGroup;
+
+/**
+ *	@brief Synchronize certain defaults between a Watch app and the iOS app in the SDK via Watch Connectivity
+ *	@note This method should only be used in WCSessionDelegate methods.
+ *  @return a bool value indicating if the settings dictionary was meant for consumption by ADBMobile
+ */
++ (BOOL) syncSettings:(NSDictionary *) settings;
+
+/**
+ *	@brief Initialize the SDK for WatchKit apps
+ *	@note This method should only be called from applicationDidFinishLaunching in your WKExtensionDelegate class
+ */
++ (void) initializeWatch;
+
 #pragma mark - Analytics
 
 /**
@@ -135,7 +162,7 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  * 	@brief Tracks an action with context data.
  * 	@param action a string pointer containing the action value to be tracked.
  * 	@param data a dictionary pointer containing the context data to be tracked.
- *  @note This method does not increment page views. 
+ *  @note This method does not increment page views.
  *  @note This method is intended to be called while your app is in the background(it will not cause lifecycle data to send if the session timeout has been exceeded)
  */
 + (void) trackActionFromBackground:(NSString *)action data:(NSDictionary *)data;
@@ -148,6 +175,7 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  */
 + (void) trackLocation:(CLLocation *)location data:(NSDictionary *)data;
 
+#if TARGET_OS_IOS
 /**
  * 	@brief Tracks a beacon with context data.
  * 	@param beacon a CLBeacon pointer containing the beacon information to be tracked.
@@ -160,6 +188,14 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  * 	@brief Clears beacon data persisted for Target
  */
 + (void) trackingClearCurrentBeacon;
+#endif
+
+/**
+ * 	@brief Tracks a push message click-through
+ * 	@param userInfo an NSDictionary pointer containing the push message payload to be tracked.
+ *  @note This method does not increment page views.
+ */
++ (void) trackPushMessageClickThrough:(NSDictionary *)userInfo;
 
 /**
  * 	@brief Tracks an increase in a user's lifetime value.
@@ -225,6 +261,13 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  */
 + (NSUInteger) trackingGetQueueSize;
 
+#pragma mark - Acquisition
+/**
+ *	@brief Allows developer to start an app acquisition campaign as if the user had clicked on a link. This his helpful for creating manual acquisition links and handling the app store redirect yourself (such as with an SKStoreView)
+ *  @param appId ID of the app in Adobe Mobile Services
+ *  @param data optional dictionary pointer containing context data, should at least contain keys a.referrer.campaign.name and a.referrer.campaign.source
+ */
++ (void) acquisitionCampaignStartForApp:(NSString *)appId data:(NSDictionary *)data;
 
 #pragma mark - Media Analytics
 
