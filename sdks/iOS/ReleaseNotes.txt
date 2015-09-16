@@ -5,6 +5,13 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.6.0 (16 Sep, 2015)
+- New Feature - WatchOS2 (WatchKit) compatibility
+- New Feature - support for push messaging
+- New Feature - support for 3rd party callbacks
+- Acquisition - enhanced functionality added for acquisition
+- Analytics - fixed a bug preventing an aid from being re-generated if Visitor ID Service was enabled, then later disabled
+
 4.5.6 (2 Sep, 2015)
 - Fixed an issue preventing proper archiving while bitcode is enabled
 
@@ -30,7 +37,7 @@ https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 - iOS Extension SDK - Fixed a issue that could cause out of order hits for timestamp enabled report suite.
 
 4.5.0 (27 Apr, 2015)
-- New - Added support for iOS Extension Apps 
+- New - Added support for iOS Extension Apps
 - Check out our Apple Watch Example in GitHub: https://github.com/Adobe-Marketing-Cloud/mobile-services/releases/tag/v1.0-iOS-watch
 - Check out the documentation for iOS Extension SDK : https://marketing.adobe.com/resources/help/en_US/mobile/ios/ios_ext.html
 

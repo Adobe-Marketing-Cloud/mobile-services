@@ -10,6 +10,7 @@
         "referrerTimeout" : 0,
         "batchLimit" : 0,
         "privacyDefault" : "optedin",
+		"backdateSessionInfo" : false,
         "poi" : []
     },
     "target" : {
