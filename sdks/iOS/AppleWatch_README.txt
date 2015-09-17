@@ -2,10 +2,10 @@
 >>>>>  4.6.0 UPDATE  <<<<<
 
 ==========================================
-Apple Watch Implementation with WatchKit
+Apple Watch Implementation with WatchOS 2
 ==========================================
 
-Starting with iOS 9, Apple recommends using WatchKit to create your Apple Watch apps.  WatchKit apps are required to use the WatchConnectivity framework to share data with their containing iOS app.  Beginning with AdobeMobileLibrary v4.6.0, support for WatchKit and WatchConnectivity is available.
+Starting with WatchOS 2, your WatchKit Extensions will run on Apple Watch device.  Applications running in this environment require using the WatchConnectivity framework to share data with their containing iOS app.  Beginning with AdobeMobileLibrary v4.6.0, support for WatchConnectivity is available.
 
 ++++ Getting Started ++++
 
@@ -23,7 +23,9 @@ The following steps are to be performed in your Xcode project.  This guide is wr
 4. In your class that implements the UIApplicationDelegate protocol, add the WCSessionDelegate protocol
 	#import <WatchConnectivity/WatchConnectivity.h>
 	@interface AppDelegate : UIResponder <UIApplicationDelegate, WCSessionDelegate>
-5. In application:didFinishLaunchingWithOptions: of your app delegate, configure your WCSession BEFORE making any calls to the ADBMobile library
+5. In the implementation file of your app delegate class, import the AdobeMobileLibrary.
+	#import “ADBMobile.h”
+6. In application:didFinishLaunchingWithOptions: of your app delegate, configure your WCSession BEFORE making any calls to the ADBMobile library
 	
 	// check for session availability
 	if ([WCSession isSupported]) {
@@ -32,7 +34,7 @@ The following steps are to be performed in your Xcode project.  This guide is wr
 		[session activateSession];
 	}	
 
-6. In your app delegate, implement the session:didReceiveMessage: and session:didReceiveUserInfo: methods.  In these methods, we will call syncSettings: in the ADBMobile library, which returns a bool indicating if the dictionary was meant for consumption by the ADBMobile library.  If it returns NO, the message was not initiated from the Adobe SDK.
+7. In your app delegate, implement the session:didReceiveMessage: and session:didReceiveUserInfo: methods.  In these methods, we will call syncSettings: in the ADBMobile library, which returns a bool indicating if the dictionary was meant for consumption by the ADBMobile library.  If it returns NO, the message was not initiated from the Adobe SDK.
 	
 	- (void) session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *,id> *)message {
 		// pass message to ADBMobile
@@ -52,12 +54,14 @@ The following steps are to be performed in your Xcode project.  This guide is wr
 ** Configuring the WatchKit Extension **
 
 1. Ensure that ADBMobileConfig.json is a member of you WatchKit Extension’s target
-3. In the Build Phases tab of your WatchKit Extension’s target, expand the “Link Binary with Libraries” section and add the following libraries:
+2. In the Build Phases tab of your WatchKit Extension’s target, expand the “Link Binary with Libraries” section and add the following libraries:
    - AdobeMobileLibrary_Watch.a
    - libsqlite3.tbd
-4. In your class that implements the WKExtensionDelegate protocol, import WatchConnectivity and add the WCSessionDelegate protocol
+3. In your class that implements the WKExtensionDelegate protocol, import WatchConnectivity and add the WCSessionDelegate protocol
 	#import <WatchConnectivity/WatchConnectivity.h>
-	@interface AppDelegate : UIResponder <UIApplicationDelegate, WCSessionDelegate>
+	@interface ExtensionDelegate : NSObject <WKExtensionDelegate, WCSessionDelegate>
+4. In the implementation file of your extension delegate class, import the AdobeMobileLibrary.
+	#import “ADBMobile.h”
 5. In applicationDidFinishLaunching of your extension delegate, configure your WCSession BEFORE making any calls to the ADBMobile library
 	
 	// check for session availability
