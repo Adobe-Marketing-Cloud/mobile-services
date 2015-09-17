@@ -2,7 +2,7 @@
  
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
            id="com.adobe.ADBMobile"
-      version="4.6.0">
+      version="4.6.1">
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
     

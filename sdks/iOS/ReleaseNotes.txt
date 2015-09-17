@@ -5,14 +5,17 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
-4.6.0 (16 Sep, 2015)
+4.6.1 (17 Sept, 2015)
+- Fixed an issue that broke backwards compatibility with Xcode versions older than 7
+
+4.6.0 (16 Sept, 2015)
 - New Feature - WatchOS2 (WatchKit) compatibility
 - New Feature - support for push messaging
 - New Feature - support for 3rd party callbacks
 - Acquisition - enhanced functionality added for acquisition
 - Analytics - fixed a bug preventing an aid from being re-generated if Visitor ID Service was enabled, then later disabled
 
-4.5.6 (2 Sep, 2015)
+4.5.6 (2 Sept, 2015)
 - Fixed an issue preventing proper archiving while bitcode is enabled
 
 4.5.5 (20 Aug, 2015)

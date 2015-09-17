@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2015. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.6.0
+//  SDK Version: 4.6.1
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -175,7 +175,7 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  */
 + (void) trackLocation:(CLLocation *)location data:(NSDictionary *)data;
 
-#if TARGET_OS_IOS
+#if !TARGET_OS_WATCH
 /**
  * 	@brief Tracks a beacon with context data.
  * 	@param beacon a CLBeacon pointer containing the beacon information to be tracked.
