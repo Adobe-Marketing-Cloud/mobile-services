@@ -1,26 +1,142 @@
 {
-    "version" : "1.0",
-    "analytics" : {
-        "rsids" : "",
-        "server" : "",
-        "charset" : "UTF-8",
-        "ssl" : false,
-		"offlineEnabled" : false,
-        "lifecycleTimeout" : 300,
-		"referrerTimeout" : 0,
-        "batchLimit" : 0,
-        "privacyDefault" : "optedin",
-		"poi" : []
+  "lastModified": "2015-09-16T16:42:08.287Z",
+  "marketingCloud": {
+    "org": "3CE342C75100435B0A490D4C@AdobeOrg"
+  },
+  "target": {
+    "clientCode": "",
+    "timeout": 5
+  },
+  "audienceManager": {
+    "server": ""
+  },
+  "acquisition": {
+    "server": "c00.adobe.com",
+    "appid": "da6ccbeab53afc2b61b013b423a0a3e88961a93c0d87fe3152e75860f00ecfbe"
+  },
+  "analytics": {
+    "rsids": "mobile1000",
+    "server": "obumobile1.sc.omtrdc.net",
+    "ssl": false,
+    "offlineEnabled": true,
+    "charset": "UTF-8",
+    "lifecycleTimeout": 300,
+    "privacyDefault": "optedin",
+    "batchLimit": 0,
+    "timezone": "PDT",
+    "timezoneOffset": -420,
+    "referrerTimeout": 0,
+    "backdateSessionInfo": false,
+    "poi": []
+  },
+  "messages": [
+    {
+      "messageId": "5fbee21b-a84a-4a80-aaab-8cf5ef7f00c3",
+      "template": "fullscreen",
+      "payload": {
+        "html": "<!DOCTYPE html>\n<!--\nOVERVIEW\nThis will cover the best practices and limitations for creating custom message templates and give you the ability to create messages on your own.\n\nJAVASCRIPT\nExternal scripts are not recommended because they will not be available if the device is offline. Scripts should be defined in the document using the appropriate <script> tags and we recommend minifying the source to reduce the total size of the document to save on disk space and download time.\n\nCSS\nExternal style sheets are not recommended because they will not be available if the device is offline. Styles should be defined in the document using the appropriate <style> tags and we recommend minifying the source to reduce the total size of the document to save on disk space and download time. The CSS below is not minified to preserve readability.\n\nIMAGES\nImages that are expected to be displayed within the message should be defined in a custom meta tag(name=ADBMessageAssets). This helps ensure a good experience for users that are presented with the message even when offline or with a slow connection. It enables each device to cache the images ahead of time to support a good experience. Serving images through a CDN is recommended.\n<meta name=\"ADBMessageAssets\" content='[\n\t[ \"http://foo.bar/baz.jpg\", \"fallback.jpg\" ],\n\t[ \"http://foo.bar/nofallback.jpg\" ]\n]' />\nThe original image url should be defined 1st followed by an optional mapping to a local image reference.\n\nCLICK/TOUCH HANDLING\nYour custom HTML page must contain one or both of the following types of links:\nClick-Through\nadbinapp://confirm/?url=http://www.yoursite.com\nThis will close the message and redirect to the URL parameter.\nCancel\nadbinapp://cancel\nThis will close the message.\n\nPREVIEW WINDOW\nThe preview window within Adobe Mobile Services is not a device simulator. There are inconsistencies between the preview window and the devices that the message will be displayed on. It's possible that the preview window will fail to display the message properly, but work as designed on devices. We recommend testing the in app message directly on the targeted devices.\n-->\n<html>\n<head>\n\t<meta charset=\"utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\"/>\n\t<meta name=ADBMessageAssets content='[\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-adobe?scl=1\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-bg-phone-landscape?scl=1\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-bg-phone-portrait?scl=1\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-bg-tablet-landscape?scl=1\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-bg-tablet-portrait?scl=1\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-text-information-s?scl=1&fmt=png-alpha\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-text-information-l?scl=1&fmt=png-alpha\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-button-learn-more-s?scl=1&fmt=png-alpha\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-button-learn-more-l?scl=1&fmt=png-alpha\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-button-no-thanks-s?scl=1&fmt=png-alpha\" ],\n\t\t[ \"https://s7d9.scene7.com/is/image/mcmobile/ink-button-no-thanks-l?scl=1&fmt=png-alpha\" ]\n\t]' />\n\t<title></title>\n\t<style>\n\t\thtml,body { margin:0;padding:0;text-align:center;background-color:#E8EAE9;width:100%;height:100%;\n\t\t\t-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none; }\n\t\ta { text-decoration:none; }\n\t\timg { display:none; }\n\t\t.text { position:absolute; }\n\t\t.logo { position:absolute;background:url('https://s7d9.scene7.com/is/image/mcmobile/ink-adobe?scl=1') no-repeat center;background-size:contain;width:123px;height:207px; }\n\t\t.background { position:absolute;background-position:center;background-repeat:no-repeat;background-size:cover;width:100%;top:0px;bottom:0px; }\n\t\t.button-container { position:absolute;bottom:0px;right:0px;left:0px;display:none;background-color:#FFF; }\n\t\t/* Phones landscape */\n\t\t@media only screen and (max-width:767px) and (orientation:landscape) {\n\t\t\t.background { background-image:url('https://s7d9.scene7.com/is/image/mcmobile/ink-bg-phone-landscape?scl=1'); }\n\t\t\t.logo { bottom:0px;left:35px; }\n\t\t\t.button-container { display:block;height:auto;background-color:transparent;left:auto;right:35px;bottom:35px; }\n\t\t\t.button-small { display:block;margin-left:auto;margin-right:auto;margin-top:20px; }\n\t\t}\n\t\t/* Phones portrait */\n\t\t@media only screen and (max-width:767px) and (orientation:portrait) {\n\t\t\t.background { bottom:200px;background-image:url('https://s7d9.scene7.com/is/image/mcmobile/ink-bg-phone-portrait?scl=1'); }\n\t\t\t.logo { bottom:200px;right:35px; }\n\t\t\t.button-container { display:block;height:200px; }\n\t\t\t.button-small { display:block;margin-left:auto;margin-right:auto;margin-top:30px; }\n\t\t}\n\t\t/* Phones portrait and landscape */\n\t\t@media only screen and (max-width :767px) {\n\t\t\t.text { top:25px;left:35px; }\n\t\t\t.logo { height:103px;width:60px; }\n\t\t\t.information-small { display:block; }\n\t\t}\n\t\t/* Tablets landscape */\n\t\t@media only screen and (min-width:768px) and (orientation:landscape) {\n\t\t\t.background { background-image:url('https://s7d9.scene7.com/is/image/mcmobile/ink-bg-tablet-landscape?scl=1'); }\n\t\t\t.logo { bottom:0px;left:60px; }\n\t\t\t.button-container { display:block;height:auto;background-color:transparent;left:auto;right:60px;bottom:60px; }\n\t\t\t.button-large { display:block;margin-left:auto;margin-right:auto;margin-top:20px; }\n\t\t}\n\t\t/* Tablets portrait */\n\t\t@media only screen and (min-width:768px) and (orientation:portrait) {\n\t\t\t.background { bottom:150px;background-image:url('https://s7d9.scene7.com/is/image/mcmobile/ink-bg-tablet-portrait?scl=1'); }\n\t\t\t.logo { bottom:150px;right:60px; }\n\t\t\t.button-container { display:block;height:150px; }\n\t\t\t.button-large { display:inline-block;margin-top:45px;margin-left:10px;margin-right:10px; }\n\t\t}\n\t\t/* Tablets portrait and landscape */\n\t\t@media only screen and (min-width:768px) {\n\t\t\t.text { top:60px;left:60px; }\n\t\t\t.information-large { display:block; }\n\t\t}\n\t</style>\n</head>\n<body>\n<div class=\"background\"></div>\n<div class=\"text\">\n\t<img class=\"information-small\" src=\"https://s7d9.scene7.com/is/image/mcmobile/ink-text-information-s?scl=1&fmt=png-alpha\"/>\n\t<img class=\"information-large\" src=\"https://s7d9.scene7.com/is/image/mcmobile/ink-text-information-l?scl=1&fmt=png-alpha\"/>\n</div>\n<div class=\"logo\"></div>\n<div class=\"button-container\">\n\t<a href=\"adbinapp://confirm/?url=http://www.adobe.com/products/ink-and-slide.html\">\n\t\t<img class=\"button-small\" src=\"https://s7d9.scene7.com/is/image/mcmobile/ink-button-learn-more-s?scl=1&fmt=png-alpha\"/>\n\t\t<img class=\"button-large\" src=\"https://s7d9.scene7.com/is/image/mcmobile/ink-button-learn-more-l?scl=1&fmt=png-alpha\"/>\n\t</a>\n\t<a href=\"adbinapp://cancel\">\n\t\t<img class=\"button-small\" src=\"https://s7d9.scene7.com/is/image/mcmobile/ink-button-no-thanks-s?scl=1&fmt=png-alpha\"/>\n\t\t<img class=\"button-large\" src=\"https://s7d9.scene7.com/is/image/mcmobile/ink-button-no-thanks-l?scl=1&fmt=png-alpha\"/>\n\t</a>\n</div>\n</body>\n</html>",
+        "assets": [
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-adobe?scl=1"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-bg-phone-landscape?scl=1"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-bg-phone-portrait?scl=1"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-bg-tablet-landscape?scl=1"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-bg-tablet-portrait?scl=1"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-text-information-s?scl=1&fmt=png-alpha"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-text-information-l?scl=1&fmt=png-alpha"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-button-learn-more-s?scl=1&fmt=png-alpha"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-button-learn-more-l?scl=1&fmt=png-alpha"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-button-no-thanks-s?scl=1&fmt=png-alpha"
+          ],
+          [
+            "https://s7d9.scene7.com/is/image/mcmobile/ink-button-no-thanks-l?scl=1&fmt=png-alpha"
+          ]
+        ]
+      },
+      "showOffline": false,
+      "showRule": "always",
+      "endDate": 2524730400,
+      "startDate": 0,
+      "audiences": [],
+      "triggers": [
+        {
+          "key": "a.LaunchEvent",
+          "matches": "ex",
+          "values": null
+        }
+      ]
     },
-	"target" : {
-		"clientCode" : "",
-		"timeout" : 5
-	},
-	"audienceManager" : {
-		"server" : ""
-	},
-	"acquisition" : {
-		"server" : "",
-		"appid" : ""
-	}
+    {
+      "messageId": "60c1aba8-dc2d-4090-8d22-ca5ca7d0069b",
+      "recipient": "Custom",
+      "payload": {
+        "templateurl": "http://adobe.com/onetwothreefourfivesixseveneightnine10",
+        "templatebody": "",
+        "contenttype": "",
+        "timeout": 2
+      },
+      "showOffline": true,
+      "showRule": "always",
+      "endDate": 2524730400,
+      "startDate": 0,
+      "template": "callback",
+      "audiences": [],
+      "triggers": [
+        {
+          "key": "a.LaunchEvent",
+          "matches": "ex",
+          "values": null
+        }
+      ]
+    },
+    {
+      "messageId": "935b0f92-fd8d-40ec-afd6-ef548da48f68",
+      "recipient": "Custom",
+      "payload": {
+        "templateurl": "{%timestampu%}",
+        "templatebody": "",
+        "contenttype": ""
+      },
+      "showOffline": true,
+      "showRule": "always",
+      "endDate": 2524730400,
+      "startDate": 0,
+      "template": "callback",
+      "audiences": [],
+      "triggers": [
+        {
+          "key": "a.LaunchEvent",
+          "matches": "ex",
+          "values": null
+        },
+        {
+          "key": "a.InstallEvent",
+          "matches": "ex",
+          "values": null
+        }
+      ]
+    }
+  ],
+  "remotes": {
+    "analytics.poi": "https://assets.adobedtm.com/beta/b213090c5204bf94318f4ef0539a38b487d10368/scripts/satellite-5530b1283736650017c30100.json",
+    "messages": "https://assets.adobedtm.com/beta/b213090c5204bf94318f4ef0539a38b487d10368/scripts/satellite-553e9c2b3136330014af0100.json"
+  }
 }
