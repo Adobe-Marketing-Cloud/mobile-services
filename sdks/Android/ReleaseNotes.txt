@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.6.1 (24 Sept, 2015)
+- New Feature - Android 6.0(Marshmallow) compatibility
+
 4.6.0 (16 Sept, 2015)
 - New Feature - support for push messaging
 - New Feature - support for 3rd party callbacks
