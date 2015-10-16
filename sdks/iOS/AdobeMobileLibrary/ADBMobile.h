@@ -4,10 +4,10 @@
 //
 //  Copyright 1996-2015. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.6.1
+//  SDK Version: 4.6.2
 
 #import <Foundation/Foundation.h>
-@class CLLocation, CLBeacon, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
+@class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
 
 #pragma mark - ADBMobile
 
@@ -140,6 +140,13 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  */
 + (void) initializeWatch;
 
+/**
+ *	@brief Registers the ADBMobile class in the JSContext object of the tv application controller
+ *	@note This method should only be called from AppleTV apps written using TVML/TVJS
+ *  @param tvController is the TVApplicationController initialized to bridge the native and JS environments for the app
+ */
++ (void) installTVMLHooks:(TVApplicationController *)tvController;
+
 #pragma mark - Analytics
 
 /**
@@ -175,7 +182,7 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  */
 + (void) trackLocation:(CLLocation *)location data:(NSDictionary *)data;
 
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
 /**
  * 	@brief Tracks a beacon with context data.
  * 	@param beacon a CLBeacon pointer containing the beacon information to be tracked.
