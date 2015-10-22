@@ -41,6 +41,7 @@ Pod::Spec.new do |s|
     tvos.platform  = :tvos, '9.0'
     tvos.tvos.deployment_target = '9.0'
     tvos.source_files  = "AdobeMobileLibrary/*.h", "AdobeMobileLibrary/Empty.m"  
+    tvos.frameworks = "UIKit", "SystemConfiguration"
     tvos.libraries = "sqlite3.0"
     tvos.vendored_libraries = "AdobeMobileLibrary/libAdobeMobile_TV.a"
   end
