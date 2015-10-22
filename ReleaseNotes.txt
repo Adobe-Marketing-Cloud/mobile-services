@@ -5,6 +5,55 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.7.0 (15 Oct, 2015)
+- New Feature - TvOS compatibility
+- In App Messaging - Fixed a bug causing a crash for alert message types when no confirm button text was provided
+- Acquisition - SSL Support 
+
+4.6.1 (17 Sept, 2015)
+- Fixed an issue that broke backwards compatibility with Xcode versions older than 7
+
+4.6.0 (16 Sept, 2015)
+- New Feature - WatchOS2 (WatchKit) compatibility
+- New Feature - support for push messaging
+- New Feature - support for 3rd party callbacks
+- Acquisition - enhanced functionality added for acquisition
+- Analytics - fixed a bug preventing an aid from being re-generated if Visitor ID Service was enabled, then later disabled
+
+4.5.6 (2 Sept, 2015)
+- Fixed an issue preventing proper archiving while bitcode is enabled
+
+4.5.5 (20 Aug, 2015)
+- Added support for iOS 9 / Xcode 7 bitcode builds
+- Configuration - made a small change to configuration loading to support better integration with PhoneGap
+- Analytics - Fixed a issue that could cause sqlite exception.
+
+4.5.4 (23 June, 2015)
+- In App Messaging - fixed a bug where messages were being inappropriately removed from the blacklist on launch
+
+4.5.3 (18 June, 2015)
+- In App Messaging - fixed a bug where messages were incorrectly triggered if all messages were disabled at once
+- In App Messaging - fixed clickthrough url issues for fullscreen messages
+- In App Messaging - fixed a bug where messages were not being triggered after their showrule was changed
+- Visitor ID Service - fixed an issue causing location hint to be set incorrectly for visitor id service on analytics calls
+- Analytics - Added an optional config item to better handle backdating session info hit
+
+4.5.2 (6 May, 2015)
+- Fixed a crashing issue for iOS versions lower than 8.
+
+4.5.1 (1 May, 2015)
+- iOS Extension SDK - Fixed a issue that could cause out of order hits for timestamp enabled report suite.
+
+4.5.0 (27 Apr, 2015)
+- New - Added support for iOS Extension Apps
+- Check out our Apple Watch Example in GitHub: https://github.com/Adobe-Marketing-Cloud/mobile-services/releases/tag/v1.0-iOS-watch
+- Check out the documentation for iOS Extension SDK : https://marketing.adobe.com/resources/help/en_US/mobile/ios/ios_ext.html
+
+4.4.1 (16 Apr, 2015)
+- Added Locale(NSLocale) to in-app messaging traits
+- Added custom data on lifecycle to in-app messaging traits
+- Added ssl support for Target calls
+
 4.4.0 (15 Jan, 2015)
 - New - Ability to add custom context data to lifecycle
 - Version number is now included in the ADBMobile.h
