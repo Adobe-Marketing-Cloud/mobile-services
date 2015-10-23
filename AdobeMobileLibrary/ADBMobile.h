@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2015. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.7.0
+//  SDK Version: 4.7.1
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -18,9 +18,9 @@
  *  @see setPrivacyStatus
  */
 typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
-    ADBMobilePrivacyStatusOptIn   = 1, /*!< Enum value ADBMobilePrivacyStatusOptIn. */
-    ADBMobilePrivacyStatusOptOut  = 2, /*!< Enum value ADBMobilePrivacyStatusOptOut. */
-    ADBMobilePrivacyStatusUnknown = 3  /*!< Enum value ADBMobilePrivacyStatusUnknown. @note only available in conjunction with offline tracking */
+	ADBMobilePrivacyStatusOptIn   = 1, /*!< Enum value ADBMobilePrivacyStatusOptIn. */
+	ADBMobilePrivacyStatusOptOut  = 2, /*!< Enum value ADBMobilePrivacyStatusOptOut. */
+	ADBMobilePrivacyStatusUnknown = 3  /*!< Enum value ADBMobilePrivacyStatusUnknown. @note only available in conjunction with offline tracking */
 };
 
 /**
@@ -287,9 +287,9 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @return An ADBMediaSettings pointer.
  */
 + (ADBMediaSettings *) mediaCreateSettingsWithName:(NSString *)name
-                                            length:(double)length
-                                        playerName:(NSString *)playerName
-                                          playerID:(NSString *)playerID;
+											length:(double)length
+										playerName:(NSString *)playerName
+										  playerID:(NSString *)playerID;
 
 /**
  * 	@brief Creates an ADBMediaSettings populated with the parameters.
@@ -304,8 +304,8 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
 + (ADBMediaSettings *) mediaAdCreateSettingsWithName:(NSString *)name
 											  length:(double)length
 										  playerName:(NSString *)playerName
-                                          parentName:(NSString *)parentName
-                                           parentPod:(NSString *)parentPod
+										  parentName:(NSString *)parentName
+										   parentPod:(NSString *)parentPod
 								   parentPodPosition:(double)parentPodPosition
 												 CPM:(NSString *)CPM;
 
@@ -315,7 +315,7 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @param callback a block pointer to call with an ADBMediaState pointer every second.
  */
 + (void) mediaOpenWithSettings:(ADBMediaSettings *)settings
-                      callback:(void (^)(ADBMediaState *mediaState))callback;
+					  callback:(void (^)(ADBMediaState *mediaState))callback;
 
 /**
  * 	@brief Closes a media item.
@@ -400,6 +400,18 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  * 	@brief Clears target cookies from shared cookie storage
  */
 + (void) targetClearCookies;
+
+/**
+ * 	@brief Gets the value of the PcID cookie returned for this visitor by the Target server
+ *  @return An NSString pointer containing the PcID for this user
+ */
++ (NSString *) targetPcID;
+
+/**
+ * 	@brief Gets the value of the SessionID cookie returned for this visitor by the Target server
+ *  @return An NSString pointer containing the SessionID for this user
+ */
++ (NSString *) targetSessionID;
 
 #pragma mark - Audience Manager
 
