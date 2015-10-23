@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.7.1 (23 Oct, 2015)
+- Target - Added methods to retrieve PCID and SessionID for user
+- Target - Fixed a bug with cookie handling
+
 4.7.0 (15 Oct, 2015)
 - New Feature - TvOS compatibility
 - In App Messaging - Fixed a bug causing a crash for alert message types when no confirm button text was provided
