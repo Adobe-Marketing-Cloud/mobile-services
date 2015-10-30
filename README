@@ -1,3 +1,11 @@
+For Swift Project:
+Because Cocoapod automatically geneartes a dynamic framework for the SDK, so the implementation is a bit different with using Objective-C
+1. Using 'import AdobeMobileSDK' to include SDK
+2. The ADBMobileConfig.json file will also be packaged into the framework, so the file path get changed, you have to call method overrideConfigPath to use the config file included in the framework.
+ADBMobile.overrideConfigPath(NSBundle(forClass: object_getClass(self)).pathForResource("ADBMobileConfig", ofType: "json"));
+
+
+
 Steps to update pod spec:
 1. Copy released iOS SDK to this folder, and rename AdobeMobileLibrary.a to libAdobeMobile.a
 2. Update the version and tag number in podspec file 
