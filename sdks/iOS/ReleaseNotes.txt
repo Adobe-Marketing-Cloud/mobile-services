@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.8.0 (2 Nov, 2015)
+- Visitor ID Service - added support to send in an authentication state when syncing Visitor ID Service identifiers
+- Audience Manager - added support for automatic forwarding of Analytics data to Audience Manager
+- Analytics - fixed an issue where backdated hits would contain current device information
+
 4.7.1 (23 Oct, 2015)
 - Target - Added methods to retrieve PCID and SessionID for user
 - Target - Fixed a bug with cookie handling
