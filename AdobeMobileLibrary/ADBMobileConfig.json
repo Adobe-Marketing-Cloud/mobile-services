@@ -18,7 +18,8 @@
 		"timeout" : 5
 	},
 	"audienceManager" : {
-		"server" : ""
+		"server" : "",
+		"analyticsForwardingEnabled": false
 	},
 	"acquisition" : {
 		"server" : "",
