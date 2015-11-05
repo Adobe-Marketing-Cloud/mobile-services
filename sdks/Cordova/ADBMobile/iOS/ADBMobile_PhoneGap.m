@@ -21,11 +21,15 @@
 #import "ADBMobile_PhoneGap.h"
 #import "ADBMobile.h"
 
+#define STRING [NSString class]
+#define NUMBER [NSNumber class]
+#define DICTIONARY [NSDictionary class]
+
 @interface ADBBeacon : NSObject
-    @property (nonatomic, strong) NSUUID *proximityUUID;
-    @property (nonatomic, strong) NSNumber *major;
-    @property (nonatomic, strong) NSNumber *minor;
-    @property (nonatomic) CLProximity proximity;
+@property (nonatomic, strong) NSUUID *proximityUUID;
+@property (nonatomic, strong) NSNumber *major;
+@property (nonatomic, strong) NSNumber *minor;
+@property (nonatomic) CLProximity proximity;
 @end
 
 @implementation ADBBeacon : NSObject
@@ -36,7 +40,7 @@
 - (void)getVersion:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
 		CDVPluginResult* pluginResult = nil;
-
+		
 		NSString *version = [ADBMobile version];
 		
 		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:version];
@@ -63,25 +67,23 @@
 				pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT messageAsString:@"Privacy Status was an unknown value"];
 				break;
 		}
-
+		
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
 - (void)setPrivacyStatus:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString *privacyStatusString = [command.arguments objectAtIndex:0];
-		
-		// if a privacyStatus was not passed in, return
-		if (privacyStatusString == (id)[NSNull null]) {
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING, NUMBER]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
 			return;
 		}
-
+		
+		NSString *privacyStatusString = getArg(command.arguments[0]);
 		int privacyStatus = [privacyStatusString intValue];
+		CDVPluginResult* pluginResult = nil;
 		
-		
-		if (privacyStatus >= 0 && privacyStatus <= 3) {
+		if (privacyStatus >= 1 && privacyStatus <= 3) {
 			[ADBMobile setPrivacyStatus:privacyStatus];
 			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Set Opt Status"];
 		} else {
@@ -94,451 +96,436 @@
 
 - (void)getLifetimeValue:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		
 		double lifetimeValue = [[ADBMobile lifetimeValue] doubleValue];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDouble:lifetimeValue];
-		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDouble:lifetimeValue];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
 - (void)getUserIdentifier:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		
 		NSString *userIdentifier = [ADBMobile userIdentifier];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userIdentifier];
-
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userIdentifier];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
 - (void)setUserIdentifier:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString* userIdentifier = [command.arguments objectAtIndex:0];
-
-		// if a userIdentifier was not passed in, return
-		if (userIdentifier == (id)[NSNull null]) {
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
 			return;
 		}
+		
+		NSString* userIdentifier = getArg(command.arguments[0]);
+		[ADBMobile setUserIdentifier:userIdentifier];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+}
 
-		if (userIdentifier != nil) {
-			[ADBMobile setUserIdentifier:userIdentifier];
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		} else {
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User Identifier was null"];
+- (void)setPushIdentifier:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
 		}
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		
+		NSString* pushIdStr = getArg(command.arguments[0]);
+		NSData* pushIdentifier = nil;
+		
+		//hex NSString to NSData
+		if(pushIdStr != nil && [pushIdStr length]/2 == 32) {
+			char buffer[3];
+			buffer[2] = '\0';
+			char *bytes = malloc([pushIdStr length]/2);
+			char *bytes_ptr = bytes;
+			for (int i = 0; i < [pushIdStr length]; i += 2) {
+				buffer[0] = [pushIdStr characterAtIndex: i];
+				buffer[1] = [pushIdStr characterAtIndex: i+1];
+				char *b2 = NULL;
+				*bytes_ptr++ = strtol(buffer, &b2, 16);
+			}
+			
+			pushIdentifier = [NSData dataWithBytesNoCopy:bytes length:[pushIdStr length]/2 freeWhenDone:YES];
+		}
+		
+		[ADBMobile setPushIdentifier:pushIdentifier];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+}
+
+- (void)trackPushMessageClickthrough:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		NSDictionary * userInfo = getArg(command.arguments[0]);
+		[ADBMobile trackPushMessageClickThrough:userInfo];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)getDebugLogging:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		
 		BOOL debugLogging = [ADBMobile debugLogging];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:debugLogging];
-		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:debugLogging];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
 - (void)setDebugLogging:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString *privacyStatusString = [command.arguments objectAtIndex:0];
-
-		// if a privacyStatus was not passed in, return
-		if (privacyStatusString == (id)[NSNull null]) {
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING, NUMBER]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
 			return;
 		}
-
-		BOOL debugLogging = [privacyStatusString boolValue];
 		
-		[ADBMobile setDebugLogging:debugLogging];
+		id debugLoggingString = getArg(command.arguments[0]);
+		[ADBMobile setDebugLogging:[debugLoggingString boolValue]];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Set DebugLogging"];
-		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Set DebugLogging"];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
 - (void)keepLifecycleSessionAlive:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		
 		[ADBMobile keepLifecycleSessionAlive];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Keeping lifecycle session alive"];
-		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Keeping lifecycle session alive"];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
 - (void)collectLifecycleData:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		
 		[ADBMobile collectLifecycleData];
-
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Collecting Lifecycle"];
 		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Collecting Lifecycle"];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
+}
+
+- (void)setAppGroup:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		NSString* appGroup = getArg(command.arguments[0]);
+		[ADBMobile setAppGroup:appGroup];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+}
+
+- (void)syncSettings:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		NSDictionary *settings = getArg(command.arguments[0]);
+		BOOL syncSettingsResult = [ADBMobile syncSettings:settings];
+		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:syncSettingsResult];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
+}
+
+- (void)initializeWatch:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		[ADBMobile initializeWatch];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackState:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString* appState = nil;
-		NSDictionary *cData = nil;
-		
-		// set appState if passed in
-		if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSString class]]) {
-			appState = [command.arguments objectAtIndex:0];
-		} // else set cData if it is passed in alone
-		else if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:0];
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING, DICTIONARY], @[STRING, DICTIONARY]])
+		   || ([command.arguments[0] isKindOfClass:DICTIONARY] && command.arguments[1] != (id)[NSNull null])
+		   || [command.arguments[1] isKindOfClass:STRING]) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
 		}
 		
-		// set cData if it is passed in along with appState
-		if ([[command.arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:1];
+		id firstArg = getArg(command.arguments[0]);
+		id secondArg = getArg(command.arguments[1]);
+
+		//allows the ADB.trackState(cData) call
+		if([firstArg isKindOfClass:DICTIONARY]) {
+			[ADBMobile trackState:nil data:firstArg];
+		}
+		else {
+			[ADBMobile trackState:firstArg data:secondArg];
 		}
 		
-		[ADBMobile trackState:appState data:cData];
-		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackAction:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString* action = nil;
-		NSDictionary *cData = nil;
-		
-		// set action if passed in
-		if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSString class]]) {
-			action = [command.arguments objectAtIndex:0];
-		} // else set cData if it is passed in alone
-		else if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:0];
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING, DICTIONARY], @[STRING, DICTIONARY]])
+		   || ([command.arguments[0] isKindOfClass:DICTIONARY] && command.arguments[1] != (id)[NSNull null])
+		   || [command.arguments[1] isKindOfClass:STRING]) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
 		}
 		
-		// set cData if it is passed in along with action
-		if ([[command.arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:1];
-		}
-
-		[ADBMobile trackAction:action data:cData];
+		id firstArg = getArg(command.arguments[0]);
+		id secondArg = getArg(command.arguments[1]);
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		//allows the ADB.trackAction(cData) call
+		if([firstArg isKindOfClass:DICTIONARY]) {
+			[ADBMobile trackAction:nil data:firstArg];
+		}
+		else {
+			[ADBMobile trackAction:firstArg data:secondArg];
+		}
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackActionFromBackground:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString* action = nil;
-		NSDictionary *cData = nil;
-		
-		// set action if passed in
-		if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSString class]]) {
-			action = [command.arguments objectAtIndex:0];
-		} // else set cData if it is passed in alone
-		else if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:0];
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING, DICTIONARY], @[STRING, DICTIONARY]])
+		   || ([command.arguments[0] isKindOfClass:DICTIONARY] && command.arguments[1] != (id)[NSNull null])
+		   || [command.arguments[1] isKindOfClass:STRING]) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
 		}
 		
-		// set cData if it is passed in along with action
-		if ([[command.arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:1];
+		id firstArg = getArg(command.arguments[0]);
+		id secondArg = getArg(command.arguments[1]);
+		
+		//allows the ADB.trackActionFromBackground(cData) call
+		if([firstArg isKindOfClass:DICTIONARY]) {
+			[ADBMobile trackActionFromBackground:nil data:firstArg];
+		}
+		else {
+			[ADBMobile trackActionFromBackground:firstArg data:secondArg];
 		}
 		
-		[ADBMobile trackActionFromBackground:action data:cData];
-		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackLocation:(CDVInvokedUrlCommand *)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-
-		double latitude = 0;
-		double longitude = 0;
-		NSDictionary *cData = nil;
-		
-		if (([[command.arguments objectAtIndex: 0] isKindOfClass:[NSString class]]
-				&& [[command.arguments objectAtIndex: 1] isKindOfClass:[NSString class]])
-			|| ([[command.arguments objectAtIndex: 0] isKindOfClass:[NSNumber class]]
-				&& [[command.arguments objectAtIndex: 1] isKindOfClass:[NSNumber class]])) {
-			latitude = [[command.arguments objectAtIndex: 0] doubleValue];
-			longitude = [[command.arguments objectAtIndex: 1] doubleValue];
-		}
-		else {
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING, NUMBER], @[STRING, NUMBER], @[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
 			return;
 		}
 		
-		if ([[command.arguments objectAtIndex:2] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:2];
-		}
-
+		double latitude = [getArg(command.arguments[0]) doubleValue];
+		double longitude = [getArg(command.arguments[1]) doubleValue];
+		NSDictionary *cData = getArg(command.arguments[2]);
+		
+		CDVPluginResult* pluginResult = nil;
+		
 		if(NSClassFromString(@"CLLocation")) {
 			id location = [[NSClassFromString(@"CLLocation") alloc] initWithLatitude: latitude longitude: longitude];
-			
 			[ADBMobile trackLocation:location data:cData];
 			
 			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 		} else {
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR ];
+			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"CLLocation could not be found"];
 		}
+		
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackBeacon:(CDVInvokedUrlCommand *)command {
-    [self.commandDelegate runInBackground:^{
-        CDVPluginResult* pluginResult = nil;
-        if(!NSClassFromString(@"CLLocation")) {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"CLLocation could not be found"];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-            return;
-        }
-        
-        ADBBeacon *beacon = [[ADBBeacon alloc] init];
-        NSDictionary *cData = [NSDictionary dictionary];
-
-        if ([[command.arguments objectAtIndex: 0] isKindOfClass:[NSString class]] && [[command.arguments objectAtIndex: 3] isKindOfClass:[NSNumber class]]) {
-            [beacon setProximityUUID:[[NSUUID alloc] initWithUUIDString:[command.arguments objectAtIndex: 0]]];
-            [beacon setProximity:(CLProximity)((NSNumber*)[command.arguments objectAtIndex: 3]).intValue];
-        } else {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"unable to parse arguments, arguments should be [String, Number, Number, Number, Dictionary]"];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-            return;
-        }
-        
-        if ([[command.arguments objectAtIndex: 1] isKindOfClass:[NSNumber class]]
-            && [[command.arguments objectAtIndex: 2] isKindOfClass:[NSNumber class]]) {
-            [beacon setMajor:[command.arguments objectAtIndex: 1]];
-            [beacon setMinor:[command.arguments objectAtIndex: 2]];
-        } else if ([[command.arguments objectAtIndex: 1] isKindOfClass:[NSString class]]
-                   && [[command.arguments objectAtIndex: 2] isKindOfClass:[NSString class]]) {
-            NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
-            [formatter setNumberStyle:NSNumberFormatterNoStyle];
-            
-            [beacon setMajor:[formatter numberFromString:[command.arguments objectAtIndex: 1]]];
-            [beacon setMinor:[formatter numberFromString:[command.arguments objectAtIndex: 2]]];
-        }
-        else {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"unable to parse arguments, arguments should be [String, Number, Number, Number, Dictionary]"];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-            return;
-        }
-        
-        if ([[command.arguments objectAtIndex:4] isKindOfClass:[NSDictionary class]]) {
-            cData = [command.arguments objectAtIndex:4];
-        }
-        
-        [ADBMobile trackBeacon:(CLBeacon *)beacon data:cData];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
-    }];
-}
-
-- (void)trackingClearCurrentBeacon:(CDVInvokedUrlCommand*)command {
-    [self.commandDelegate runInBackground:^{
-        CDVPluginResult* pluginResult = nil;
-        
-        [ADBMobile trackingClearCurrentBeacon];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Current beacon cleared."];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }];
-}
-
-- (void)trackLifetimeValueIncrease:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
 		CDVPluginResult* pluginResult = nil;
-		NSDictionary *cData = nil;
-		NSDecimalNumber* amount;
-		// if an ammount was not passed in, return
-		if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSString class]]) {
-			amount = [NSDecimalNumber decimalNumberWithString:[command.arguments objectAtIndex:0]];
-		} else if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSNumber class]]) {
-			amount = [NSDecimalNumber decimalNumberWithDecimal:[[command.arguments objectAtIndex:0] decimalValue]];
-		} else {
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+		if(!NSClassFromString(@"CLLocation")) {
+			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"CLLocation could not be found"];
 			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 			return;
 		}
 		
-		// set cData if it is passed in along with action
-		if ([[command.arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:1];
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING, NUMBER], @[STRING, NUMBER], @[NUMBER], @[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		NSString* uuid = getArg(command.arguments[0]);
+		NSNumber* major = getArg(command.arguments[1]);
+		NSNumber* minor = getArg(command.arguments[2]);
+		NSNumber* proximity = getArg(command.arguments[3]);
+		NSDictionary* cData = getArg(command.arguments[4]);
+		
+		ADBBeacon *beacon = [[ADBBeacon alloc] init];
+		
+		NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+		[formatter setNumberStyle:NSNumberFormatterNoStyle];
+		
+		[beacon setProximityUUID:[[NSUUID alloc] initWithUUIDString:uuid]];
+		[beacon setProximity:(CLProximity)((NSNumber*)proximity).intValue];
+		[beacon setMajor: [major isKindOfClass: STRING] ? [formatter numberFromString:(NSString*)major] : major];
+		[beacon setMinor: [minor isKindOfClass: STRING] ? [formatter numberFromString:(NSString*)minor] : minor];
+		
+		[ADBMobile trackBeacon:(CLBeacon *)beacon data:cData];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+}
+
+- (void)trackingClearCurrentBeacon:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		[ADBMobile trackingClearCurrentBeacon];
+		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Current beacon cleared."];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
+}
+
+- (void)trackLifetimeValueIncrease:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING, NUMBER], @[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		id amount = getArg(command.arguments[0]);
+		NSDictionary *cData = getArg(command.arguments[1]);
+		
+		if ([amount isKindOfClass:[NSString class]]) {
+			amount = [NSDecimalNumber decimalNumberWithString:amount];
+		} else {
+			amount = [NSDecimalNumber decimalNumberWithDecimal:[amount decimalValue]];
 		}
 		
 		[ADBMobile trackLifetimeValueIncrease:amount data:cData];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackTimedActionStart:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString* action = nil;
-		NSDictionary *cData = nil;
-		
-		// set action if passed in
-		if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSString class]]) {
-			action = [command.arguments objectAtIndex:0];
-		} // else set cData if it is passed in alone
-		else if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:0];
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
 		}
 		
-		// set cData if it is passed in along with action
-		if ([[command.arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:1];
-		}
-
+		NSString* action = getArg(command.arguments[0]);
+		NSDictionary *cData = getArg(command.arguments[1]);
+		
 		[ADBMobile trackTimedActionStart:action data:cData];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackTimedActionUpdate:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString* action = nil;
-		NSDictionary *cData = nil;
-		
-		// set action if passed in
-		if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSString class]]) {
-			action = [command.arguments objectAtIndex:0];
-		} // else set cData if it is passed in alone
-		else if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:0];
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
 		}
 		
-		// set cData if it is passed in along with action
-		if ([[command.arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
-			cData = [command.arguments objectAtIndex:1];
-		}
-
+		NSString* action = getArg(command.arguments[0]);
+		NSDictionary *cData = getArg(command.arguments[1]);
+		
 		[ADBMobile trackTimedActionUpdate:action data:cData];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackingTimedActionExists:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString* action = [command.arguments objectAtIndex:0];
-		
-		// if an action was not passed in, return
-		if (action == (id)[NSNull null]) {
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Action was null"];
-		} else {
-			BOOL exists = [ADBMobile trackingTimedActionExists:action];
-			
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:exists];
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
 		}
 		
+		NSString* action = getArg(command.arguments[0]);
+		BOOL exists = [ADBMobile trackingTimedActionExists:action];
+		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:exists];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackTimedActionEnd:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		NSString* action = [command.arguments objectAtIndex:0];
-
-		// if an action was not passed in, return
-		if (action == (id)[NSNull null]) {
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
 			return;
 		}
 		
+		NSString* action = getArg(command.arguments[0]);
 		[ADBMobile trackTimedActionEnd:action logic:nil];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackingIdentifier:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		
 		NSString *trackingIdentifier = [ADBMobile trackingIdentifier];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:trackingIdentifier];
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:trackingIdentifier];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
+}
+
+- (void)trackingSendQueuedHits:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		[ADBMobile trackingSendQueuedHits];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackingClearQueue:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		
 		[ADBMobile trackingClearQueue];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
 }
 
 - (void)trackingGetQueueSize:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		CDVPluginResult* pluginResult = nil;
-		
 		NSUInteger size = [ADBMobile trackingGetQueueSize];
 		
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:size];
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:size];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
-#pragma mark - Target
 - (void)targetLoadRequest:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		__block CDVPluginResult* pluginResult = nil;
-		NSString* name = nil;
-		NSString* defaultContent = nil;
-		NSDictionary *parameters = nil;
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING], @[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
 		
-		if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSString class]]) {
-			name = [command.arguments objectAtIndex:0];
-		}
-		if ([[command.arguments objectAtIndex:1] isKindOfClass:[NSString class]]) {
-			defaultContent = [command.arguments objectAtIndex:1];
-		}
-		// set parameters if it is passed in
-		if ([[command.arguments objectAtIndex:2] isKindOfClass:[NSDictionary class]]) {
-			parameters = [command.arguments objectAtIndex:2];
-		}
+		NSString* name = getArg(command.arguments[0]);
+		NSString* defaultContent = getArg(command.arguments[1]);
+		NSDictionary *parameters = getArg(command.arguments[2]);
 		
 		ADBTargetLocationRequest *request = [ADBMobile targetCreateRequestWithName:name defaultContent:defaultContent parameters:parameters];
-
+		
 		[ADBMobile targetLoadRequest:request callback:^(NSString *content) {
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:content];
+			CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:content];
 			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 		}];
 	}];
@@ -546,37 +533,172 @@
 
 - (void)targetLoadOrderConfirmRequest:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		__block CDVPluginResult* pluginResult = nil;
-		NSString* name = nil;
-		NSString* orderId = nil;
-		NSString* orderTotal = nil;
-		NSString* productPurchaseId = nil;
-		NSDictionary *parameters = nil;
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING], @[STRING, NUMBER], @[STRING], @[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
 		
-		if ([[command.arguments objectAtIndex:0] isKindOfClass:[NSString class]]) {
-			name = [command.arguments objectAtIndex:0];
-		}
-		if ([[command.arguments objectAtIndex:1] isKindOfClass:[NSString class]]) {
-			orderId = [command.arguments objectAtIndex:1];
-		}
-		if ([[command.arguments objectAtIndex:2] isKindOfClass:[NSString class]] || [[command.arguments objectAtIndex:2] isKindOfClass:[NSNumber class]]) {
-			orderTotal = [command.arguments objectAtIndex:2];
-		}
-		if ([[command.arguments objectAtIndex:3] isKindOfClass:[NSString class]]) {
-			productPurchaseId = [command.arguments objectAtIndex:3];
-		}		
-		// set parameters if it is passed in
-		if ([[command.arguments objectAtIndex:4] isKindOfClass:[NSDictionary class]]) {
-			parameters = [command.arguments objectAtIndex:4];
-		}
+		NSString* name = getArg(command.arguments[0]);
+		NSString* orderId = getArg(command.arguments[1]);
+		NSString* orderTotal = getArg(command.arguments[2]);
+		NSString* productPurchaseId = getArg(command.arguments[3]);
+		NSDictionary *parameters = getArg(command.arguments[4]);
 		
 		ADBTargetLocationRequest *request = [ADBMobile targetCreateOrderConfirmRequestWithName:name orderId:orderId orderTotal:orderTotal productPurchasedId:productPurchaseId parameters:parameters];
 		
 		[ADBMobile targetLoadRequest:request callback:^(NSString *content) {
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:content];
+			CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:content];
 			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 		}];
 	}];
 }
+
+- (void)targetClearCookies:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		[ADBMobile targetClearCookies];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+}
+
+- (void)acquisitionCampaignStartForApp:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		NSString* appId = getArg(command.arguments[0]);
+		NSDictionary *data = getArg(command.arguments[1]);
+		
+		[ADBMobile acquisitionCampaignStartForApp:appId data:data];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+}
+
+- (void)audienceGetVisitorProfile:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		NSDictionary* visitorProfile = [ADBMobile audienceVisitorProfile];
+		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:visitorProfile];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
+}
+
+- (void)audienceGetDpuuid:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		NSString* dpuuid = [ADBMobile audienceDpuuid];
+		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:dpuuid];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
+}
+
+- (void)audienceGetDpid:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		NSString* dpid = [ADBMobile audienceDpid];
+		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:dpid];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
+}
+
+- (void)audienceSetDpidAndDpuuid:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		NSString* dpid = getArg(command.arguments[0]);
+		NSString* dpuuid = getArg(command.arguments[1]);
+		
+		[ADBMobile audienceSetDpid:dpid dpuuid:dpuuid];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+	
+}
+
+- (void)audienceSignalWithData:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		NSDictionary *data = getArg(command.arguments[0]);
+		
+		[ADBMobile audienceSignalWithData:data callback:^(NSDictionary *response) {
+			CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:response];
+			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		}];
+	}];
+}
+
+- (void)audienceReset:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		[ADBMobile audienceReset];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+}
+
+- (void)visitorGetMarketingCloudId:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		NSString* visitorMCID = [ADBMobile visitorMarketingCloudID];
+		
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:visitorMCID];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
+}
+
+- (void)visitorSyncIdentifiers:(CDVInvokedUrlCommand*)command {
+	[self.commandDelegate runInBackground:^{
+		if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
+			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+			return;
+		}
+		
+		NSDictionary *identifiers = getArg(command.arguments[0]);
+		
+		[ADBMobile visitorSyncIdentifiers:identifiers];
+		
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+	}];
+}
+
+/*
+ * Helper functions
+ */
+
+static BOOL checkArgsWithTypes(NSArray* arguments, NSArray* types) {
+	if(!arguments || !types || [arguments count] != [types count]) {
+		return NO;
+	}
+	
+	int types_index = 0;
+	for(id argument in arguments) {
+		if(argument == (id)[NSNull null]) {
+			types_index++;
+			continue;
+		}
+		
+		NSArray* allowedTypesForArgument = types[types_index];
+		BOOL foundTypeMatch = NO;
+		for(id allowedType in allowedTypesForArgument) {
+			foundTypeMatch |= [argument isKindOfClass:allowedType];
+			if(foundTypeMatch) { break; }
+		}
+		
+		if(!foundTypeMatch) { return NO; }
+		types_index++;
+	}
+	
+	return YES;
+}
+
+static id getArg(id argument) { return argument == (id)[NSNull null] ? nil : argument; }
 
 @end
