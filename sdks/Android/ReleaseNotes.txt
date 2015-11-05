@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.8.1 (4 Nov, 2015)
+- Visitor ID Service - added support to AAM for customer IDs and authentication state
+- Analytics - fixed an issue introduced in 4.8.0 where last known hit timestamp was not updated.
+
 4.8.0 (2 Nov, 2015)
 - Visitor ID Service - added support to send in an authentication state when syncing Visitor ID Service identifiers
 - Audience Manager - added support for automatic forwarding of Analytics data to Audience Manager
