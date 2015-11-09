@@ -1,0 +1,33 @@
+{
+    "name": "adobe-mobile-services-pgb",
+    "description": "Native Mobile SDKs, dev tools and example apps.",
+    "version": "4.8.2",
+    "homepage": "https://github.com/macdonst/mobile-services/blob/master/sdks/Cordova/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/macdonst/mobile-services.git"
+    },
+    "bugs": {
+        "url": "https://github.com/macdonst/mobile-services/issues"
+    },
+    "cordova": {
+        "id": "adobe-mobile-services-pgb",
+        "platforms": [
+            "ios",
+            "android"
+        ]
+    },
+    "keywords": [
+        "ecosystem:cordova",
+        "ecosystem:phonegap",
+        "cordova-ios",
+        "cordova-android"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ],
+    "author": "Adobe"
+}
