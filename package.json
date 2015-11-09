@@ -1,0 +1,33 @@
+{
+    "name": "adobe-mobile-services",
+    "description": "Native Mobile SDKs, dev tools and example apps.",
+    "version": "4.8.1",
+    "homepage": "https://github.com/Adobe-Marketing-Cloud/mobile-services/blob/master/sdks/Cordova/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Adobe-Marketing-Cloud/mobile-services.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Adobe-Marketing-Cloud/mobile-services/issues"
+    },
+    "cordova": {
+        "id": "adobe-mobile-services",
+        "platforms": [
+            "ios",
+            "android"
+        ]
+    },
+    "keywords": [
+        "ecosystem:cordova",
+        "ecosystem:phonegap",
+        "cordova-ios",
+        "cordova-android"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ],
+    "author": "Adobe"
+}
