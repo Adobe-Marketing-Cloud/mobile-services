@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.8.2 (30 Nov, 2015)
+- Callbacks - Fixed an issue that could cause a crash when remote callbacks were overriding local callbacks.
+
 4.8.1 (4 Nov, 2015)
 - Visitor ID Service - added support to AAM for customer IDs and authentication state
 - Configuration - fixed an issue that could potentially cause a crash on app install
