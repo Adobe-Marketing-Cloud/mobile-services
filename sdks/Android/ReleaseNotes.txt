@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.8.2 (21 Jan, 2016)
+- Acquisition - fixed a bug where referrer data was not inserted into lifecycle data if the intent was triggered before first launch
+- Postbacks - fixed a bug where requests were not triggered for the lifetime value amount trait
+- Postbacks - fixed an encoding issue with non-string context data values in requests
+- Target - Resolved race condition that could lead to occasional crashes
+
 4.8.1 (4 Nov, 2015)
 - Visitor ID Service - added support to AAM for customer IDs and authentication state
 - Analytics - fixed an issue introduced in 4.8.0 where last known hit timestamp was not updated.

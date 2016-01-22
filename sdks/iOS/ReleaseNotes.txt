@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.8.4 (21 Jan, 2016)
+- Postbacks - fixed a bug where requests were not triggered for the lifetime value amount trait
+- Visitor ID Service - fixed a memory leak
+- In App Messaging - fixed a memory leak
+- Configuration - fixed an issue that could cause a crash due to malformed json
+
 4.8.3 (3 Dec, 2015)
 - Configuration - fixed an issue that prevented proper migration of defaults when using app groups
 
