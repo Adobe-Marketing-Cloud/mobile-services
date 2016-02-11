@@ -23,7 +23,6 @@
         <activity android:name=".PrivacyActivity" android:screenOrientation="portrait" />
         <activity android:name=".MediaActivity" android:screenOrientation="portrait" />
         <activity android:name=".TargetingLocationActivity" android:screenOrientation="portrait" />
-        <activity android:name=".MediaActivity" android:screenOrientation="portrait" />
         <activity android:name=".LifetimeValueActivity" android:screenOrientation="portrait" />
         <activity android:name=".VideoPlayerActivity" />
     </application>
