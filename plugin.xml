@@ -36,6 +36,8 @@
 		 <config-file target="AndroidManifest.xml" parent="/manifest">
 	         <uses-permission android:name="android.permission.INTERNET" />
 	         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		 </config-file>
+		 <config-file target="AndroidManifest.xml" parent="/manifest/application">
 			 <activity android:name="com.adobe.mobile.MessageFullScreenActivity" android:theme="@android:style/Theme.Translucent" />
 			 <receiver android:name="com.adobe.mobile.MessageNotificationHandler" />
 		 </config-file>

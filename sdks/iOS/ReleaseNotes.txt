@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.8.5 (18 Feb, 2016)
+- Configuration - privacy status is now respected for Target, Audience Manager, and Visitor ID Service activity
+- In-App Messaging - fixed an issue that could cause a crash for alert messages on iOS 9+
+- Audience Manager - timeout for AAM requests is now configurable in the Mobile Services UI and in ADBMobileConfig.json
+- Fixed an NSException crash caused by calling [NSUserDefaults resetStandardUserDefaults] when using WatchConnectivity for a WatchOS2 app
+
 4.8.4 (21 Jan, 2016)
 - Postbacks - fixed a bug where requests were not triggered for the lifetime value amount trait
 - Visitor ID Service - fixed a memory leak
