@@ -4,14 +4,26 @@ Because Cocoapod automatically geneartes a dynamic framework for the SDK, so the
 2. The ADBMobileConfig.json file will also be packaged into the framework, so the file path get changed, you have to call method overrideConfigPath to use the config file included in the framework.
 ADBMobile.overrideConfigPath(NSBundle(forClass: object_getClass(self)).pathForResource("ADBMobileConfig", ofType: "json"));
 
+Setup cocoapods (should be done only once per machine):
+1. Install cocoapods
+  - sudo gem install cocoapods
+2. Setup the account for your machine
+  - pod trunk register email@domain.com 'my name' --description='something identifying this machine'
+3. Setup pod trunk
+  - pod setup
 
-
-Steps to update pod spec:
-1. Copy released iOS SDK to this folder, and rename AdobeMobileLibrary.a to libAdobeMobile.a
-2. Update the version and tag number in podspec file 
-3. Push the change to branch cocoapod
+Steps to update pod spec (should be done per release):
+1. Copy released iOS SDK to this folder, and rename binaries
+  - AdobeMobileLibrary.a -> libAdobeMobile.a
+  - AdobeMobileLibrary_Watch.a -> libAdobeMobile_Watch.a
+  - AdobeMobileLibrary_TV.a -> libAdobeMobile_TV.a
+  - AdobeMobileLibrary_Extension.a -> libAdobeMobile_Extension.a
+2. Update the SDK version number in AdobeMobileSDK.podspec
+3. Push the change to cocoapod branch
 4. Tag the code with name vx.x.x-cocoapod, and push
-5. pod trunk push
+  - git push origin cocoapod --tag
+5. Push the podspec changes
+  - pod trunk push
 
 Note:
 * add contributors
