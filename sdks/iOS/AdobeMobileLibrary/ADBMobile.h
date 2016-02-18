@@ -2,9 +2,9 @@
 //  ADBMobile.h
 //  Adobe Digital Marketing Suite -- iOS Application Measurement Library
 //
-//  Copyright 1996-2015. Adobe, Inc. All Rights Reserved
+//  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.8.4
+//  SDK Version: 4.8.5
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;

@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.8.3 (18 Feb, 2016)
+- Configuration - privacy status is now respected for Target, Audience Manager, and Visitor ID Service activity
+- Visitor ID Service - fixed a bug caused by attempting to sync a null identifier
+- Audience Manager - timeout for AAM requests is now configurable in the Mobile Services UI and in ADBMobileConfig.json
+- Fixed a bug that was preventing proper database initialization
+
 4.8.2 (21 Jan, 2016)
 - Acquisition - fixed a bug where referrer data was not inserted into lifecycle data if the intent was triggered before first launch
 - Postbacks - fixed a bug where requests were not triggered for the lifetime value amount trait
