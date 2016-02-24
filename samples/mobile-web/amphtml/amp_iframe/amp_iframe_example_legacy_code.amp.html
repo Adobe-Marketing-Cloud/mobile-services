@@ -1,0 +1,61 @@
+<!--
+  Copyright 2016 Adobe Systems Incorporated. All rights reserved.
+  This file is licensed to you under the Apache License, Version 2.0 (the "License"); 
+  you may not use this file except in compliance with the License. You may obtain a copy
+  of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under
+  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS 
+  OF ANY KIND, either express or implied. See the License for the specific language
+  governing permissions and limitations under the License.
+-->
+<!doctype html>
+<html amp lang="en">
+<head>
+	<link rel="canonical" href="http://adobe.example.com/analytics_example_legacy_code.html" />
+	<meta charset="utf-8">
+	<title>Legacy Adobe Analytics AMP IFrame Example</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style>body {opacity: 0}</style><noscript><style>body {opacity: 1}</style></noscript>
+	<style amp-custom>
+	body {
+		font-family: sans-serif;
+		padding: 1em;
+	}
+	ul {
+		margin: .25em 0;
+	}
+	div#test {
+		margin-top: 30px;
+	}
+	</style>
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+</head>
+<body>
+    <amp-iframe width=1 height=1
+      src="https://example.publishersite.com/stats_legacy.html"
+      sandbox="allow-scripts allow-same-origin"
+      layout="fixed"
+      frameborder="0">
+      <amp-img src="https://example.publishersite.com/pixel.gif" height=1 width=1 layout="fill" placeholder></amp-img>
+    </amp-iframe>
+	<h1>Analytics Example 2</h1>
+	<div>
+		<div><strong>This example uses the &lt;amp-iframe&gt; tag. The advantages to this approach are:</strong></div>
+		<ul>
+			<li>Visitor/visit counts will be a lot closer to accurate.</li>
+			<li>Safer to put into an existing report suite.</li>
+			<li>Visitor ID Service is supported.</li>
+			<li>Can tie return visitors back to the original site, but you can't tie new visitors back to the original site.</li>
+			<li>Easier to implement.</li>
+		</ul>
+		<div><strong>The disadvantages are:</strong></div>
+		<ul>
+			<li>Can only measure on page load event, and there is not a guarantee that the tags will fire 100% of the time.</li>
+			<li>You must host an analytics tracking page to be loaded in an iframe on a different subdomain than that of the AMP page</li>
+			<li>Referring domain cannot be set</li>
+		</ul>
+	</div>
+  </body>
+</html>
