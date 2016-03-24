@@ -1,0 +1,41 @@
+<!--
+  Copyright 2016 Adobe Systems Incorporated. All rights reserved.
+  This file is licensed to you under the Apache License, Version 2.0 (the "License"); 
+  you may not use this file except in compliance with the License. You may obtain a copy
+  of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under
+  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS 
+  OF ANY KIND, either express or implied. See the License for the specific language
+  governing permissions and limitations under the License.
+-->
+<html>
+<head>
+<title>Stats Test</title>
+<script language="JavaScript" type="text/javascript" src="VisitorAPI.js"></script>
+<script language="JavaScript" type="text/javascript" src="AppMeasurement.js"></script>
+</head>
+<body>
+<script>
+var v_orgId = "1234567@PublisherOrg";
+
+var s_account = "reportSuite";
+var s_trackingServer = "metrics.publisher.com";
+var s_visitorNamespace = "publisherNamespace";
+
+var visitor = Visitor.getInstance(v_orgId);
+visitor.trackingServer = s_trackingServer;
+
+var s = s_gi(s_account);
+s.account = s_account;
+s.trackingServer = s_trackingServer;
+s.visitorNamespace = s_visitorNamespace;
+s.visitor = visitor;
+s.pagename = s.Util.getQueryParam("pageName");
+s.eVar1=s.Util.getQueryParam("v1");
+s.campaign=s.Util.getQueryParam("campaign");
+s.pageURL=s.Util.getQueryParam("pageURL");
+s.t();
+</script>
+</body>
+</html>
