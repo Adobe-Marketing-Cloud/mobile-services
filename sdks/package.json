@@ -14,8 +14,8 @@
 			"xboxone": null,
 			"blackberry": "4.0.0",
 			"phonegap": null,
-			"unity": 4.4.2,
-			"xamarin": 4.4.2
+			"unity": "4.4.2",
+			"xamarin": "4.4.2"
 		},
 		"sample-apps": {
 			"ios": "1.1",
