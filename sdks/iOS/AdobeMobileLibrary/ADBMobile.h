@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.8.6
+//  SDK Version: 4.9.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -33,6 +33,30 @@ typedef NS_ENUM(NSUInteger, ADBMobileVisitorAuthenticationState) {
     ADBMobileVisitorAuthenticationStateAuthenticated  = 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
     ADBMobileVisitorAuthenticationStateLoggedOut = 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
 };
+
+/**
+ * 	@brief An enum type.
+ *  The possible callback events with registerAdobeDataCallback
+ *  @see registerAdobeDataCallback
+ */
+typedef NS_ENUM(NSUInteger, ADBMobileDataEvent) {
+    ADBMobileDataEventLifecycle,
+    ADBMobileDataEventAcquisitionInstall,
+    ADBMobileDataEventAcquisitionLaunch,
+    ADBMobileDataEventDeepLink
+};
+
+/** @defgroup ADBConfigParameters
+ *  These constant strings can be used as the keys for common parameters within Configuration
+ *  Example: NSURL *url = callbackData[ADBConfigKeyCallbackDeepLink];
+ */
+
+/* 
+ * Used within ADBMobileDataCallback
+ * Key for deep link URL.
+ */
+FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
+
 
 /**
  * 	@class ADBMobile
@@ -158,6 +182,14 @@ typedef NS_ENUM(NSUInteger, ADBMobileVisitorAuthenticationState) {
  */
 + (void) installTVMLHooks:(nullable TVApplicationController *)tvController;
 
+
+/**
+ * 	@brief Register the callback for Adobe data. The callback block will get called when SDK receive any form of data that is populated by the sdk automatically (eg. lifecycle, acquisition).
+ * 	@param callback a block pointer to call any time adobe creates a piece of data. event(String) is the name of the event that caused the callback. adobeData is a dictionary with all the context data created during that session.
+ */
++ (void) registerAdobeDataCallback:(nullable void (^)(ADBMobileDataEvent event, NSDictionary* __nullable adobeData))callback;
+
+
 #pragma mark - Analytics
 
 /**
@@ -214,6 +246,21 @@ typedef NS_ENUM(NSUInteger, ADBMobileVisitorAuthenticationState) {
  *  @note This method does not increment page views.
  */
 + (void) trackPushMessageClickThrough:(nullable NSDictionary *)userInfo;
+
+
+/**
+ * 	@brief Tracks a local notification message click-through
+ * 	@param userInfo an NSDictionary pointer containing the message payload to be tracked.
+ *  @note This method does not increment page views.
+ */
++ (void) trackLocalNotificationClickThrough:(nullable NSDictionary *)userInfo;
+
+/**
+ * 	@brief Tracks a Adobe Deep Link click-through
+ * 	@param url The URL resource received from UIApplication delegate method.
+ *  @note Adobe Link data will be appended to the lifecycle call if it is a launch event, otherwise an extra call will be sent.
+ */
++ (void) trackAdobeDeepLink:(nullable NSURL *)url;
 
 /**
  * 	@brief Tracks an increase in a user's lifetime value.

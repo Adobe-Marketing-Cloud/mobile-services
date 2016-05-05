@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.9.0 (5 May, 2016)
+- New Feature - deep linking with acquisition
+- New Feature - callback system allowing access to acquisition, deep link, and lifecycle information
+- New Feature - message payload support for local and push messaging 
+
 4.8.6 (9 Mar, 2016)
 - In-App Messaging - fixed an issue that would cause full screen messages to not appear properly in specific environments
 - Analytics - fixed an issue causing failed requests to not be retried in older operating systems
