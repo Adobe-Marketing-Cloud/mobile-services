@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+
+4.9.0 (5 May, 2016)
+- New Feature - deep linking with acquisition
+- New Feature - callback system allowing access to acquisition, deep link, and lifecycle information
+- New Feature - message payload support for local and push messaging 
+
 4.8.3 (18 Feb, 2016)
 - Configuration - privacy status is now respected for Target, Audience Manager, and Visitor ID Service activity
 - Visitor ID Service - fixed a bug caused by attempting to sync a null identifier
