@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.10.0 (20 May, 2016)
+- New Feature - New Target API
+- New Feature - PII data collection
+- In-App Messaging - Fixed a crash issue caused by trying to access a zombie messages array
+
 4.9.0 (5 May, 2016)
 - New Feature - deep linking with acquisition
 - New Feature - callback system allowing access to acquisition, deep link, and lifecycle information
