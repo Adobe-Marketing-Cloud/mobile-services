@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.10.0 (19 May, 2016)
+- New Feature - New Target API
+- New Feature - PII data collection
 
 4.9.0 (5 May, 2016)
 - New Feature - deep linking with acquisition

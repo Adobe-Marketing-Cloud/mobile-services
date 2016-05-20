@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.9.0
+//  SDK Version: 4.10.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -29,9 +29,9 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @see visitorSyncIdentifiers
  */
 typedef NS_ENUM(NSUInteger, ADBMobileVisitorAuthenticationState) {
-    ADBMobileVisitorAuthenticationStateUnknown   = 0, /*!< Enum value ADBMobileVisitorAuthenticationStateUnknown. */
-    ADBMobileVisitorAuthenticationStateAuthenticated  = 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
-    ADBMobileVisitorAuthenticationStateLoggedOut = 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
+	ADBMobileVisitorAuthenticationStateUnknown   = 0, /*!< Enum value ADBMobileVisitorAuthenticationStateUnknown. */
+	ADBMobileVisitorAuthenticationStateAuthenticated  = 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
+	ADBMobileVisitorAuthenticationStateLoggedOut = 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
 };
 
 /**
@@ -295,7 +295,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @note This method will send a tracking hit if the parameter logic is nil or returns YES.
  */
 + (void) trackTimedActionEnd:(nullable NSString *)action
-                       logic:(nullable BOOL (^)(NSTimeInterval inAppDuration, NSTimeInterval totalDuration, NSMutableDictionary* __nullable data))block;
+					   logic:(nullable BOOL (^)(NSTimeInterval inAppDuration, NSTimeInterval totalDuration, NSMutableDictionary* __nullable data))block;
 
 /**
  * 	@brief Returns whether or not a timed action is in progress
@@ -345,9 +345,9 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @return An ADBMediaSettings pointer.
  */
 + (nonnull ADBMediaSettings *) mediaCreateSettingsWithName:(nullable NSString *)name
-                                            length:(double)length
-                                        playerName:(nullable NSString *)playerName
-                                          playerID:(nullable NSString *)playerID;
+													length:(double)length
+												playerName:(nullable NSString *)playerName
+												  playerID:(nullable NSString *)playerID;
 
 /**
  * 	@brief Creates an ADBMediaSettings populated with the parameters.
@@ -360,12 +360,12 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @return An ADBMediaSettings pointer.
  */
 + (nonnull ADBMediaSettings *) mediaAdCreateSettingsWithName:(nullable NSString *)name
-                                              length:(double)length
-                                          playerName:(nullable NSString *)playerName
-                                          parentName:(nullable NSString *)parentName
-                                           parentPod:(nullable NSString *)parentPod
-                                   parentPodPosition:(double)parentPodPosition
-                                                 CPM:(nullable NSString *)CPM;
+													  length:(double)length
+												  playerName:(nullable NSString *)playerName
+												  parentName:(nullable NSString *)parentName
+												   parentPod:(nullable NSString *)parentPod
+										   parentPodPosition:(double)parentPodPosition
+														 CPM:(nullable NSString *)CPM;
 
 /**
  * 	@brief Opens a media item for tracking.
@@ -373,7 +373,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @param callback a block pointer to call with an ADBMediaState pointer every second.
  */
 + (void) mediaOpenWithSettings:(nullable ADBMediaSettings *)settings
-                      callback:(nullable void (^)(ADBMediaState* __nullable mediaState))callback;
+					  callback:(nullable void (^)(ADBMediaState* __nullable mediaState))callback;
 
 /**
  * 	@brief Closes a media item.
@@ -427,6 +427,22 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 + (void) targetLoadRequest:(nullable ADBTargetLocationRequest *)request callback:(nullable void (^)(NSString* __nullable content))callback;
 
 /**
+ * 	@brief Processes a Target service request.
+ * 	@param name a string pointer containing the name of the mbox
+ *  @param defaultContent a string pointer containing the content to be returned on failure
+ *  @param profileParameters a dictionary of parameters to be added to the profile
+ *  @param orderParameters a dictionary
+ *  @param mboxParameters a dictionary of parameters for the mbox
+ * 	@param callback a block pointer to call with a response string pointer parameter upon completion of the service request.
+ */
++ (void) targetLoadRequestWithName:(nullable NSString *)name
+					defaultContent:(nullable NSString *)defaultContent
+				 profileParameters:(nullable NSDictionary *)profileParameters
+				   orderParameters:(nullable NSDictionary *)orderParameters
+					mboxParameters:(nullable NSDictionary *)mboxParameters
+						  callback:(nullable void (^)(NSString* __nullable content))callback;
+
+/**
  * 	@brief Creates a ADBTargetLocationRequest populated with the parameters.
  * 	@param name a string pointer.
  * 	@param defaultContent a string pointer.
@@ -435,8 +451,8 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @see targetLoadRequest:callback: for processing the returned ADBTargetLocationRequest pointer.
  */
 + (nullable ADBTargetLocationRequest *) targetCreateRequestWithName:(nullable NSString *)name
-                                                     defaultContent:(nullable NSString *)defaultContent
-                                                         parameters:(nullable NSDictionary *)parameters;
+													 defaultContent:(nullable NSString *)defaultContent
+														 parameters:(nullable NSDictionary *)parameters;
 
 /**
  * 	@brief Creates a ADBTargetLocationRequest populated with the parameters.
@@ -449,13 +465,25 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @see targetLoadRequest:callback: for processing the returned ADBTargetLocationRequest pointer.
  */
 + (nullable ADBTargetLocationRequest *) targetCreateOrderConfirmRequestWithName:(nullable NSString *)name
-                                                                        orderId:(nullable NSString *)orderId
-                                                                     orderTotal:(nullable NSString *)orderTotal
-                                                             productPurchasedId:(nullable NSString *)productPurchasedId
-                                                                     parameters:(nullable NSDictionary *)parameters;
+																		orderId:(nullable NSString *)orderId
+																	 orderTotal:(nullable NSString *)orderTotal
+															 productPurchasedId:(nullable NSString *)productPurchasedId
+																	 parameters:(nullable NSDictionary *)parameters;
 
 /**
- * 	@brief Clears target cookies from shared cookie storage
+ * 	@brief Gets the custom visitor ID for target
+ *	@return thirdPartyId a string pointer containing the value of the third party id (custom visitor id)
+ */
++ (nullable NSString *) targetThirdPartyID;
+
+/**
+ * 	@brief Sets the custom visitor ID for target
+ *	@param thirdPartyId a string pointer containing the value of the third party id (custom visitor id)
+ */
++ (void) targetSetThirdPartyID:(nullable NSString *)thirdPartyID;
+
+/**
+ * 	@brief Resets the user's experience
  */
 + (void) targetClearCookies;
 
@@ -469,7 +497,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  * 	@brief Gets the value of the SessionID cookie returned for this visitor by the Target server
  *  @return An NSString pointer containing the SessionID for this user
  */
-+ (nullable NSString *) targetSessionID;
++ (nonnull NSString *) targetSessionID;
 
 #pragma mark - Audience Manager
 
@@ -545,6 +573,14 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  */
 + (nullable NSArray *) visitorGetIDs;
 
+#pragma mark - PII collection
+
+/**
+ *	@brief Submits a PII collection request
+ *	@param dictionary pointer containing PII data
+ */
++ (void) collectPII:(nullable NSDictionary<NSString *, NSString *> *)data;
+
 @end
 
 #pragma mark - ADBVisitorID
@@ -552,7 +588,6 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 - (nullable NSString *)idType;
 - (nullable NSString *)identifier;
 - (ADBMobileVisitorAuthenticationState) authenticationState;
-
 @end
 
 #pragma mark - ADBTargetLocationRequest
