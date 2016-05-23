@@ -13,6 +13,7 @@ written permission of Adobe.
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MasterViewController.h"
 
 #define kPhoneStoryboard @"MainStoryboard_iPhone"
 #define kPadStoryboard @"MainStoryboard_iPad"

@@ -68,4 +68,14 @@ written permission of Adobe.
     [ADBMobile trackAction:@"local notification sample" data:@{@"local":@"notification"}];
 }
 
+- (IBAction) showInteractiveLocalNotificationMessage {
+    /*
+     * Adobe Tracking - Analytics
+     *
+     * triggering an in-app message on custom context data
+     */
+    [ADBMobile trackAction:@"interactive local notification sample" data:@{@"Message_Type":@"interactive_local_notification"}];
+}
+
+
 @end

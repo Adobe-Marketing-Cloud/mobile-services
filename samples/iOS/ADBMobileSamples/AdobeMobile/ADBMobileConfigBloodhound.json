@@ -4,6 +4,9 @@
 		"clientCode": "amsdk",
 		"timeout": 5
 	},
+	"marketingCloud": {
+		"org": "3CE342C75100435B0A490D4C@AdobeOrg"
+	},
 	"audienceManager": {
 		"server": ""
 	},
@@ -57,6 +60,102 @@
     ]
 	},
 	"messages": [
+				 {
+				 "messageId": "0f660fd7-460c-43e2-a107-eb22cf4b7abc",
+				 "recipient": "Custom",
+				 "payload": {
+				 "templateurl": "http://example.com/?action={a.action}&timesincelaunched={a.timesincelaunch}&device={a.devicename}",
+				 "templatebody": "",
+				 "contenttype": "",
+				 "timeout": 2
+				 },
+				 "showOffline": true,
+				 "showRule": "always",
+				 "endDate": 2524730400,
+				 "startDate": 0,
+				 "template": "callback",
+				 "audiences": [ ],
+				 "triggers": [
+							  {
+							  "key": "pev2",
+							  "matches": "eq",
+							  "values": [
+										 "AMACTION:trackAction:data: button pushed"
+										 ]
+							  }
+							  ]
+				 },
+				 {
+				 "messageId": "076c1f89-826c-4482-8e5e-948b9ae31dcd",
+				 "recipient": "Custom",
+				 "payload": {
+				 "templateurl": "http://example.com/?page={pagename}&timesincelaunched={a.timesincelaunch}&device={a.devicename}",
+				 "templatebody": "",
+				 "contenttype": "",
+				 "timeout": 2
+				 },
+				 "showOffline": true,
+				 "showRule": "always",
+				 "endDate": 2524730400,
+				 "startDate": 0,
+				 "template": "callback",
+				 "audiences": [ ],
+				 "triggers": [
+							  {
+							  "key": "pageName",
+							  "matches": "eq",
+							  "values": [
+										 "Example State"
+										 ]
+							  }
+							  ]
+				 },
+				 {
+				 "messageId": "4be8e278-ee13-430f-8a16-9b9ac81ac05e",
+				 "recipient": "Custom",
+				 "payload": {
+				 "templateurl": "http://example.com/",
+				 "templatebody": "e3Nka3ZlcnNpb249eyVzZGt2ZXIlfSwgYXBwaWQ9e2EuYXBwaWR9LCBpbnN0YWxsZGF0ZT17YS5pbnN0YWxsZGF0ZX0gLCBsaWZldGltZXZhbHVlPXthLmx0di5hbW91bnR9fQ==",
+				 "contenttype": "application/json",
+				 "timeout": 2
+				 },
+				 "showOffline": true,
+				 "showRule": "always",
+				 "endDate": 2524730400,
+				 "startDate": 0,
+				 "template": "callback",
+				 "audiences": [ ],
+				 "triggers": [
+							  {
+							  "key": "a.CrashEvent",
+							  "matches": "ex",
+							  "values": null
+							  }
+							  ]
+				 },
+				 {
+				 "messageId": "09fbbd03-7de5-4840-8915-57148c21508b",
+				 "recipient": "Custom",
+				 "payload": {
+				 "templateurl": "http://example.com/?sdkversion={%sdkver%}&appid={a.appid}&installdate={a.installdate}&lifetimevalue={a.ltv.amount}",
+				 "templatebody": "",
+				 "contenttype": "",
+				 "timeout": 2
+				 },
+				 "showOffline": true,
+				 "showRule": "always",
+				 "endDate": 2524730400,
+				 "startDate": 0,
+				 "template": "callback",
+				 "audiences": [ ],
+				 "triggers": [
+							  {
+							  "key": "a.LaunchEvent",
+							  "matches": "ex",
+							  "values": null
+							  }
+							  ]
+				 },
 				 {
 				 "messageId": "e23d0b13-40fd-46e7-a00c-4c716bcb0e04",
 				 "payload": {

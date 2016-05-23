@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0935EB071C7B8729007FBCF3 /* AdobeMobileLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54073E1E1B67EE3B00CD9E83 /* AdobeMobileLibrary.a */; };
+		0935EB081C7B9793007FBCF3 /* ADBScene7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F03852BF17EA4D3E00EB0334 /* ADBScene7.a */; };
+		09F8FF0C1C6BEBD40035B986 /* PostbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F8FF0B1C6BEBD40035B986 /* PostbackController.m */; };
 		542F8DBF1AC2083400A43D1B /* ADBMobileConfigBloodhound.json in Resources */ = {isa = PBXBuildFile; fileRef = 542F8DBD1AC2083400A43D1B /* ADBMobileConfigBloodhound.json */; };
-		E95D91C71829B958006BB662 /* AdobeMobileLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E95D91C61829B958006BB662 /* AdobeMobileLibrary.a */; };
 		E9DCE56717E7B13300292D1E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DCE56617E7B13300292D1E /* MediaPlayer.framework */; };
 		F037D50F17E37B75006A2F4C /* imagelist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F037D50E17E37B75006A2F4C /* imagelist.plist */; };
-		F03852C017EA4D3E00EB0334 /* ADBScene7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F03852BF17EA4D3E00EB0334 /* ADBScene7.a */; };
 		F05CF6B517E2A7BA00146B88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05CF6B417E2A7BA00146B88 /* UIKit.framework */; };
 		F05CF6B717E2A7BA00146B88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05CF6B617E2A7BA00146B88 /* Foundation.framework */; };
 		F05CF6B917E2A7BA00146B88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05CF6B817E2A7BA00146B88 /* CoreGraphics.framework */; };
@@ -47,9 +48,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09F8FF0A1C6BEBD40035B986 /* PostbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostbackController.h; path = Controllers/PostbackController.h; sourceTree = "<group>"; };
+		09F8FF0B1C6BEBD40035B986 /* PostbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostbackController.m; path = Controllers/PostbackController.m; sourceTree = "<group>"; };
+		54073E1E1B67EE3B00CD9E83 /* AdobeMobileLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary.a; sourceTree = "<group>"; };
 		542F8DBD1AC2083400A43D1B /* ADBMobileConfigBloodhound.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ADBMobileConfigBloodhound.json; sourceTree = "<group>"; };
 		E95D91C51829B958006BB662 /* ADBMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBMobile.h; sourceTree = "<group>"; };
-		E95D91C61829B958006BB662 /* AdobeMobileLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary.a; sourceTree = "<group>"; };
 		E9DCE56617E7B13300292D1E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E9DCE56B17E7B28200292D1E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F037D50E17E37B75006A2F4C /* imagelist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = imagelist.plist; sourceTree = "<group>"; };
@@ -109,12 +112,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F03852C017EA4D3E00EB0334 /* ADBScene7.a in Frameworks */,
+				0935EB081C7B9793007FBCF3 /* ADBScene7.a in Frameworks */,
+				0935EB071C7B8729007FBCF3 /* AdobeMobileLibrary.a in Frameworks */,
 				E9DCE56717E7B13300292D1E /* MediaPlayer.framework in Frameworks */,
 				F05CF75417E2B80100146B88 /* libz.dylib in Frameworks */,
 				F05CF75217E2B7EF00146B88 /* Security.framework in Frameworks */,
 				F05CF75017E2B7E100146B88 /* MobileCoreServices.framework in Frameworks */,
-				E95D91C71829B958006BB662 /* AdobeMobileLibrary.a in Frameworks */,
 				F05CF74E17E2B7D600146B88 /* CoreLocation.framework in Frameworks */,
 				F05CF74C17E2B7C600146B88 /* QuartzCore.framework in Frameworks */,
 				F05CF74A17E2B7B800146B88 /* CFNetwork.framework in Frameworks */,
@@ -216,6 +219,8 @@
 		F05CF6DD17E2AA4800146B88 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				09F8FF0A1C6BEBD40035B986 /* PostbackController.h */,
+				09F8FF0B1C6BEBD40035B986 /* PostbackController.m */,
 				F09CD1581A81815E00ED1890 /* GalleryViewController.h */,
 				F09CD1591A81815E00ED1890 /* GalleryViewController.m */,
 				F09CD15A1A81815E00ED1890 /* InAppMessageViewController.h */,
@@ -271,7 +276,7 @@
 			children = (
 				F03852BD17EA4D2400EB0334 /* S7 */,
 				E95D91C51829B958006BB662 /* ADBMobile.h */,
-				E95D91C61829B958006BB662 /* AdobeMobileLibrary.a */,
+				54073E1E1B67EE3B00CD9E83 /* AdobeMobileLibrary.a */,
 				F05CF73717E2B2BB00146B88 /* ADBMobileConfig.json */,
 				542F8DBD1AC2083400A43D1B /* ADBMobileConfigBloodhound.json */,
 			);
@@ -316,7 +321,12 @@
 				ORGANIZATIONNAME = Adobe;
 				TargetAttributes = {
 					F05CF6B017E2A7BA00146B88 = {
-						DevelopmentTeam = 65BJP2R8Q7;
+						DevelopmentTeam = FKGEE875K4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -368,6 +378,7 @@
 				F09CD1741A81815E00ED1890 /* SimpleTrackingController.m in Sources */,
 				F09CD16D1A81815E00ED1890 /* InAppMessageViewController.m in Sources */,
 				F09CD16E1A81815E00ED1890 /* LifetimeValueController.m in Sources */,
+				09F8FF0C1C6BEBD40035B986 /* PostbackController.m in Sources */,
 				F09CD1541A8180FC00ED1890 /* NSString+Color.m in Sources */,
 				F09CD16C1A81815E00ED1890 /* GalleryViewController.m in Sources */,
 				F09CD16F1A81815E00ED1890 /* LocationTargetingController.m in Sources */,
@@ -433,6 +444,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -458,6 +470,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -475,8 +488,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ADBMobileSamples/ADBMobileSamples-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "ADBMobileSamples/ADBMobileSamples-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AdobeMobile",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -493,8 +511,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ADBMobileSamples/ADBMobileSamples-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "ADBMobileSamples/ADBMobileSamples-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AdobeMobile",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

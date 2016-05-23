@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@drawable/background">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+                  android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:background="@drawable/background" android:id="@+id/linearLayout2"
+                  android:layout_gravity="center_horizontal">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:background="#FF000000">
+            <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="In-App Messages"
+                      android:id="@+id/textView6" android:layout_margin="10dp" android:layout_gravity="center"
+                      android:textSize="24dp"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:baselineAligned="false"
+                      android:background="#CC000000" android:layout_margin="25dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/inAppMessagesDescription"
+                    android:id="@+id/textView8" android:layout_marginBottom="10dp" android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp" android:layout_marginRight="20dp"/>
+            <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="Full Screen Message" android:id="@+id/button8"
+                    android:layout_gravity="center_horizontal" android:onClick="showFullscreenMessage" android:background="#505050"
+                    android:textColor="@android:color/white" android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp" android:layout_marginRight="20dp" android:longClickable="true"
+                    android:minHeight="30dp" android:maxHeight="45dp"/>
+            <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="Alert Message" android:id="@+id/button9" android:onClick="showAlertMessage"
+                    android:background="#505050" android:textColor="@android:color/white"
+                    android:layout_marginLeft="20dp" android:layout_marginTop="10dp" android:layout_marginRight="20dp"
+                    android:minHeight="30dp" android:maxHeight="45dp"/>
+            <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="Local Notification Message" android:id="@+id/button10" android:onClick="showLocalNotification"
+                    android:background="#505050" android:textColor="@android:color/white"
+                    android:minHeight="30dp" android:maxHeight="45dp" android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp" android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
