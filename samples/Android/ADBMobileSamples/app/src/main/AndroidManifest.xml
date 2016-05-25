@@ -70,6 +70,12 @@
             <!--</intent-filter>-->
         <!--</activity>-->
 
+        <receiver android:name="com.adobe.mobile.ReferralReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
         <receiver android:name="com.adobe.mobile.MessageNotificationHandler" />
 
         <receiver
