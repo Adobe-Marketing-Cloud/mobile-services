@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.adobe.adbmobilesamples">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <application android:label="SDK Samples" android:icon="@drawable/icon" android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:name=".deeplinks.ParseDeepLinkActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <!-- Handles any com.adobe.example://deeplink URI's -->
+                <data android:scheme="com.adobe.example" android:host="deeplink" />
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="MenuActivity" android:label="SDK Samples" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".target.TargetingLocationActivity" android:screenOrientation="portrait" />
+        <activity android:name=".analytics.SimpleTrackingActivity" android:screenOrientation="portrait" />
+        <activity android:name=".gallery.GalleryActivity" android:screenOrientation="portrait" />
+        <activity android:name=".analytics.TimedActionsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".PrivacyActivity" android:screenOrientation="portrait" />
+        <activity android:name=".analytics.MediaActivity" android:screenOrientation="portrait" />
+        <activity android:name=".analytics.LifetimeValueActivity" android:screenOrientation="portrait" />
+        <activity android:name=".postbacks.PostbackActivity" android:screenOrientation="portrait" />
+        <activity android:name=".analytics.VideoPlayerActivity" />
+        <activity android:name=".messaging.InAppMessagingActivity" android:label="In-App Messages"/>
+        <activity android:name="com.adobe.mobile.MessageFullScreenActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!--<activity android:name=".deeplinks.ParseDeepLinkActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+                <!--&lt;!&ndash; Accepts URIs that begin with "http://www.example.com/gizmos” &ndash;&gt;-->
+                <!--<data android:scheme="http"-->
+                    <!--android:host="www.example.com"-->
+                    <!--android:pathPrefix="/gizmos" />-->
+                <!--&lt;!&ndash; note that the leading "/" is required for pathPrefix&ndash;&gt;-->
+                <!--&lt;!&ndash; Accepts URIs that begin with "example://gizmos” &ndash;&gt;-->
+                <!--<data android:scheme="com.adobe.example"-->
+                    <!--android:host="gizmos" />-->
+
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <!--<activity android:name="deeplinks.ParseDeepLinkActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW"/>-->
+
+                <!--&lt;!&ndash; Handles any com.adobe.example://deeplink URI's &ndash;&gt;-->
+                <!--<data android:scheme="com.adobe.example" android:host="deeplink" />-->
+
+                <!--<category android:name="android.intent.category.DEFAULT"/>-->
+                <!--<category android:name="android.intent.category.BROWSABLE"/>-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <receiver android:name="com.adobe.mobile.MessageNotificationHandler" />
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.adobe.adbmobilesamples" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".messaging.MyGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".messaging.MyInstanceIDListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".messaging.RegistrationIntentService"
+            android:exported="false">
+        </service>
+
+    </application>
+</manifest>
