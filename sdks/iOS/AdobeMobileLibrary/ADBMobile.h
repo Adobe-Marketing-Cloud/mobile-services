@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.10.0
+//  SDK Version: 4.11.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -440,6 +440,24 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 				 profileParameters:(nullable NSDictionary *)profileParameters
 				   orderParameters:(nullable NSDictionary *)orderParameters
 					mboxParameters:(nullable NSDictionary *)mboxParameters
+						  callback:(nullable void (^)(NSString* __nullable content))callback;
+
+/**
+ * 	@brief Processes a Target service request.
+ * 	@param name a string pointer containing the name of the mbox
+ *  @param defaultContent a string pointer containing the content to be returned on failure
+ *  @param profileParameters a dictionary of parameters to be added to the profile
+ *  @param orderParameters a dictionary
+ *  @param mboxParameters a dictionary of parameters for the mbox
+ *	@param requestLocationParameters a dictionary of parameters for request location
+ * 	@param callback a block pointer to call with a response string pointer parameter upon completion of the service request.
+ */
++ (void) targetLoadRequestWithName:(nullable NSString *)name
+					defaultContent:(nullable NSString *)defaultContent
+				 profileParameters:(nullable NSDictionary *)profileParameters
+				   orderParameters:(nullable NSDictionary *)orderParameters
+					mboxParameters:(nullable NSDictionary *)mboxParameters
+		 requestLocationParameters:(nullable NSDictionary *)requestLocationParameters
 						  callback:(nullable void (^)(NSString* __nullable content))callback;
 
 /**
