@@ -5,6 +5,14 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+
+4.11.0 (16 Jun, 2016)
+- Target - New Target API for passing in requestLocation parameters
+- Target - Fixed the bug where mboxHost/orderId/orderTotal were not correctly handled in legacy Target API
+- Postbacks/In-App Messaging - Removed requirements on analytics for Postbacks and In-App Messaging 
+- Postbacks - Fixed the issue where post body was encoded when the content type is application/json  
+- Analytics - Fixed the issue of trackTimedAction not allowing non-string keys and values in context data  
+
 4.10.0 (20 May, 2016)
 - New Feature - New Target API
 - New Feature - PII data collection

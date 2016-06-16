@@ -5,6 +5,14 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+
+4.11.0 (16 Jun, 2016)
+- Target - New Target API for passing in requestLocation parameters
+- Target - Fixed the bug where mboxHost/orderId/orderTotal were not correctly handled in legacy Target API
+- Postbacks/In-App Messaging - Removed requirements on analytics for Postbacks and In-App Messaging 
+- Postbacks - Fixed the issue where post body was encoded when the content type is application/json  
+- Postbacks - Fixed a crash when key or value in context data was passed in as null and a postback was configured
+
 4.10.0 (19 May, 2016)
 - New Feature - New Target API
 - New Feature - PII data collection
