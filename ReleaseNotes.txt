@@ -5,6 +5,18 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.11.1 (28 Jul, 2016)
+- Lifecycle - Fixed an issue that could cause a crash when sending non-property list objects to collectLifecycleDataWithAdditionalData:
+- In App Messaging - Fixed a bug that prevented fullscreen and alert messages from displaying after a local notification was triggered
+- In App Messaging - Fixed an issue where fullscreen messages were not resized in split view mode (iOS 9+ iPad)
+
+4.11.0 (16 Jun, 2016)
+- Target - New Target API for passing in requestLocation parameters
+- Target - Fixed the bug where mboxHost/orderId/orderTotal were not correctly handled in legacy Target API
+- Postbacks/In-App Messaging - Removed requirements on analytics for Postbacks and In-App Messaging 
+- Postbacks - Fixed the issue where post body was encoded when the content type is application/json  
+- Analytics - Fixed the issue of trackTimedAction not allowing non-string keys and values in context data  
+
 4.10.0 (20 May, 2016)
 - New Feature - New Target API
 - New Feature - PII data collection
