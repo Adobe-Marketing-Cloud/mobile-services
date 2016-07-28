@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.11.1 (28 Jul, 2016)
+- In App Messaging - Fixed a fullscreen message issue that could cause a crash when the fullscreen message activity is killed by the system
+- In App Messaging - Fixed a bug that prevented fullscreen and alert messages from displaying after a local notification was triggered
+- Deep Linking - Fixed an issue that could cause a crash when using custom deeplink urls
+- Audience Manager - Improved handling of empty or invalid responses from AAM server
 
 4.11.0 (16 Jun, 2016)
 - Target - New Target API for passing in requestLocation parameters
