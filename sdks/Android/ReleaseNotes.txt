@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.12.0 (18 Aug, 2016)
+- Visitor ID Service - Added new method to append visitor identity to a given URL in-order to transfer identity to a web-based implementation.
+
 4.11.1 (28 Jul, 2016)
 - In App Messaging - Fixed a fullscreen message issue that could cause a crash when the fullscreen message activity is killed by the system
 - In App Messaging - Fixed a bug that prevented fullscreen and alert messages from displaying after a local notification was triggered
