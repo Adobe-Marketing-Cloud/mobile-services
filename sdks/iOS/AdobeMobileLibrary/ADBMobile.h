@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.11.1
+//  SDK Version: 4.12.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -590,6 +590,13 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @return an array of readonly ADBVisitorIDs
  */
 + (nullable NSArray *) visitorGetIDs;
+
+/**
+ *  @brief Appends visitor identifiers to the given URL
+ *  @return NSURL object containing the modified URL
+ *	@note This method can cause a blocking network call.  Blocking time is limited to 100ms, but care should still be taken to not call this on time-sensitive threads.
+ */
++ (nullable NSURL *) visitorAppendToURL: (nullable NSURL *) url;
 
 #pragma mark - PII collection
 
