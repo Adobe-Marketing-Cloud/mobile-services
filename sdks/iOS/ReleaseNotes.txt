@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.12.0 (18 Aug, 2016)
+- Visitor ID Service - Added new method to append visitor identity to a given URL in-order to transfer identity to a web-based implementation.
+- In App Messaging - Fixed an issue that could cause a crash when setting the "target" attribute to "_blank" in an HTML <a> tag in a custom full screen message
+
 4.11.1 (28 Jul, 2016)
 - Lifecycle - Fixed an issue that could cause a crash when sending non-property list objects to collectLifecycleDataWithAdditionalData:
 - In App Messaging - Fixed a bug that prevented fullscreen and alert messages from displaying after a local notification was triggered
