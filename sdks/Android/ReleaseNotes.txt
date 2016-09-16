@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.13.0 (15 Sep, 2016)
+- Deep Linking - Enhancements to enable tracking of 3rd party deferred deep links
+
 4.12.0 (18 Aug, 2016)
 - Visitor ID Service - Added new method to append visitor identity to a given URL in-order to transfer identity to a web-based implementation.
 
