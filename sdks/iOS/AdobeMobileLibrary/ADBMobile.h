@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.12.0
+//  SDK Version: 4.13.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -29,9 +29,19 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @see visitorSyncIdentifiers
  */
 typedef NS_ENUM(NSUInteger, ADBMobileVisitorAuthenticationState) {
-	ADBMobileVisitorAuthenticationStateUnknown   = 0, /*!< Enum value ADBMobileVisitorAuthenticationStateUnknown. */
-	ADBMobileVisitorAuthenticationStateAuthenticated  = 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
-	ADBMobileVisitorAuthenticationStateLoggedOut = 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
+	ADBMobileVisitorAuthenticationStateUnknown			= 0, /*!< Enum value ADBMobileVisitorAuthenticationStateUnknown. */
+	ADBMobileVisitorAuthenticationStateAuthenticated	= 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
+	ADBMobileVisitorAuthenticationStateLoggedOut		= 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
+};
+
+/**
+ * 	@brief An enum type.
+ *  The possible types of app extension you might use
+ *  @see setAppExtensionType
+ */
+typedef NS_ENUM(NSUInteger, ADBMobileAppExtensionType) {
+	ADBMobileAppExtensionTypeRegular	= 0, /*!< Enum value ADBMobileAppExtensionTypeRegular. */
+	ADBMobileAppExtensionTypeStandAlone	= 1 /*!< Enum value ADBMobileAppExtensionTypeStandAlone. */
 };
 
 /**
@@ -163,6 +173,14 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 + (void) setAppGroup: (nullable NSString *) appGroup;
 
 /**
+ *	@brief Configures the Adobe Mobile SDK setting to determines what kind of extension is currently being executed.
+ *	@note When using the extension library, please refer to the online documentation to help you decide which setting you need
+ *	@param type an ADBMobileAppExtensionType value indicating the type of extension for your currently running executable
+ *  @see ADBMobileAppExtensionType
+ */
++ (void) setAppExtensionType:(ADBMobileAppExtensionType)type;
+
+/**
  *	@brief Synchronize certain defaults between a Watch app and the iOS app in the SDK via Watch Connectivity
  *	@note This method should only be used in WCSessionDelegate methods.
  *  @return a bool value indicating if the settings dictionary was meant for consumption by ADBMobile
@@ -181,7 +199,6 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @param tvController is the TVApplicationController initialized to bridge the native and JS environments for the app
  */
 + (void) installTVMLHooks:(nullable TVApplicationController *)tvController;
-
 
 /**
  * 	@brief Register the callback for Adobe data. The callback block will get called when SDK receive any form of data that is populated by the sdk automatically (eg. lifecycle, acquisition).
@@ -291,7 +308,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 /**
  * 	@brief Tracks the end of a timed event
  *  @param action a required NSString pointer that denotes the action name to finish tracking.
- * 	@param logic optional block to perform logic and update parameters when this timed event ends, this block can cancel the sending of the hit by returning NO.
+ * 	@param block optional block to perform logic and update parameters when this timed event ends, this block can cancel the sending of the hit by returning NO.
  *  @note This method will send a tracking hit if the parameter logic is nil or returns YES.
  */
 + (void) trackTimedActionEnd:(nullable NSString *)action
@@ -496,7 +513,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 
 /**
  * 	@brief Sets the custom visitor ID for target
- *	@param thirdPartyId a string pointer containing the value of the third party id (custom visitor id)
+ *	@param thirdPartyID a string pointer containing the value of the third party id (custom visitor id)
  */
 + (void) targetSetThirdPartyID:(nullable NSString *)thirdPartyID;
 
@@ -566,13 +583,13 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 
 /**
  *	@brief Synchronizes the provided identifiers to the visitor id service
- *	@param dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
+ *	@param identifiers a dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
  */
 + (void) visitorSyncIdentifiers: (nullable NSDictionary *) identifiers;
 
 /**
  *	@brief Synchronizes the provided identifiers to the visitor id service
- *	@param dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
+ *	@param identifiers a dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
  *	@param authState a authentication state will be applied for all the items in identifiers dictionary
  */
 + (void) visitorSyncIdentifiers: (nullable NSDictionary *) identifiers authenticationState:(ADBMobileVisitorAuthenticationState) authState;
@@ -602,7 +619,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 
 /**
  *	@brief Submits a PII collection request
- *	@param dictionary pointer containing PII data
+ *	@param data a dictionary containing PII data
  */
 + (void) collectPII:(nullable NSDictionary<NSString *, NSString *> *)data;
 
