@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.13.1 (20 Oct, 2016)
+- Acquisition - The SDK now supports for custom acquisition data to be returned appropriatly by AdobeDataCallback invocations
+- Target - Visitor ID Service params are now passed in Target requests via mboxParams
+- Fixed an issue that was causing build warnings when targeting iOS versions older than 8
+- Analytics - Fixed an issue that could cause a crash when trying to sync new ID to the VisitorID service at the same time as sending tracking hits to Analytics
+
 4.13.0 (15 Sept, 2016)
 - iOS 10 support
 - New Feature - support for stand-alone extensions
