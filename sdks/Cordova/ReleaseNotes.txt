@@ -6,7 +6,11 @@ For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/phonegap.html
 https://marketing.adobe.com/resources/help/en_US/mobile/android/phonegap.html
 
-4.7.0 (5 Nov, 2015)
+4.13.1 (20 Oct, 2016)
+- Updated Plugin to use iOS Adobe Mobile Library 4.13.1
+- Updated Plugin to use Android Adobe Mobile Library 4.13.1
+
+4.7.0 (5 November, 2015)
 - Updated Plugin for use with iOS Adobe Mobile Library 4.7.0
 - Updated Plugin for use with Android Adobe Mobile Library 4.7.0
 
