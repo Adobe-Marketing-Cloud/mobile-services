@@ -1,0 +1,92 @@
+{
+    "lastModified": "2014-11-13T18:02:46.691Z",
+    "marketingCloud": {
+        "org": "3CE342C75100435B0A490D4C@AdobeOrg"
+    },
+    "target": {
+		"clientCode" : "adobemobiledemo",
+		"timeout" : 5
+    },
+    "audienceManager": {
+		"server" : "omniture.demdex.net"
+    },
+    "acquisition": {
+        "server": "c00.adobe.com",
+        "appid": "51efde3c-01fd-4b0a-9f4e-1da74336b35b"
+    },
+    "analytics": {
+        "rsids": "mobile1jiabin.test.currency",
+        "server": "obumobile1.sc.omtrdc.net",
+        "ssl": false,
+        "offlineEnabled": true,
+        "charset": "UTF-8",
+        "lifecycleTimeout": 5,
+        "privacyDefault": "optedin",
+        "batchLimit": 0,
+        "timezone": "MST",
+        "timezoneOffset": -420,
+        "referrerTimeout": 10,
+        "poi": [
+                [
+                 "abc",
+                 3,
+                 3,
+                 3
+                 ]
+                ]
+    },
+    "messages": [
+                 {
+                 "messageId": "97f8db20-bb28-4c1a-8cda-78c6ba98f87d",
+                 "template": "alert",
+                 "payload": {
+                 "title": "下载 My Other App",
+                 "content": "My Other App 是有史以来最好的应用程序之一。立即下载！",
+                 "confirm": "是",
+                 "cancel": "否",
+                 "url": ""
+                 },
+                 "showOffline": false,
+                 "showRule": "always",
+                 "endDate": 2524730400,
+                 "startDate": 0,
+                 "audiences": [],
+                 "triggers": [
+                              {
+                              "key": "pev2",
+                              "matches": "eq",
+                              "values": [
+                                         "AMACTION:alert"
+                                         ]
+                              }
+                              ]
+                 },
+                 {
+                 "messageId": "7de299ee-5ff9-4b0f-ba04-6ff95e3d49d3",
+                 "template": "alert",
+                 "payload": {
+                 "title": "下载 My Other App",
+                 "content": "My Other App 是有史以来最好的应用程序之一。立即下载！",
+                 "confirm": "是",
+                 "cancel": "否",
+                 "url": ""
+                 },
+                 "showOffline": false,
+                 "showRule": "always",
+                 "endDate": 2524730400,
+                 "startDate": 0,
+                 "audiences": [],
+                 "triggers": [
+                              {
+                              "key": "a.LaunchEvent",
+                              "matches": "ex",
+                              "values": null
+                              }
+                              ]
+                 }
+                 ],
+    "remotes": {
+        "analytics.poi": "https://assets.adobedtm.com/b213090c5204bf94318f4ef0539a38b487d10368/scripts/satellite-547e22fa3864310018540800.json",
+        "messages": "https://assets.adobedtm.com/b213090c5204bf94318f4ef0539a38b487d10368/scripts/satellite-547e22f6303031286a2a0300.json"
+    }
+}

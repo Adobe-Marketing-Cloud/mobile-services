@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using Foundation;
 using UIKit;
+using Com.Adobe.Mobile;
 
 namespace AdobeMobileSample
 {
@@ -19,7 +20,16 @@ namespace AdobeMobileSample
 			get;
 			set;
 		}
-		
+		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+		{
+			// Override point for customization after application launch.
+			// If not required for your application you can safely delete this method
+
+			ADBMobile.SetDebugLogging(true);
+
+			return true;
+		}
+
 		// This method is invoked when the application is about to move from active to inactive state.
 		// OpenGL applications should use this method to pause.
 		public override void OnResignActivation (UIApplication application)
