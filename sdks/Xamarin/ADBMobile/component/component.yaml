@@ -1,0 +1,25 @@
+%YAML 1.2
+---
+name: Adobe Mobile Services SDK
+id: ADBMobile
+publisher: Adobe
+license: License.md
+icons:
+  - ADBMobile_128x128.png
+  - ADBMobile_512x512.png
+publisher-url: http://mobilemarketing.adobe.com
+libraries:
+  ios-unified: ../lib/ios-unified/ADBMobile.XamarinIOSBinding.dll
+  ios-extension: ../lib/ios-extension/ADBMobile.XamarinIOSExtensionBinding.dll
+  tvos: ../lib/tvos/ADBMobile.XamarinTvOSBinding.dll
+  android: ../lib/android/ADBMobile.XamarinAndroidBinding.dll
+summary: "Xamarin bindings for Adobe Mobile Services SDKs."
+details: Details.md
+screenshots:
+getting-started: GettingStarted.md
+version: 4.13.1
+source: ../src/AdobeMobileSDKBinding.sln
+samples:
+  iOS Sample: ../samples/iOSSample/iOSSample.sln
+  android Sample: ../samples/AndroidSample/AndroidSample.sln
+...

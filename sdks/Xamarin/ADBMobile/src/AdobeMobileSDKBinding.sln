@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADBMobile.XamarinAndroidBin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADBMobile.XamarinIOSBinding", "ADBMobile.XamariniOSBinding\ADBMobile.XamarinIOSBinding.csproj", "{13C471DF-8A91-44AD-BEA8-4A136A0A0C60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADBMobile.XamarinTvOSBinding", "ADBMobile.XamarinTvOSBinding\ADBMobile.XamarinTvOSBinding.csproj", "{5B27E37D-F14C-4FF6-926E-958C9F97315F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADBMobile.XamarinIOSExtensionBinding", "ADBMobile.XamarinIOSExtensionBinding\ADBMobile.XamarinIOSExtensionBinding.csproj", "{B5BC46D4-76A1-4C10-B843-51DCFEF795C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +23,13 @@ Global
 		{E4D6F614-5C66-4B93-94CE-C47C67A9B79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4D6F614-5C66-4B93-94CE-C47C67A9B79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4D6F614-5C66-4B93-94CE-C47C67A9B79A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B27E37D-F14C-4FF6-926E-958C9F97315F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B27E37D-F14C-4FF6-926E-958C9F97315F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B27E37D-F14C-4FF6-926E-958C9F97315F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B27E37D-F14C-4FF6-926E-958C9F97315F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BC46D4-76A1-4C10-B843-51DCFEF795C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BC46D4-76A1-4C10-B843-51DCFEF795C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BC46D4-76A1-4C10-B843-51DCFEF795C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BC46D4-76A1-4C10-B843-51DCFEF795C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

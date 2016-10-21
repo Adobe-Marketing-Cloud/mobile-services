@@ -15,9 +15,9 @@ using Foundation;
 [assembly: AssemblyTitle ("Adobe Mobile SDK for Xamarin iOS")]
 [assembly: AssemblyDescription ("Adobe Mobile SDK for Xamarin iOS")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("Adobe")]
+[assembly: AssemblyCompany ("Adobe Systems Inc.")]
 [assembly: AssemblyProduct ("Adobe Mobile SDK")]
-[assembly: AssemblyCopyright ("Copyright 2014 Adobe Systems Incorporated\n *  All Rights Reserved.\n *\n * NOTICE:  All information contained herein is, and remains\n * the property of Adobe Systems Incorporated and its suppliers,\n * if any.  The intellectual and technical concepts contained\n * herein are proprietary to Adobe Systems Incorporated and its\n * suppliers and are protected by trade secret or copyright law.\n * Dissemination of this information or reproduction of this material\n * is strictly forbidden unless prior written permission is obtained\n * from Adobe Systems Incorporated.")]
+[assembly: AssemblyCopyright ("Copyright 2016 Adobe Systems Incorporated. All Rights Reserved. NOTICE: All information contained herein is, and remains the property of Adobe Systems Incorporated and its suppliers, if any. The intellectual and technical concepts contained herein are proprietary to Adobe Systems Incorporated and its suppliers and are protected by trade secret or copyright law. Dissemination of this information or reproduction of this material is strictly forbidden unless prior written permission is obtained from Adobe Systems Incorporated.")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 
@@ -25,7 +25,7 @@ using Foundation;
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyVersion ("4.4.0")]
+[assembly: AssemblyVersion ("4.13.1")]
 
 // The following attributes are used to specify the signing key for the assembly,
 // if desired. See the Mono documentation for more information about signing.
