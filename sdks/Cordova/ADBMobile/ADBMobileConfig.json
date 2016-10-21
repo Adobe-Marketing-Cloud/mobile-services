@@ -1,0 +1,28 @@
+{
+    "version" : "1.0",
+    "analytics" : {
+        "rsids" : "",
+        "server" : "",
+        "charset" : "UTF-8",
+        "ssl" : false,
+		"offlineEnabled" : false,
+        "lifecycleTimeout" : 300,
+		"referrerTimeout" : 0,
+        "batchLimit" : 0,
+        "privacyDefault" : "optedin",
+		"backdateSessionInfo" : false,
+		"poi" : []
+    },
+	"target" : {
+		"clientCode" : "",
+		"timeout" : 5
+	},
+	"audienceManager" : {
+		"server" : "",
+		"analyticsForwardingEnabled": false
+	},
+	"acquisition" : {
+		"server" : "",
+		"appid" : ""
+	}
+}

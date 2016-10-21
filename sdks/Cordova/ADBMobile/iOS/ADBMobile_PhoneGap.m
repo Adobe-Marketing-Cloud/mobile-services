@@ -3,7 +3,7 @@
  * ADOBE CONFIDENTIAL
  * ___________________
  *
- *  Copyright 2013 Adobe Systems Incorporated
+ *  Copyright 2016 Adobe Systems Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -36,6 +36,10 @@
 @end
 
 @implementation ADBMobile_PhoneGap
+
+NSString *const VisitorId_Id = @"id";
+NSString *const VisitorId_IdType = @"idType";
+NSString *const VisitorId_AuthenticationState = @"authenticationState";
 
 - (void)getVersion:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
@@ -74,7 +78,7 @@
 
 - (void)setPrivacyStatus:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		if(!checkArgsWithTypes(command.arguments, @[@[STRING, NUMBER]])) {
+		if(!checkArgsWithTypes(command.arguments, @[@[NUMBER]])) {
 			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
 			return;
 		}
@@ -172,6 +176,35 @@
 	}];
 }
 
+- (void)trackLocalNotificationClickThrough:(CDVInvokedUrlCommand*)command{
+    [self.commandDelegate runInBackground:^{
+        if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        NSDictionary * userInfo = getArg(command.arguments[0]);
+        [ADBMobile trackLocalNotificationClickThrough:userInfo];
+        
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+    }];
+}
+
+- (void)trackAdobeDeepLink:(CDVInvokedUrlCommand*)command{
+    
+    [self.commandDelegate runInBackground:^{
+        if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        NSString *urlString = getArg(command.arguments[0]);
+        NSURL *url = [NSURL URLWithString:urlString];
+        [ADBMobile trackAdobeDeepLink:url];
+        
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+    }];
+}
+
 - (void)getDebugLogging:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
 		BOOL debugLogging = [ADBMobile debugLogging];
@@ -207,48 +240,59 @@
 
 - (void)collectLifecycleData:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		[ADBMobile collectLifecycleData];
-		
-		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Collecting Lifecycle"];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        [ADBMobile collectLifecycleData];
+		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Collecting Lifecycle"] callbackId:command.callbackId];
 	}];
 }
 
 - (void)setAppGroup:(CDVInvokedUrlCommand*)command {
-	[self.commandDelegate runInBackground:^{
-		if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
-			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
-			return;
-		}
-		
-		NSString* appGroup = getArg(command.arguments[0]);
-		[ADBMobile setAppGroup:appGroup];
-		
-		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
-	}];
+    [self.commandDelegate runInBackground:^{
+        if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        NSString* appGroup = getArg(command.arguments[0]);
+        [ADBMobile setAppGroup:appGroup];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+    }];
 }
 
 - (void)syncSettings:(CDVInvokedUrlCommand*)command {
-	[self.commandDelegate runInBackground:^{
-		if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
-			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
-			return;
-		}
-		
-		NSDictionary *settings = getArg(command.arguments[0]);
-		BOOL syncSettingsResult = [ADBMobile syncSettings:settings];
-		
-		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:syncSettingsResult];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-	}];
+    [self.commandDelegate runInBackground:^{
+        if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        NSDictionary *settings = getArg(command.arguments[0]);
+        BOOL syncSettingsResult = [ADBMobile syncSettings:settings];
+
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:syncSettingsResult];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
 }
 
 - (void)initializeWatch:(CDVInvokedUrlCommand*)command {
-	[self.commandDelegate runInBackground:^{
-		[ADBMobile initializeWatch];
-		
-		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
-	}];
+    [self.commandDelegate runInBackground:^{
+        [ADBMobile initializeWatch];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+    }];
+}
+
+- (void)collectPII:(CDVInvokedUrlCommand*)command{    
+    
+    [self.commandDelegate runInBackground:^{
+
+        if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+    
+        NSDictionary *piiData = command.arguments[0];
+        //ToDo(Prerna): test for individual fields data type
+        [ADBMobile collectPII:piiData];
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Collecting Pii"];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
 }
 
 - (void)trackState:(CDVInvokedUrlCommand*)command {
@@ -504,30 +548,85 @@
 
 - (void)trackingGetQueueSize:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		NSUInteger size = [ADBMobile trackingGetQueueSize];
+		int size = (int)[ADBMobile trackingGetQueueSize];
 		
 		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:size];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	}];
 }
 
+- (void)targetLoadRequestWithName:(CDVInvokedUrlCommand*)command {
+
+    [self.commandDelegate runInBackground:^{
+    
+        if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING], @[DICTIONARY],  @[DICTIONARY],  @[DICTIONARY]])){
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        NSString* name = getArg(command.arguments[0]);
+        NSString* defaultContent = getArg(command.arguments[1]);
+        NSDictionary *profileParameters = getArg(command.arguments[2]);
+        NSDictionary *orderParameters = getArg(command.arguments[3]);
+        NSDictionary *mboxParameters = getArg(command.arguments[4]);
+
+        void (^callbackBlock)(NSString *content) = ^(NSString *content){
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:content];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        };
+        
+        [ADBMobile targetLoadRequestWithName:name defaultContent:defaultContent profileParameters:profileParameters orderParameters:orderParameters mboxParameters:mboxParameters callback:callbackBlock];
+    }];
+}
+
+- (void)targetLoadRequestWithNameWithLocationParameters:(CDVInvokedUrlCommand*)command {
+    
+    [self.commandDelegate runInBackground:^{
+        
+        if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING], @[DICTIONARY],  @[DICTIONARY],  @[DICTIONARY], @[DICTIONARY]])){
+            
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        NSString* name = getArg(command.arguments[0]);
+        NSString* defaultContent = getArg(command.arguments[1]);
+        NSDictionary *profileParameters = getArg(command.arguments[2]);
+        NSDictionary *orderParameters = getArg(command.arguments[3]);
+        NSDictionary *mboxParameters = getArg(command.arguments[4]);
+        NSDictionary *requestLocationParameters = getArg(command.arguments[5]);
+        
+        void (^callbackBlock)(NSString *content) = ^(NSString *content){
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:content];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        };
+        
+        [ADBMobile targetLoadRequestWithName:name defaultContent:defaultContent profileParameters:profileParameters orderParameters:orderParameters mboxParameters:mboxParameters requestLocationParameters:requestLocationParameters callback:callbackBlock];
+        
+    }];
+}
+
 - (void)targetLoadRequest:(CDVInvokedUrlCommand*)command {
-	[self.commandDelegate runInBackground:^{
-		if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING], @[DICTIONARY]])) {
-			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
-			return;
-		}
+    
+    [self.commandDelegate runInBackground:^{
 		
-		NSString* name = getArg(command.arguments[0]);
-		NSString* defaultContent = getArg(command.arguments[1]);
-		NSDictionary *parameters = getArg(command.arguments[2]);
-		
-		ADBTargetLocationRequest *request = [ADBMobile targetCreateRequestWithName:name defaultContent:defaultContent parameters:parameters];
-		
-		[ADBMobile targetLoadRequest:request callback:^(NSString *content) {
-			CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:content];
-			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-		}];
+        if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING], @[DICTIONARY]]) )
+        {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        NSString* name = getArg(command.arguments[0]);
+        NSString* defaultContent = getArg(command.arguments[1]);
+        NSDictionary *parameters = getArg(command.arguments[2]);
+        
+        void (^callbackBlock)(NSString *content) = ^(NSString *content){
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:content];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        };
+        
+        ADBTargetLocationRequest *request = [ADBMobile targetCreateRequestWithName:name defaultContent:defaultContent parameters:parameters];
+        [ADBMobile targetLoadRequest:request callback:callbackBlock];
 	}];
 }
 
@@ -559,6 +658,45 @@
 		
 		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}];
+}
+
+- (void)targetSessionID:(CDVInvokedUrlCommand*)command{
+
+    [self.commandDelegate runInBackground:^{
+        NSString *targetSessionId = [ADBMobile targetSessionID];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:targetSessionId] callbackId:command.callbackId];
+    }];
+}
+
+- (void)targetPcID:(CDVInvokedUrlCommand*)command{
+    
+    [self.commandDelegate runInBackground:^{
+        NSString *targetPcID = [ADBMobile targetPcID];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:targetPcID] callbackId:command.callbackId];
+    }];
+}
+
+- (void)targetSetThirdPartyID:(CDVInvokedUrlCommand*)command{
+    [self.commandDelegate runInBackground:^{
+        
+        if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        NSString *thirdPartyID = command.arguments[0];
+        [ADBMobile targetSetThirdPartyID:thirdPartyID];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+    }];
+}
+
+- (void)targetThirdPartyID:(CDVInvokedUrlCommand*)command{
+    [self.commandDelegate runInBackground:^{
+        
+        NSString *thirdPartyID = [ADBMobile targetThirdPartyID];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:thirdPartyID] callbackId:command.callbackId];
+    }];
+
 }
 
 - (void)acquisitionCampaignStartForApp:(CDVInvokedUrlCommand*)command {
@@ -654,19 +792,102 @@
 	}];
 }
 
+- (void)visitorSyncIdentifierWithType:(CDVInvokedUrlCommand*)command {
+    [self.commandDelegate runInBackground:^{
+        
+        if(!checkArgsWithTypes(command.arguments, @[@[STRING], @[STRING],@[NUMBER]]))
+        {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        CDVPluginResult* pluginResult = nil;
+        NSString *identifierType = getArg(command.arguments[0]);
+        NSString *identifier = getArg(command.arguments[1]);
+        NSString *authStateString = getArg(command.arguments[2]);
+        int authState = [authStateString intValue];
+        
+        if (authState >= 0 && authState <= 2)
+        {
+            [ADBMobile visitorSyncIdentifierWithType:identifierType identifier:identifier authenticationState:authState];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"visitorSyncIdentifierWithType"];
+        }
+        else
+        {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"AuthenticationState was an unknown value"];
+        }
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    
+    }];
+}
+
+
+- (void)visitorSyncIdentifiersWithAuthenticationState:(CDVInvokedUrlCommand*)command {
+
+    [self.commandDelegate runInBackground:^{
+        
+        if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY], @[NUMBER]]))
+        {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        CDVPluginResult* pluginResult = nil;
+        
+        NSDictionary *firstArg = getArg(command.arguments[0]);
+        int authState = [getArg(command.arguments[1]) integerValue];
+        
+        if (authState >= 0 && authState <= 2)
+        {
+            [ADBMobile visitorSyncIdentifiers:firstArg authenticationState:authState];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"visitorSyncIdentifiers"];
+        }
+        else
+        {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"AuthenticationState was an unknown value"];
+        }
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
+}
+
 - (void)visitorSyncIdentifiers:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
-		if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]])) {
-			[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
-			return;
-		}
-		
-		NSDictionary *identifiers = getArg(command.arguments[0]);
-		
-		[ADBMobile visitorSyncIdentifiers:identifiers];
-		
-		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
-	}];
+        
+        if(!checkArgsWithTypes(command.arguments, @[@[DICTIONARY]]))
+        {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        [ADBMobile visitorSyncIdentifiers:getArg(command.arguments[0])];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"visitorSyncIdentifiers"] callbackId:command.callbackId];
+    }];
+}
+
+
+- (void)visitorAppendToURL: (CDVInvokedUrlCommand*)command{
+    
+    [self.commandDelegate runInBackground:^{
+        if(!checkArgsWithTypes(command.arguments, @[@[STRING]])) {
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
+            return;
+        }
+        
+        NSString *visitorUrlString = getArg(command.arguments[0]);
+        NSURL *visitorUrl = [NSURL URLWithString:visitorUrlString];
+        NSString *finalURLString = [[ADBMobile visitorAppendToURL:visitorUrl] absoluteString];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:finalURLString] callbackId:command.callbackId];
+    }];
+}
+
+- (void)visitorGetIDs:(CDVInvokedUrlCommand*)command{
+    [self.commandDelegate runInBackground:^{
+        NSArray *visitorIdJSONArray = [self visitorGetIDsJs];
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsArray:visitorIdJSONArray];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
 }
 
 /*
@@ -697,6 +918,16 @@ static BOOL checkArgsWithTypes(NSArray* arguments, NSArray* types) {
 	}
 	
 	return YES;
+}
+
+- (nullable NSArray *) visitorGetIDsJs{
+    NSArray* visitorIDs = [ADBMobile visitorGetIDs];
+    NSMutableArray* visitorIDsJSArray = [NSMutableArray array];
+    for(ADBVisitorID* visitorID in visitorIDs){
+        NSDictionary* dict = @{VisitorId_IdType: visitorID.idType?:@"", VisitorId_Id: visitorID.identifier?:@"", VisitorId_AuthenticationState: [NSNumber numberWithInt:visitorID.authenticationState]};
+        [visitorIDsJSArray addObject:dict];
+    }
+    return visitorIDsJSArray;
 }
 
 static id getArg(id argument) { return argument == (id)[NSNull null] ? nil : argument; }
