@@ -6,9 +6,9 @@
     
     "versions": { 
 		"sdks": {
-			"ios": "4.13.0",
+			"ios": "4.13.1",
 			"osx": null,
-			"android": "4.13.0",
+			"android": "4.13.1",
 			"windows": "4.0.0",
 			"uwp": "4.0.0",
 			"xboxone": null,
