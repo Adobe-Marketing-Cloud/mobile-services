@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.13.2 (10 Nov, 2016)
+- Visitor ID Service - Added timestamp and Marketing Cloud Organization ID to adobe_mc parameter
+- Deep Linking - When calling trackAdobeDeepLink, variables prefixed with "adb" and "ctx" are now handled properly
+
 4.13.1 (20 Oct, 2016)
 - Acquisition - The SDK now supports for custom acquisition data to be returned appropriately by AdobeDataCallback invocations
 - Acquisition - The SDK now stores Google Play Referrer variables and custom variables and returns them appropriately in AdobeDataCallback invocations
