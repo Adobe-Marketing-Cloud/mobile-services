@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.13.2 (10 Nov, 2016)
+- Visitor ID Service - Added timestamp and Marketing Cloud Organization ID to adobe_mc parameter
+- Configuration - Invalid IDFAs (00000000-0000-0000-0000-000000000000) passed to the SDK via setAdvertisingIdentifier: will be ignored
+- Deep Linking - When calling trackAdobeDeepLink, variables prefixed with "adb" and "ctx" are now handled properly
+- Acquisition - Data from Apple Search Ads will now be sent along with your Acquisition data
+
 4.13.1 (20 Oct, 2016)
 - Acquisition - The SDK now supports for custom acquisition data to be returned appropriatly by AdobeDataCallback invocations
 - Target - Visitor ID Service params are now passed in Target requests via mboxParams
