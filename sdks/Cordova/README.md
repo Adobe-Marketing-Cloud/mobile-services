@@ -14,3 +14,8 @@
 
 ###Configuration
 1. Place the ADBMobileConfig.json file downloaded from Adobe Mobile Services in the `www` directory
+2. Setup is complete. The Adobe library is now accessible within the index.html file via "window.ADB"
+	
+	```html
+	<button style="height:200px; width:600px" onclick = "window.ADB.trackState('login page', {'user':'john','remember':'true'});">sampleHit</button>
+	```
