@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.13.3 (19 Jan, 2017)
+- In App Messaging - Fixed a bug that prevented alert messages without a click-through button from displaying
+- Analytics - Improved handling of read-only database access
+- Universal Links - Fixed a bug that was causing deferred deep links attached to acquisition data to fire on successive launches
+
 4.13.2 (10 Nov, 2016)
 - Visitor ID Service - Added timestamp and Marketing Cloud Organization ID to adobe_mc parameter
 - Deep Linking - When calling trackAdobeDeepLink, variables prefixed with "adb" and "ctx" are now handled properly
