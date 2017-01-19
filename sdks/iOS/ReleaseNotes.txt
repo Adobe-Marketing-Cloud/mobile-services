@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.13.3 (19 Jan, 2017)
+- In App Messaging - Disable fullscreen messages when VoiceOver is running
+- Analytics - Improved handling of read-only database access
+- Fixed an issue that could sometimes cause a crash when calling a tracking method from the background while using App Groups
+
 4.13.2 (10 Nov, 2016)
 - Visitor ID Service - Added timestamp and Marketing Cloud Organization ID to adobe_mc parameter
 - Configuration - Invalid IDFAs (00000000-0000-0000-0000-000000000000) passed to the SDK via setAdvertisingIdentifier: will be ignored
