@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.13.6 (15 June, 2017)
+- Visitor ID Service - The syncIdentifiers APIs now allow you to overwrite an existing value for an ID
+- Analytics - Additional data is now automatically sent on every Analytics hit indicating whether the app was in the foreground or the background at the time the hit was generated
+
 4.13.5 (20 Apr, 2017)
 - Visitor ID Service - Fixed a bug causing a crash when custom identifiers were used that contained an equals sign
 - Visitor ID Service - The server endpoint is now configurable via the ADBMobileConfig.json file
