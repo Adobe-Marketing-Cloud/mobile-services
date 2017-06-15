@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.13.5
+//  SDK Version: 4.13.6
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -80,7 +80,10 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  * 	@brief Gets the version.
  *  @return a string pointer containing the version value.
  */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverriding-method-mismatch"
 + (nonnull NSString *) version;
+#pragma GCC diagnostic pop
 
 /**
  * 	@brief Gets the privacy status.
