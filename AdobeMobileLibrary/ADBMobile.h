@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.13.6
+//  SDK Version: 4.13.7
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
