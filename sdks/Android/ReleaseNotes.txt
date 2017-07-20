@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.13.7 (20 July, 2017)
+- Target - Fixed a bug to now gracefully handle unexpected network stack errors.
+- Audience Manager - Added safe URL encoding of DPUUID
+- Push Messaging - Synchronize the push token with the backend services only when the token has changed
+
 4.13.6 (15 June, 2017)
 - Visitor ID Service - The syncIdentifiers APIs now allow you to overwrite an existing value for an ID
 - Analytics - Additional data is now automatically sent on every Analytics hit indicating whether the app was in the foreground or the background at the time the hit was generated
