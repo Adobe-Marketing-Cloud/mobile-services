@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.13.8 (17 Aug, 2017)
+- In App Messaging - Fixed an issue preventing fullscreen messages from being dismissed when the top-most UIWindow has userInteraction disabled
+- Analytics - Fixed a bug that was allowing unicode characters to be used in contextData keys
+
 4.13.7 (20 Jul, 2017)
 - General - Fixed Xcode 9 beta warnings 
 - Audience Manager - Added safe URL encoding of DPUUID param provided in audienceSetDpid:dpuuid: method
