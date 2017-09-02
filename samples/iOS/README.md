@@ -24,6 +24,8 @@ https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 ================
 == Change Log ==
 ================
+1.6 (5 Sept, 2017)
+- ADBMobileSamples - Fixed sample player. Removed Gallery viewcontroller to remove dependency on a static library that is not bitcode enabled .
 
 1.5 (May 25, 2016)
 - App updated with SDK 4.10.0

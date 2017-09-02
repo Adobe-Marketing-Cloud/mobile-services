@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.10.0
+//  SDK Version: 4.13.8
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
@@ -29,9 +29,19 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @see visitorSyncIdentifiers
  */
 typedef NS_ENUM(NSUInteger, ADBMobileVisitorAuthenticationState) {
-	ADBMobileVisitorAuthenticationStateUnknown   = 0, /*!< Enum value ADBMobileVisitorAuthenticationStateUnknown. */
-	ADBMobileVisitorAuthenticationStateAuthenticated  = 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
-	ADBMobileVisitorAuthenticationStateLoggedOut = 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
+	ADBMobileVisitorAuthenticationStateUnknown			= 0, /*!< Enum value ADBMobileVisitorAuthenticationStateUnknown. */
+	ADBMobileVisitorAuthenticationStateAuthenticated	= 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
+	ADBMobileVisitorAuthenticationStateLoggedOut		= 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
+};
+
+/**
+ * 	@brief An enum type.
+ *  The possible types of app extension you might use
+ *  @see setAppExtensionType
+ */
+typedef NS_ENUM(NSUInteger, ADBMobileAppExtensionType) {
+	ADBMobileAppExtensionTypeRegular	= 0, /*!< Enum value ADBMobileAppExtensionTypeRegular. */
+	ADBMobileAppExtensionTypeStandAlone	= 1 /*!< Enum value ADBMobileAppExtensionTypeStandAlone. */
 };
 
 /**
@@ -70,7 +80,10 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  * 	@brief Gets the version.
  *  @return a string pointer containing the version value.
  */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverriding-method-mismatch"
 + (nonnull NSString *) version;
+#pragma GCC diagnostic pop
 
 /**
  * 	@brief Gets the privacy status.
@@ -163,6 +176,14 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 + (void) setAppGroup: (nullable NSString *) appGroup;
 
 /**
+ *	@brief Configures the Adobe Mobile SDK setting to determines what kind of extension is currently being executed.
+ *	@note When using the extension library, please refer to the online documentation to help you decide which setting you need
+ *	@param type an ADBMobileAppExtensionType value indicating the type of extension for your currently running executable
+ *  @see ADBMobileAppExtensionType
+ */
++ (void) setAppExtensionType:(ADBMobileAppExtensionType)type;
+
+/**
  *	@brief Synchronize certain defaults between a Watch app and the iOS app in the SDK via Watch Connectivity
  *	@note This method should only be used in WCSessionDelegate methods.
  *  @return a bool value indicating if the settings dictionary was meant for consumption by ADBMobile
@@ -181,7 +202,6 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @param tvController is the TVApplicationController initialized to bridge the native and JS environments for the app
  */
 + (void) installTVMLHooks:(nullable TVApplicationController *)tvController;
-
 
 /**
  * 	@brief Register the callback for Adobe data. The callback block will get called when SDK receive any form of data that is populated by the sdk automatically (eg. lifecycle, acquisition).
@@ -291,7 +311,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 /**
  * 	@brief Tracks the end of a timed event
  *  @param action a required NSString pointer that denotes the action name to finish tracking.
- * 	@param logic optional block to perform logic and update parameters when this timed event ends, this block can cancel the sending of the hit by returning NO.
+ * 	@param block optional block to perform logic and update parameters when this timed event ends, this block can cancel the sending of the hit by returning NO.
  *  @note This method will send a tracking hit if the parameter logic is nil or returns YES.
  */
 + (void) trackTimedActionEnd:(nullable NSString *)action
@@ -443,6 +463,24 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 						  callback:(nullable void (^)(NSString* __nullable content))callback;
 
 /**
+ * 	@brief Processes a Target service request.
+ * 	@param name a string pointer containing the name of the mbox
+ *  @param defaultContent a string pointer containing the content to be returned on failure
+ *  @param profileParameters a dictionary of parameters to be added to the profile
+ *  @param orderParameters a dictionary
+ *  @param mboxParameters a dictionary of parameters for the mbox
+ *	@param requestLocationParameters a dictionary of parameters for request location
+ * 	@param callback a block pointer to call with a response string pointer parameter upon completion of the service request.
+ */
++ (void) targetLoadRequestWithName:(nullable NSString *)name
+					defaultContent:(nullable NSString *)defaultContent
+				 profileParameters:(nullable NSDictionary *)profileParameters
+				   orderParameters:(nullable NSDictionary *)orderParameters
+					mboxParameters:(nullable NSDictionary *)mboxParameters
+		 requestLocationParameters:(nullable NSDictionary *)requestLocationParameters
+						  callback:(nullable void (^)(NSString* __nullable content))callback;
+
+/**
  * 	@brief Creates a ADBTargetLocationRequest populated with the parameters.
  * 	@param name a string pointer.
  * 	@param defaultContent a string pointer.
@@ -478,7 +516,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 
 /**
  * 	@brief Sets the custom visitor ID for target
- *	@param thirdPartyId a string pointer containing the value of the third party id (custom visitor id)
+ *	@param thirdPartyID a string pointer containing the value of the third party id (custom visitor id)
  */
 + (void) targetSetThirdPartyID:(nullable NSString *)thirdPartyID;
 
@@ -548,13 +586,13 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 
 /**
  *	@brief Synchronizes the provided identifiers to the visitor id service
- *	@param dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
+ *	@param identifiers a dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
  */
 + (void) visitorSyncIdentifiers: (nullable NSDictionary *) identifiers;
 
 /**
  *	@brief Synchronizes the provided identifiers to the visitor id service
- *	@param dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
+ *	@param identifiers a dictionary containing identifiers, with the keys being the id types and the values being the correlating identifiers
  *	@param authState a authentication state will be applied for all the items in identifiers dictionary
  */
 + (void) visitorSyncIdentifiers: (nullable NSDictionary *) identifiers authenticationState:(ADBMobileVisitorAuthenticationState) authState;
@@ -573,11 +611,18 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  */
 + (nullable NSArray *) visitorGetIDs;
 
+/**
+ *  @brief Appends visitor identifiers to the given URL
+ *  @return NSURL object containing the modified URL
+ *	@note This method can cause a blocking network call.  Blocking time is limited to 100ms, but care should still be taken to not call this on time-sensitive threads.
+ */
++ (nullable NSURL *) visitorAppendToURL: (nullable NSURL *) url;
+
 #pragma mark - PII collection
 
 /**
  *	@brief Submits a PII collection request
- *	@param dictionary pointer containing PII data
+ *	@param data a dictionary containing PII data
  */
 + (void) collectPII:(nullable NSDictionary<NSString *, NSString *> *)data;
 
