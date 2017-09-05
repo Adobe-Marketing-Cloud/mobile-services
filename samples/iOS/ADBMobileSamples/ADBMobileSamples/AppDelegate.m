@@ -12,7 +12,6 @@ written permission of Adobe.
 **************************************************************************/
 
 #import "AppDelegate.h"
-#import "GalleryViewController.h"
 #import "SimpleTrackingController.h"
 #import "PostbackController.h"
 #import "InAppMessageViewController.h"
@@ -21,19 +20,17 @@ written permission of Adobe.
 #import "MediaViewController.h"
 #import "TimedActionController.h"
 
+
+// Uncomment after including the facebook sdks.
+/*@import FBSDKCoreKit;
+@import Bolts;*/
+
 /*
  * Adobe Tracking - Analytics
  *
  * import ADBMobile.h so we can use methods from the SDK
  */
 #import "ADBMobile.h"
-
-/*
- * Debug setting
- *
- * uncomment to use ADBMobileConfigBloodhound.json
- */
-//#define debug
 
 static NSString *const ACTION_WINK_IDENTIFIER =         @"WINK_IDENTIFIER";
 static NSString *const ACTION_SUNGLASSES_IDENTIFIER	=   @"SUNGLASSES_IDENTIFIER";
@@ -47,13 +44,21 @@ static NSString *const ACTION_SUNGLASSES_IDENTIFIER	=   @"SUNGLASSES_IDENTIFIER"
 	 * turn on debug logging for the ADBMobile SDK
      * enable the collection of lifecycle data
 	 */
-	
-	// switch to determine which config file to use based on run mode
-#ifdef debug
-	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ADBMobileConfigBloodhound" ofType:@"json"];
-	[ADBMobile overrideConfigPath:filePath];
-#endif
-	
+
+        if (launchOptions[UIApplicationLaunchOptionsURLKey] == nil) {
+            if (NSClassFromString(@"FBSDKAppLinkUtility") != nil)
+            {
+                [NSClassFromString(@"FBSDKAppLinkUtility") performSelector:@selector(fetchDeferredAppLink:) withObject:^(NSURL *url, NSError *error) {
+                    if (error) {
+                        NSLog(@"Received error while fetching deferred app link %@", error);
+                    }
+                    if (url) {
+                        [[UIApplication sharedApplication] openURL:url];
+                    }
+                }];
+            }
+    }
+		
 	[ADBMobile setDebugLogging:YES];
     [ADBMobile collectLifecycleData];
     [ADBMobile registerAdobeDataCallback:^(ADBMobileDataEvent event, NSDictionary * _Nullable adobeData) {
@@ -131,9 +136,7 @@ static NSString *const ACTION_SUNGLASSES_IDENTIFIER	=   @"SUNGLASSES_IDENTIFIER"
     NSString *path = url.path;
     NSDictionary *queryParams = [self parseQueryString:url.query];
     UIViewController *viewController;
-    if ([path isEqualToString:@"/GalleryViewController"]) {
-        viewController = (GalleryViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"GalleryViewController"];
-    } else if ([path isEqualToString:@"/SimpleTrackingController"]) {
+    if ([path isEqualToString:@"/SimpleTrackingController"]) {
         viewController = [mainStoryboard instantiateViewControllerWithIdentifier: @"SimpleTrackingController"];
     } else if ([path isEqualToString:@"/LifetimeValueController"]) {
         viewController = [mainStoryboard instantiateViewControllerWithIdentifier: @"LifetimeValueController"];
@@ -148,7 +151,10 @@ static NSString *const ACTION_SUNGLASSES_IDENTIFIER	=   @"SUNGLASSES_IDENTIFIER"
     } else if ([path isEqualToString:@"/InAppMessageViewController"]) {
         viewController = [mainStoryboard instantiateViewControllerWithIdentifier: @"InAppMessageViewController"];
     }
-    [mainController presentViewController:viewController animated:NO completion:^{}];
+    
+    if (viewController){
+        [mainController presentViewController:viewController animated:NO completion:^{}];
+    }
 }
 
 - (NSDictionary *)parseQueryString:(NSString *)query {
@@ -235,6 +241,7 @@ static NSString *const ACTION_SUNGLASSES_IDENTIFIER	=   @"SUNGLASSES_IDENTIFIER"
                                                                                  categories:categories];
         
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];        
     }
     else {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge

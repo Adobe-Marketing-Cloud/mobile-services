@@ -1,5 +1,5 @@
 {
-    "lastModified": "2016-03-07T19:03:46.705Z",
+    "lastModified": "2017-08-08T14:40:13.838Z",
     "marketingCloud": {
         "org": "3CE342C75100435B0A490D4C@AdobeOrg"
     },
@@ -18,7 +18,7 @@
     },
     "analytics": {
         "rsids": "adobemobiledemo",
-        "server": "obumobile1.sc.omtrdc.net",
+        "server": "adobemobiledemo.sc.omtrdc.net",
         "ssl": false,
         "offlineEnabled": true,
         "charset": "ISO-8859-1",
@@ -64,12 +64,46 @@
     },
     "messages": [
                  {
+                 "messageId": "6a8c02c2-cd41-456d-ad80-269e1c7d880c",
+                 "template": "alert",
+                 "payload": {
+                 "title": "Message Header",
+                 "content": "Message Content",
+                 "confirm": "Yes",
+                 "cancel": "No"
+                 },
+                 "showOffline": false,
+                 "showRule": "always",
+                 "endDate": 2524730400,
+                 "startDate": 0,
+                 "audiences": [
+                               {
+                               "key": "a.OSVersion",
+                               "matches": "sw",
+                               "values": [
+                                          "Android"
+                                          ]
+                               }
+                               ],
+                 "triggers": [
+                              {
+                              "key": "evar3",
+                              "matches": "ex",
+                              "values": null
+                              }
+                              ]
+                 },
+                 {
                  "messageId": "ca4617f5-b1c6-4078-b9c6-89df336b6064",
                  "template": "local",
                  "payload": {
                  "content": "Example interactive notification",
                  "wait": 5,
-                 "category": "EXAMPLE_CATEGORY_TRACK"
+                 "category": "EXAMPLE_CATEGORY_TRACK",
+                 "userData": {
+                 "samplePayloadKey": "samplePayloadValue"
+                 },
+                 "sound": "sampleSound.caf"
                  },
                  "showOffline": true,
                  "showRule": "always",
@@ -161,7 +195,6 @@
                  },
                  {
                  "messageId": "03119510-05b3-44cc-ad20-069d9deb7041",
-                 "recipient": "Custom",
                  "payload": {
                  "templateurl": "https://docs.google.com/forms/d/1HKW23dj8ZRbIagoko-abcXI4V-o4HCrNxsn_S_LBg7w/formResponse",
                  "templatebody": "ZW50cnkuNDE5MjczMjEyPXthLmFjdGlvbn0mZW50cnkuOTcwMTM0NjIwPXthLmRldmljZW5hbWV9JmVudHJ5LjM4NjUyMTcxPXtrMX0mZW50cnkuMTQzNjA3Nzk2Mj17azJ9",

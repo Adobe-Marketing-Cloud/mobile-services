@@ -96,8 +96,8 @@ written permission of Adobe.
         return;
     }
     
-    _textView.textColor = [newColors[0] color];
-    _backgroundView.backgroundColor = [newColors[1] color];
+    _textView.textColor = (__bridge UIColor * _Nullable)([newColors[0] color]);
+    _backgroundView.backgroundColor = (__bridge UIColor * _Nullable)([newColors[1] color]);
 }
 
 - (IBAction) sendSeattle {
