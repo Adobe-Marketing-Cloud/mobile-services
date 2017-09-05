@@ -67,10 +67,6 @@ static NSString *const ACTION_SUNGLASSES_IDENTIFIER	=   @"SUNGLASSES_IDENTIFIER"
     }
 	
     // switch to determine which config file to use based on run mode
-#ifdef debug
-	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ADBMobileConfigBloodhound" ofType:@"json"];
-	[ADBMobile overrideConfigPath:filePath];
-#endif
 	
 	[ADBMobile setDebugLogging:YES];
     [ADBMobile collectLifecycleData];
