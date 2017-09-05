@@ -47,7 +47,6 @@
 		09F8FF0A1C6BEBD40035B986 /* PostbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostbackController.h; path = Controllers/PostbackController.h; sourceTree = "<group>"; };
 		09F8FF0B1C6BEBD40035B986 /* PostbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostbackController.m; path = Controllers/PostbackController.m; sourceTree = "<group>"; };
 		54073E1E1B67EE3B00CD9E83 /* AdobeMobileLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary.a; sourceTree = "<group>"; };
-		542F8DBD1AC2083400A43D1B /* ADBMobileConfigBloodhound.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ADBMobileConfigBloodhound.json; sourceTree = "<group>"; };
 		E95D91C51829B958006BB662 /* ADBMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBMobile.h; sourceTree = "<group>"; };
 		E9DCE56617E7B13300292D1E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E9DCE56B17E7B28200292D1E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -257,7 +256,6 @@
 				E95D91C51829B958006BB662 /* ADBMobile.h */,
 				54073E1E1B67EE3B00CD9E83 /* AdobeMobileLibrary.a */,
 				F05CF73717E2B2BB00146B88 /* ADBMobileConfig.json */,
-				542F8DBD1AC2083400A43D1B /* ADBMobileConfigBloodhound.json */,
 			);
 			path = AdobeMobile;
 			sourceTree = "<group>";
@@ -412,10 +410,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;

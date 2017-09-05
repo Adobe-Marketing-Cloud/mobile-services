@@ -32,13 +32,6 @@ written permission of Adobe.
  */
 #import "ADBMobile.h"
 
-/*
- * Debug setting
- *
- * uncomment to use ADBMobileConfigBloodhound.json
- */
-//#define debug
-
 static NSString *const ACTION_WINK_IDENTIFIER =         @"WINK_IDENTIFIER";
 static NSString *const ACTION_SUNGLASSES_IDENTIFIER	=   @"SUNGLASSES_IDENTIFIER";
 
@@ -65,9 +58,7 @@ static NSString *const ACTION_SUNGLASSES_IDENTIFIER	=   @"SUNGLASSES_IDENTIFIER"
                 }];
             }
     }
-	
-    // switch to determine which config file to use based on run mode
-	
+		
 	[ADBMobile setDebugLogging:YES];
     [ADBMobile collectLifecycleData];
     [ADBMobile registerAdobeDataCallback:^(ADBMobileDataEvent event, NSDictionary * _Nullable adobeData) {
