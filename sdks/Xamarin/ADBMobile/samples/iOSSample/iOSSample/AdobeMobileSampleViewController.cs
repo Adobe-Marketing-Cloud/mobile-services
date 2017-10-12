@@ -283,7 +283,7 @@ namespace AdobeMobileSample
 						settings.Milestones = "25,50,75";
 						break;
 					case 28: // mediaAdCreateSettingsWithName
-						ADBMediaSettings adSettings = ADBMobile.MediaAdCreateSettings("adName1", 2, "playerName1", "name1", "podName1", 4, "CPM1");
+						ADBMobile.MediaAdCreateSettings("adName1", 2, "playerName1", "name1", "podName1", 4, "CPM1");
 						break;
 					case 29: // mediaOpenWithSettings
 						ADBMobile.MediaOpenWithSettings(settings, (state) =>
