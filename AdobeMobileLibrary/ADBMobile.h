@@ -2,12 +2,13 @@
 //  ADBMobile.h
 //  Adobe Digital Marketing Suite -- iOS Application Measurement Library
 //
-//  Copyright 1996-2016. Adobe, Inc. All Rights Reserved
+//  Copyright 1996-2017. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.13.8
+//  SDK Version: 4.14.0
 
 #import <Foundation/Foundation.h>
-@class CLLocation, CLBeacon, TVApplicationController, ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState;
+@class CLLocation, CLBeacon, TVApplicationController,
+ADBTargetLocationRequest, ADBMediaSettings, ADBMediaState, ADBTargetPrefetchObject, ADBTargetRequestObject;
 
 #pragma mark - ADBMobile
 
@@ -18,9 +19,9 @@
  *  @see setPrivacyStatus
  */
 typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
-	ADBMobilePrivacyStatusOptIn   = 1, /*!< Enum value ADBMobilePrivacyStatusOptIn. */
-	ADBMobilePrivacyStatusOptOut  = 2, /*!< Enum value ADBMobilePrivacyStatusOptOut. */
-	ADBMobilePrivacyStatusUnknown = 3  /*!< Enum value ADBMobilePrivacyStatusUnknown. @note only available in conjunction with offline tracking */
+    ADBMobilePrivacyStatusOptIn   = 1, /*!< Enum value ADBMobilePrivacyStatusOptIn. */
+    ADBMobilePrivacyStatusOptOut  = 2, /*!< Enum value ADBMobilePrivacyStatusOptOut. */
+    ADBMobilePrivacyStatusUnknown = 3  /*!< Enum value ADBMobilePrivacyStatusUnknown. @note only available in conjunction with offline tracking */
 };
 
 /**
@@ -29,9 +30,9 @@ typedef NS_ENUM(NSUInteger, ADBMobilePrivacyStatus) {
  *  @see visitorSyncIdentifiers
  */
 typedef NS_ENUM(NSUInteger, ADBMobileVisitorAuthenticationState) {
-	ADBMobileVisitorAuthenticationStateUnknown			= 0, /*!< Enum value ADBMobileVisitorAuthenticationStateUnknown. */
-	ADBMobileVisitorAuthenticationStateAuthenticated	= 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
-	ADBMobileVisitorAuthenticationStateLoggedOut		= 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
+    ADBMobileVisitorAuthenticationStateUnknown			= 0, /*!< Enum value ADBMobileVisitorAuthenticationStateUnknown. */
+    ADBMobileVisitorAuthenticationStateAuthenticated	= 1, /*!< Enum value ADBMobileVisitorAuthenticationStateAuthenticated. */
+    ADBMobileVisitorAuthenticationStateLoggedOut		= 2  /*!< Enum value ADBMobileVisitorAuthenticationStateLoggedOut. */
 };
 
 /**
@@ -40,8 +41,8 @@ typedef NS_ENUM(NSUInteger, ADBMobileVisitorAuthenticationState) {
  *  @see setAppExtensionType
  */
 typedef NS_ENUM(NSUInteger, ADBMobileAppExtensionType) {
-	ADBMobileAppExtensionTypeRegular	= 0, /*!< Enum value ADBMobileAppExtensionTypeRegular. */
-	ADBMobileAppExtensionTypeStandAlone	= 1 /*!< Enum value ADBMobileAppExtensionTypeStandAlone. */
+    ADBMobileAppExtensionTypeRegular	= 0, /*!< Enum value ADBMobileAppExtensionTypeRegular. */
+    ADBMobileAppExtensionTypeStandAlone	= 1 /*!< Enum value ADBMobileAppExtensionTypeStandAlone. */
 };
 
 /**
@@ -61,7 +62,7 @@ typedef NS_ENUM(NSUInteger, ADBMobileDataEvent) {
  *  Example: NSURL *url = callbackData[ADBConfigKeyCallbackDeepLink];
  */
 
-/* 
+/*
  * Used within ADBMobileDataCallback
  * Key for deep link URL.
  */
@@ -315,7 +316,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @note This method will send a tracking hit if the parameter logic is nil or returns YES.
  */
 + (void) trackTimedActionEnd:(nullable NSString *)action
-					   logic:(nullable BOOL (^)(NSTimeInterval inAppDuration, NSTimeInterval totalDuration, NSMutableDictionary* __nullable data))block;
+                       logic:(nullable BOOL (^)(NSTimeInterval inAppDuration, NSTimeInterval totalDuration, NSMutableDictionary* __nullable data))block;
 
 /**
  * 	@brief Returns whether or not a timed action is in progress
@@ -365,9 +366,9 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @return An ADBMediaSettings pointer.
  */
 + (nonnull ADBMediaSettings *) mediaCreateSettingsWithName:(nullable NSString *)name
-													length:(double)length
-												playerName:(nullable NSString *)playerName
-												  playerID:(nullable NSString *)playerID;
+                                                    length:(double)length
+                                                playerName:(nullable NSString *)playerName
+                                                  playerID:(nullable NSString *)playerID;
 
 /**
  * 	@brief Creates an ADBMediaSettings populated with the parameters.
@@ -380,12 +381,12 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @return An ADBMediaSettings pointer.
  */
 + (nonnull ADBMediaSettings *) mediaAdCreateSettingsWithName:(nullable NSString *)name
-													  length:(double)length
-												  playerName:(nullable NSString *)playerName
-												  parentName:(nullable NSString *)parentName
-												   parentPod:(nullable NSString *)parentPod
-										   parentPodPosition:(double)parentPodPosition
-														 CPM:(nullable NSString *)CPM;
+                                                      length:(double)length
+                                                  playerName:(nullable NSString *)playerName
+                                                  parentName:(nullable NSString *)parentName
+                                                   parentPod:(nullable NSString *)parentPod
+                                           parentPodPosition:(double)parentPodPosition
+                                                         CPM:(nullable NSString *)CPM;
 
 /**
  * 	@brief Opens a media item for tracking.
@@ -393,7 +394,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @param callback a block pointer to call with an ADBMediaState pointer every second.
  */
 + (void) mediaOpenWithSettings:(nullable ADBMediaSettings *)settings
-					  callback:(nullable void (^)(ADBMediaState* __nullable mediaState))callback;
+                      callback:(nullable void (^)(ADBMediaState* __nullable mediaState))callback;
 
 /**
  * 	@brief Closes a media item.
@@ -438,6 +439,70 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 + (void) mediaTrack:(nullable NSString *)name data:(nullable NSDictionary *)data;
 
 #pragma mark - Target
+/**
+ *  @brief Creates an ADBTargetPrefetchObject for the given name and mbox parameters
+ *  @param name NSString value representing the name for location/mbox you wish to prefetch
+ *  @param mboxParameters optional dictionary of key-value pairs representing mbox parameters for this request
+ *  @return a pointer to an ADBTargetPrefetchObject containing values provided by the parameters
+ *  @see ADBTargetPrefetchObject
+ *  @see targetPrefetchContentForObjects:withProfileParameters:callback:
+ */
++ (nullable ADBTargetPrefetchObject *) targetPrefetchObjectWithName:(nonnull NSString *)name
+                                                     mboxParameters:(nullable NSDictionary *)mboxParameters;
+
+/**
+ *  @brief Creates an ADBTargetRequestObject for the given name, default content, mbox parameters, and callback function pointer
+ *  @param name NSString value representing the name for location/mbox you wish to retrieve
+ *  @param defaultContent NSString value returned by the callback if the SDK is unable to retrieve content for the given mbox/location
+ *  @param mboxParameters optional dictionary of key-value pairs representing mbox parameters for this request
+ *  @param callback method which will be invoked once content is available for requested mbox/location
+ *  @return a pointer to an ADBTargetRequestObject containing pre-set values provided by the parameters
+ *  @see ADBTargetRequestObject
+ *  @see targetLoadRequests:withProfileParameters
+ */
++ (nullable ADBTargetRequestObject *) targetRequestObjectWithName:(nonnull NSString *)name
+                                                   defaultContent:(nonnull NSString *)defaultContent
+                                                   mboxParameters:(nullable NSDictionary *)mboxParameters
+                                                         callback:(nullable void (^)(NSString* __nullable content))callback;
+
+/**
+ *  @brief Prefetch multiple Target mboxes simultanously.  The content will be cached and returned immediately after
+ *         any prefetched mbox is requested
+ *  @param targetPrefetchObjectArray an array of ADBTargetPrefetchObjects representing the desired mboxes to prefetch
+ *  @param profileParameters a dictionary of key-value pairs used as profile parameters for all prefetch requests
+ *  @param callback a function pointer which will be called after the prefetch is complete.  The success parameter
+ *         in the callback will be YES if the prefetch completed successfully
+ *  @see targetPrefetchObjectWithName:mboxParameters:
+ *  @see ADBTargetPrefetchObject
+ */
++ (void) targetPrefetchContent:(nonnull NSArray *)targetPrefetchObjectArray
+         withProfileParameters:(nullable NSDictionary *)profileParameters
+                      callback:(nullable void(^)(BOOL success))callback;
+
+/**
+ *  @brief Retrieves content for multiple Target Locations at once.  The requests parameter contains ADBTargetRequestObject
+ *         objects.  Each ADBTargetRequestObject object must have a name and default content.  Once content is available for
+ *         the given mbox name, the callback in the ADBTargetRequestObject object will be called with content from Target
+ *  @param requests An array of ADBTargetRequestObject objects that will all be requested at once
+ *  @param profileParameters a dictionary of key-value pairs used as profile parameters for all locations in the requests array
+ *  @see ADBTargetRequestObject
+ *  @see targetRequestObjectWithName:defaultContent:mboxParameters:callback:
+ */
++ (void) targetLoadRequests:(nonnull NSArray *)requests
+      withProfileParameters:(nullable NSDictionary *)profileParameters;
+
+/**
+ *  @brief Clears data cached by Target Prefetch
+ */
++ (void) targetPrefetchClearCache;
+
+#if TARGET_OS_IOS
+/**
+ * 	@brief Receives the deeplink url calls the application when target preview experience is selected.
+ * 	@param callbackURL that openURL method should be passed for the application to handle.
+ */
++ (void) targetPreviewRestartDeepLink:(nullable NSString *)callbackURL;
+#endif
 
 /**
  * 	@brief Processes a Target service request.
@@ -456,11 +521,11 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  * 	@param callback a block pointer to call with a response string pointer parameter upon completion of the service request.
  */
 + (void) targetLoadRequestWithName:(nullable NSString *)name
-					defaultContent:(nullable NSString *)defaultContent
-				 profileParameters:(nullable NSDictionary *)profileParameters
-				   orderParameters:(nullable NSDictionary *)orderParameters
-					mboxParameters:(nullable NSDictionary *)mboxParameters
-						  callback:(nullable void (^)(NSString* __nullable content))callback;
+                    defaultContent:(nullable NSString *)defaultContent
+                 profileParameters:(nullable NSDictionary *)profileParameters
+                   orderParameters:(nullable NSDictionary *)orderParameters
+                    mboxParameters:(nullable NSDictionary *)mboxParameters
+                          callback:(nullable void (^)(NSString* __nullable content))callback;
 
 /**
  * 	@brief Processes a Target service request.
@@ -473,12 +538,12 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  * 	@param callback a block pointer to call with a response string pointer parameter upon completion of the service request.
  */
 + (void) targetLoadRequestWithName:(nullable NSString *)name
-					defaultContent:(nullable NSString *)defaultContent
-				 profileParameters:(nullable NSDictionary *)profileParameters
-				   orderParameters:(nullable NSDictionary *)orderParameters
-					mboxParameters:(nullable NSDictionary *)mboxParameters
-		 requestLocationParameters:(nullable NSDictionary *)requestLocationParameters
-						  callback:(nullable void (^)(NSString* __nullable content))callback;
+                    defaultContent:(nullable NSString *)defaultContent
+                 profileParameters:(nullable NSDictionary *)profileParameters
+                   orderParameters:(nullable NSDictionary *)orderParameters
+                    mboxParameters:(nullable NSDictionary *)mboxParameters
+         requestLocationParameters:(nullable NSDictionary *)requestLocationParameters
+                          callback:(nullable void (^)(NSString* __nullable content))callback;
 
 /**
  * 	@brief Creates a ADBTargetLocationRequest populated with the parameters.
@@ -489,8 +554,8 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @see targetLoadRequest:callback: for processing the returned ADBTargetLocationRequest pointer.
  */
 + (nullable ADBTargetLocationRequest *) targetCreateRequestWithName:(nullable NSString *)name
-													 defaultContent:(nullable NSString *)defaultContent
-														 parameters:(nullable NSDictionary *)parameters;
+                                                     defaultContent:(nullable NSString *)defaultContent
+                                                         parameters:(nullable NSDictionary *)parameters;
 
 /**
  * 	@brief Creates a ADBTargetLocationRequest populated with the parameters.
@@ -503,10 +568,10 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @see targetLoadRequest:callback: for processing the returned ADBTargetLocationRequest pointer.
  */
 + (nullable ADBTargetLocationRequest *) targetCreateOrderConfirmRequestWithName:(nullable NSString *)name
-																		orderId:(nullable NSString *)orderId
-																	 orderTotal:(nullable NSString *)orderTotal
-															 productPurchasedId:(nullable NSString *)productPurchasedId
-																	 parameters:(nullable NSDictionary *)parameters;
+                                                                        orderId:(nullable NSString *)orderId
+                                                                     orderTotal:(nullable NSString *)orderTotal
+                                                             productPurchasedId:(nullable NSString *)productPurchasedId
+                                                                     parameters:(nullable NSDictionary *)parameters;
 
 /**
  * 	@brief Gets the custom visitor ID for target
@@ -662,6 +727,37 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBTargetParameterMboxHost;         
 @property (nonatomic, strong, nullable) NSString *name;                   ///< The name of the target location.
 @property (nonatomic, strong, nullable) NSString *defaultContent;         ///< The default content that should be returned if the request fails.
 @property (nonatomic, strong, nullable) NSMutableDictionary *parameters;  ///< Optional. The parameters to be attached to the request.
+
+@end
+
+#pragma mark - ADBTargetPrefetchObject
+/**
+ *  @class ADBTargetPrefetchObject
+ *  This class contains the name of the Target location/mbox and a dictionary of mbox parameters to be used in a prefetch
+ *  @see targetPrefetchObjectWithName:mboxParameters:
+ *  @see targetPrefetchContentForObjects:withProfileParameters:callback:
+ */
+@interface ADBTargetPrefetchObject : NSObject
+
+@property (nonatomic, strong, nullable) NSString *name;						///< The name of the Target location/mbox
+@property (nonatomic, strong, nullable) NSDictionary *mboxParameters;		///< Dictionary containing key-value pairs of mbox parameters
+@property (nonatomic, strong, nullable) NSDictionary *productParameters;	///< Dictionary containing key-value pairs of product parameters
+@property (nonatomic, strong, nullable) NSDictionary *orderParameters;		///< Dictionary containing key-value pairs of order parameters
+
+@end
+
+#pragma mark - ADBTargetRequestObject
+/**
+ *  @class ADBTargetRequestObject
+ *  This class extends ADBTargetPrefetchObject, adding default content and a function pointer property which will be
+ *  used as a callback when requesting content from Target
+ *  @see targetRequestObjectWithName:defaultContent:mboxParameters:callback:
+ *  @see targetLoadRequests:withProfileParameters
+ */
+@interface ADBTargetRequestObject : ADBTargetPrefetchObject
+
+@property (nonatomic, strong, nonnull) NSString *defaultContent;                         ///< The default content that will be returned if Target servers are unreachable
+@property (nonatomic, strong, nullable) void (^callback)(NSString* __nullable content);  ///< Optional. When batch requesting Target locations, callback will be invoked when content is available for this location.
 
 @end
 
