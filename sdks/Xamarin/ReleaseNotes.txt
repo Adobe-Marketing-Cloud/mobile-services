@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/xamarin/
 
+4.13.8 (12 Oct, 2017)
+- Updated Plugin to use iOS Adobe Mobile Library 4.13.8
+- Updated Plugin to use Android Adobe Mobile Library 4.13.7
+
 4.13.1 (20 Oct, 2016)
 - Updated Plugin to use iOS Adobe Mobile Library 4.13.1
 - Updated Plugin to use Android Adobe Mobile Library 4.13.1

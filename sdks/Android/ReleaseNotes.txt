@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.14.0 (12 Oct, 2017)
+- New Feature - support for Target Preview
+- New Feature - Target Prefetch APIs
+
 4.13.7 (20 July, 2017)
 - Target - Fixed a bug to now gracefully handle unexpected network stack errors.
 - Audience Manager - Added safe URL encoding of DPUUID
