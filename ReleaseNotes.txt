@@ -5,6 +5,19 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.14.1 (26 Oct, 2017)
+- Analytics - Fixed rare issue where unsent hit count could drop below 0
+- Lifecycle - Fixed an issue rarely resulting in crashes being incorrectly reported
+
+4.14.0 (12 Oct, 2017)
+- Target - Support for Target Preview
+- Target - Support for Target Prefetch APIs
+- General - Updated for iOS 11
+
+4.13.8 (17 Aug, 2017)
+- In App Messaging - Fixed an issue preventing fullscreen messages from being dismissed when the top-most UIWindow has userInteraction disabled
+- Analytics - Fixed a bug that was allowing unicode characters to be used in contextData keys
+
 4.13.7 (20 Jul, 2017)
 - General - Fixed Xcode 9 beta warnings 
 - Audience Manager - Added safe URL encoding of DPUUID param provided in audienceSetDpid:dpuuid: method
