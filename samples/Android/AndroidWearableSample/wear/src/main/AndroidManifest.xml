@@ -4,6 +4,10 @@
 
     <uses-feature android:name="android.hardware.type.watch" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,8 +28,9 @@
 
         <service
             android:name=".WeareableListenerService" >
-            <intent-filter>
-                <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
+        <intent-filter>
+            <action android:name="com.google.android.gms.wearable.DATA_CHANGED" />
+            <data android:scheme="wear" android:host="*" android:pathPrefix="/abdmobile" />
             </intent-filter>
         </service>
     </application>
