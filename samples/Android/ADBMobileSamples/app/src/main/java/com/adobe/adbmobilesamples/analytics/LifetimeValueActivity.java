@@ -32,6 +32,7 @@ public class LifetimeValueActivity extends Activity {
 	private TextView _lblText;
 	private LinearLayout _layout;
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -40,6 +41,8 @@ public class LifetimeValueActivity extends Activity {
 		_lblText = (TextView)findViewById(R.id.lblLifetimeValueText);
 		_layout = (LinearLayout)findViewById(R.id.layoutLifetimeValue);
         updateLTVLabel();
+
+		Config.setContext(this.getApplicationContext());
 	}
 
 	@Override

@@ -8,24 +8,33 @@ import android.widget.EditText;
 
 import com.adobe.adbmobilesamples.R;
 import com.adobe.mobile.Analytics;
+import com.adobe.mobile.Config;
 
 import java.util.HashMap;
 
 public class PostbackActivity extends Activity {
+
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.postback);
+
+	    Config.setContext(this.getApplicationContext());
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+
+	    Config.pauseCollectingLifecycleData();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+	    Config.collectLifecycleData(this);
     }
 
     public void sendPostback(View view) {

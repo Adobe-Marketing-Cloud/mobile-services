@@ -21,7 +21,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
@@ -34,11 +33,11 @@ import com.adobe.adbmobilesamples.gallery.GalleryActivity;
 import com.adobe.adbmobilesamples.messaging.InAppMessagingActivity;
 import com.adobe.adbmobilesamples.messaging.RegistrationIntentService;
 import com.adobe.adbmobilesamples.postbacks.PostbackActivity;
+import com.adobe.adbmobilesamples.target.TargetPrefetchActivity;
 import com.adobe.adbmobilesamples.target.TargetingLocationActivity;
 import com.adobe.mobile.*;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -181,6 +180,11 @@ public class MenuActivity extends Activity implements LocationListener {
 	public void targetingLocations(View view) {
 		Intent targetingIntent = new Intent(this, TargetingLocationActivity.class);
 		startActivity(targetingIntent);
+	}
+
+	public void targetPrefetch(View view) {
+		Intent prefetchIntent = new Intent(this, TargetPrefetchActivity.class);
+		startActivity(prefetchIntent);
 	}
 
     public void lifetimeValue(View view) {

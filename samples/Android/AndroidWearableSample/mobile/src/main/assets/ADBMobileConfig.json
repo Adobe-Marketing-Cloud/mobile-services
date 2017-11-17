@@ -1,17 +1,20 @@
 {
     "version" : "1.0",
-    "analytics" : {
-        "rsids" : "appleWatchExample",
-        "server" : "192.168.1.142:50001",
-        "charset" : "UTF-8",
-        "ssl" : false,
-		"offlineEnabled" : true,
-        "lifecycleTimeout" : 300,
-		"referrerTimeout" : 0,
-        "batchLimit" : 0,
-        "privacyDefault" : "optedin",
-		"poi" : []
-    },
+	"analytics": {
+		"rsids": "rsids",
+		"server": "obumobile4.sc.omtrdc.net",
+		"ssl": false,
+		"offlineEnabled": true,
+		"charset": "UTF-8",
+		"lifecycleTimeout": 300,
+		"privacyDefault": "optedin",
+		"batchLimit": 0,
+		"timezone": "MST",
+		"timezoneOffset": -420,
+		"referrerTimeout": 5,
+		"backdateSessionInfo": false,
+		"poi": []
+	},
 	"target" : {
 		"clientCode" : "",
 		"timeout" : 5

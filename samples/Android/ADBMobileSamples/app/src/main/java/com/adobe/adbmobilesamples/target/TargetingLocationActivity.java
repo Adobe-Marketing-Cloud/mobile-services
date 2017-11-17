@@ -34,10 +34,13 @@ public class TargetingLocationActivity extends Activity {
 	private TextView _lblText;
 	private LinearLayout _layout;
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.targeting_location);
+
+		Config.setContext(this.getApplicationContext());
 
 		_lblText = (TextView)findViewById(R.id.lblTargetText);
 		_layout = (LinearLayout)findViewById(R.id.layoutTarget);

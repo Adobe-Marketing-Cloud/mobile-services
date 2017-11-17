@@ -32,6 +32,8 @@ public class InAppMessagingActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_app_messages);
+
+	    Config.setContext(this.getApplicationContext());
     }
 
     @Override

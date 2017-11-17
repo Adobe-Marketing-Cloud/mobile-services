@@ -31,10 +31,13 @@ public class VideoPlayerActivity extends Activity {
 	private static final String PLAYER_ID = "VideoView1";
 	private static final double MEDIA_LENGTH = 146;
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.video_player);
+
+		Config.setContext(this.getApplicationContext());
 
 		/*
 		 * Adobe Tracking - Media

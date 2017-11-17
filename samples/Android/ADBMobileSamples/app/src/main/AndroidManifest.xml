@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".target.TargetingLocationActivity" android:screenOrientation="portrait" />
+        <activity android:name=".target.TargetPrefetchActivity" android:screenOrientation="portrait" />
         <activity android:name=".analytics.SimpleTrackingActivity" android:screenOrientation="portrait" />
         <activity android:name=".gallery.GalleryActivity" android:screenOrientation="portrait" />
         <activity android:name=".analytics.TimedActionsActivity" android:screenOrientation="portrait" />
@@ -40,23 +41,6 @@
         <activity android:name=".analytics.VideoPlayerActivity" />
         <activity android:name=".messaging.InAppMessagingActivity" android:label="In-App Messages"/>
         <activity android:name="com.adobe.mobile.MessageFullScreenActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <!--<activity android:name=".deeplinks.ParseDeepLinkActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--<category android:name="android.intent.category.BROWSABLE" />-->
-                <!--&lt;!&ndash; Accepts URIs that begin with "http://www.example.com/gizmos” &ndash;&gt;-->
-                <!--<data android:scheme="http"-->
-                    <!--android:host="www.example.com"-->
-                    <!--android:pathPrefix="/gizmos" />-->
-                <!--&lt;!&ndash; note that the leading "/" is required for pathPrefix&ndash;&gt;-->
-                <!--&lt;!&ndash; Accepts URIs that begin with "example://gizmos” &ndash;&gt;-->
-                <!--<data android:scheme="com.adobe.example"-->
-                    <!--android:host="gizmos" />-->
-
-            <!--</intent-filter>-->
-        <!--</activity>-->
 
         <!--<activity android:name="deeplinks.ParseDeepLinkActivity">-->
             <!--<intent-filter>-->
