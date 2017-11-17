@@ -69,13 +69,23 @@
                 android:layout_marginRight="20dp" android:layout_marginBottom="20dp" android:background="#505050"
                 android:textColor="@android:color/white" android:minHeight="30dp" android:maxHeight="45dp"
                 android:enabled="true"/>
-            <Button android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="In-App Messages"
-                    android:id="@+id/button7" android:onClick="inAppMessaging"
-                    android:background="#505050" android:textColor="@android:color/white"
-                    android:minHeight="30dp" android:maxHeight="45dp" android:layout_gravity="center"
-                    android:layout_marginLeft="20dp" android:layout_marginRight="20dp"
-                    android:layout_marginBottom="20dp"/>
-            <Button
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Target Prefetch"
+                android:id="@+id/button9" android:layout_gravity="center"
+                android:onClick="targetPrefetch" android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" android:layout_marginBottom="20dp" android:background="#505050"
+                android:textColor="@android:color/white" android:minHeight="30dp" android:maxHeight="45dp"
+                android:enabled="true"/>
+        <Button
+                android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="In-App Messages"
+                android:id="@+id/button7" android:onClick="inAppMessaging"
+                android:background="#505050" android:textColor="@android:color/white"
+                android:minHeight="30dp" android:maxHeight="45dp" android:layout_gravity="center"
+                android:layout_marginLeft="20dp" android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"/>
+        <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:text="Lifetime Value"
@@ -83,15 +93,14 @@
                 android:onClick="lifetimeValue" android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" android:layout_marginBottom="20dp" android:background="#505050"
                 android:textColor="@android:color/white" android:minHeight="30dp" android:maxHeight="45dp"/>
-
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Postback"
-            android:id="@+id/button8" android:layout_gravity="center"
-            android:onClick="postback" android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" android:layout_marginBottom="20dp" android:background="#505050"
-            android:textColor="@android:color/white" android:minHeight="30dp" android:maxHeight="45dp"/>
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Postback"
+                android:id="@+id/button8" android:layout_gravity="center"
+                android:onClick="postback" android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" android:layout_marginBottom="20dp" android:background="#505050"
+                android:textColor="@android:color/white" android:minHeight="30dp" android:maxHeight="45dp"/>
     </LinearLayout>
 </LinearLayout>
 

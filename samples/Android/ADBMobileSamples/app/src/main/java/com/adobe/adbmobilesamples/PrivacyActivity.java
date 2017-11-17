@@ -26,10 +26,13 @@ import com.adobe.mobile.MobilePrivacyStatus;
 public class PrivacyActivity extends Activity {
 	private MobilePrivacyStatus currentStatus;
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.privacy_example);
+
+		Config.setContext(this.getApplicationContext());
 	}
 
 	@Override

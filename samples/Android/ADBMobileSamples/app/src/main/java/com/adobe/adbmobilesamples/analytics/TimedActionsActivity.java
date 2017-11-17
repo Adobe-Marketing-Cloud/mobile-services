@@ -26,10 +26,13 @@ import com.adobe.mobile.Config;
 import java.util.Map;
 
 public class TimedActionsActivity extends Activity {
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.timed_actions);
+
+		Config.setContext(this.getApplicationContext());
 	}
 
 	@Override

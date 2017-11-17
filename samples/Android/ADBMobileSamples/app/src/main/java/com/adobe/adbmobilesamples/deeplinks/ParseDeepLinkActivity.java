@@ -39,6 +39,7 @@ public class ParseDeepLinkActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+	    Config.setContext(this.getApplicationContext());
         Config.collectLifecycleData(this);
 
         Intent intent = getIntent();
