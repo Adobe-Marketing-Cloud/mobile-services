@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.14.2 (8 Feb, 2018)
+- General - Fixed a bug that was sometimes delaying the Analytics lifecycle launch from going out when the app resumed from background
+
 4.14.1 (26 Oct, 2017)
 - Analytics - Fixed rare issue where unsent hit count could drop below 0
 - Lifecycle - Fixed an issue rarely resulting in crashes being incorrectly reported
