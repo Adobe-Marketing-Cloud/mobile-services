@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
+
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
            id="adobe-mobile-services"
-      version="4.14.1">
+      version="4.14.2">
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
-    
+
 	<js-module src="sdks/Cordova/ADBMobile/Shared/ADB_Helper.js" name="ADB">
 	    <clobbers target="ADB"/>
 	</js-module>
-	
+
 	 <!-- ios -->
 	 <platform name="ios">
 		 <config-file target="config.xml" parent="/*">
@@ -20,11 +20,11 @@
 		 <header-file src="sdks/Cordova/ADBMobile/iOS/ADBMobile_PhoneGap.h" />
 		 <source-file src="sdks/Cordova/ADBMobile/iOS/ADBMobile_PhoneGap.m" />
 		 <header-file src="sdks/iOS/AdobeMobileLibrary/ADBMobile.h" />
-		 <source-file src="sdks/iOS/AdobeMobileLibrary/AdobeMobileLibrary.a" framework="true" />        
+		 <source-file src="sdks/iOS/AdobeMobileLibrary/AdobeMobileLibrary.a" framework="true" />
 		 <framework src="libsqlite3.dylib" />
 		 <framework src="SystemConfiguration.framework" />
 	 </platform>
-     
+
      <!-- android -->
 	 <platform name="android">
 		 <config-file target="res/xml/config.xml" parent="/*">
