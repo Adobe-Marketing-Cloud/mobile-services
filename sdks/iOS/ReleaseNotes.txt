@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.14.3 (16 Feb, 2018)
+- General - Fixed a bug that was causing some of the SDK processing to run on the main thread
+
 4.14.2 (8 Feb, 2018)
 - General - Fixed a bug that was sometimes delaying the Analytics lifecycle launch from going out when the app resumed from background
 
@@ -22,7 +25,7 @@ https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 - Analytics - Fixed a bug that was allowing unicode characters to be used in contextData keys
 
 4.13.7 (20 Jul, 2017)
-- General - Fixed Xcode 9 beta warnings 
+- General - Fixed Xcode 9 beta warnings
 - Audience Manager - Added safe URL encoding of DPUUID param provided in audienceSetDpid:dpuuid: method
 - Push Messaging - Synchronize the push token with the backend services only when the token has changed
 
@@ -72,9 +75,9 @@ https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 4.11.0 (16 Jun, 2016)
 - Target - New Target API for passing in requestLocation parameters
 - Target - Fixed the bug where mboxHost/orderId/orderTotal were not correctly handled in legacy Target API
-- Postbacks/In-App Messaging - Removed requirements on analytics for Postbacks and In-App Messaging 
-- Postbacks - Fixed the issue where post body was encoded when the content type is application/json  
-- Analytics - Fixed the issue of trackTimedAction not allowing non-string keys and values in context data  
+- Postbacks/In-App Messaging - Removed requirements on analytics for Postbacks and In-App Messaging
+- Postbacks - Fixed the issue where post body was encoded when the content type is application/json
+- Analytics - Fixed the issue of trackTimedAction not allowing non-string keys and values in context data
 
 4.10.0 (20 May, 2016)
 - New Feature - New Target API
@@ -84,7 +87,7 @@ https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 4.9.0 (5 May, 2016)
 - New Feature - deep linking with acquisition
 - New Feature - callback system allowing access to acquisition, deep link, and lifecycle information
-- New Feature - message payload support for local and push messaging 
+- New Feature - message payload support for local and push messaging
 
 4.8.6 (9 Mar, 2016)
 - In-App Messaging - fixed an issue that would cause full screen messages to not appear properly in specific environments
