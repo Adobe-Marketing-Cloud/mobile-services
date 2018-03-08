@@ -1,9 +1,17 @@
-Release Notes for iOS App Measurement Library version 4:
+Release Notes for Adobe Experience Cloud iOS Library version 4:
 
 Included are notes from the latest major revision to current.
 
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
+
+4.15.0 (8 Mar, 2018)
+- General - Improved reliability of background task usage
+- General - Added a new API to return all user identifiers known by the SDK
+- General - When changing privacy status, the SDK now has the following behaviors:
+  > Opted In - all new user identifiers will be accepted and used in network calls and token expansions
+  > Opted Out - the SDK purges all user identifiers it owns from memory and persistence.  New identifiers will not be accepted
+  > Unknown - new user identifiers will still be accepted and retrievable from the new API, but will not be used for network calls or token expansions
 
 4.14.3 (16 Feb, 2018)
 - General - Fixed a bug that was causing some of the SDK processing to run on the main thread

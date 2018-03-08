@@ -1,9 +1,18 @@
-Release Notes for Android App Measurement Library version 4.x:
+Release Notes for Adobe Experience Cloud Android Library version 4:
 
 Included are notes from the latest major revision to current.
 
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
+
+4.15.0 (8 Mar, 2018)
+- General - Fixed a leak when using the Target Preview feature
+- General - Fixed StrictMode policy violation related to a main thread disk read
+- General - Added a new API to return all user identifiers known by the SDK
+- General - When changing privacy status, the SDK now has the following behaviors:
+     > Opted In - all new user identifiers will be accepted and used in network calls and token expansions
+     > Opted Out - the SDK purges all user identifiers it owns from memory and persistence.  New identifiers will not be accepted
+     > Unknown - new user identifiers will still be accepted and retrievable from the new API, but will not be used for network calls or token expansions
 
 4.14.0 (12 Oct, 2017)
 - New Feature - support for Target Preview
@@ -57,8 +66,8 @@ https://marketing.adobe.com/resources/help/en_US/mobile/android/
 4.11.0 (16 Jun, 2016)
 - Target - New Target API for passing in requestLocation parameters
 - Target - Fixed the bug where mboxHost/orderId/orderTotal were not correctly handled in legacy Target API
-- Postbacks/In-App Messaging - Removed requirements on analytics for Postbacks and In-App Messaging 
-- Postbacks - Fixed the issue where post body was encoded when the content type is application/json  
+- Postbacks/In-App Messaging - Removed requirements on analytics for Postbacks and In-App Messaging
+- Postbacks - Fixed the issue where post body was encoded when the content type is application/json
 - Postbacks - Fixed a crash when key or value in context data was passed in as null and a postback was configured
 
 4.10.0 (19 May, 2016)
@@ -68,7 +77,7 @@ https://marketing.adobe.com/resources/help/en_US/mobile/android/
 4.9.0 (5 May, 2016)
 - New Feature - deep linking with acquisition
 - New Feature - callback system allowing access to acquisition, deep link, and lifecycle information
-- New Feature - message payload support for local and push messaging 
+- New Feature - message payload support for local and push messaging
 
 4.8.3 (18 Feb, 2016)
 - Configuration - privacy status is now respected for Target, Audience Manager, and Visitor ID Service activity
