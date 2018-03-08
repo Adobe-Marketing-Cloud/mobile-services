@@ -1,10 +1,10 @@
 //
 //  ADBMobile.h
-//  Adobe Digital Marketing Suite -- iOS Application Measurement Library
+//  Adobe Experience Cloud -- iOS Library
 //
-//  Copyright 1996-2017. Adobe, Inc. All Rights Reserved
+//  Copyright 1996-2018. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.14.3
+//  SDK Version: 4.15.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
@@ -690,6 +690,14 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *	@param data a dictionary containing PII data
  */
 + (void) collectPII:(nullable NSDictionary<NSString *, NSString *> *)data;
+
+#pragma mark - User Identification
+
+/**
+ * @brief Calls the provided callback with a JSON string containing all of the User's identifiers known by the SDK
+ * @param callback a void-returning method that has an NSString param containing a JSON string
+ */
++ (void) getAllIdentifiersAsync:(nullable void (^)(NSString* __nullable content))callback;
 
 @end
 
