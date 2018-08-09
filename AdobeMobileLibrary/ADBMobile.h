@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2018. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.16.0
+//  SDK Version: 4.16.1
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
@@ -210,7 +210,6 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  */
 + (void) registerAdobeDataCallback:(nullable void (^)(ADBMobileDataEvent event, NSDictionary* __nullable adobeData))callback;
 
-
 #pragma mark - Analytics
 
 /**
@@ -311,6 +310,10 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 
 /**
  * 	@brief Tracks the end of a timed event
+ *
+ *  Valid values for inAppDuration and totalDuration are non-negative and fewer than the number of seconds in a year.
+ *  If the value returned is negative, it is considered corrupt and will be ignored.
+ *
  *  @param action a required NSString pointer that denotes the action name to finish tracking.
  * 	@param block optional block to perform logic and update parameters when this timed event ends, this block can cancel the sending of the hit by returning NO.
  *  @note This method will send a tracking hit if the parameter logic is nil or returns YES.
