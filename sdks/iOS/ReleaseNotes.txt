@@ -5,6 +5,12 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.16.1 (9 Aug, 2018)
+- Analytics – Invalid timed action durations are now ignored
+- Visitor ID Service – Fixed a bug that prevented the MID from being generated in an unknown privacy setting
+- General – Added support to opt-out of Device Co-Op
+- General – Fixed a bug that prevented deeplink URLs with encoded values from being properly handled
+
 4.16.0 (1 June, 2018)
 - Visitor ID Service - Added a new API that will return a string containing Visitor ID Service related URL variables
 - Audience Manager - On privacy opt-out, a request is now sent to remove the user from all activation and reporting
