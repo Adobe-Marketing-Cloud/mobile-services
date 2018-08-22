@@ -45,6 +45,6 @@
 			 <receiver android:name="com.adobe.mobile.MessageNotificationHandler" />
 		 </config-file>
 		 <source-file src="sdks/Cordova/ADBMobile/Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/" />
-		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.16.1.jar" target-dir="app/libs" />
+		 <framework src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.16.1.jar" custom="true" />
 	 </platform>
 </plugin>
