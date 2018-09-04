@@ -10,6 +10,9 @@
 	    <clobbers target="ADB"/>
 	</js-module>
 
+	<engines>
+		<engine name="cordova-android" version=">=7.0.0"/>
+	</engines>
 	 <!-- ios -->
 	 <platform name="ios">
 		 <config-file target="config.xml" parent="/*">
@@ -42,6 +45,6 @@
 			 <receiver android:name="com.adobe.mobile.MessageNotificationHandler" />
 		 </config-file>
 		 <source-file src="sdks/Cordova/ADBMobile/Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/" />
-		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.16.1.jar" target-dir="libs" />
+		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.16.1.jar" target-dir="app/libs" />
 	 </platform>
 </plugin>
