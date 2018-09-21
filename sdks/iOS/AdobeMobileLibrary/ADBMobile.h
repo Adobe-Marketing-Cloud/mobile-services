@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2018. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.16.1
+//  SDK Version: 4.17.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
@@ -493,6 +493,25 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  */
 + (void) targetLoadRequests:(nonnull NSArray *)requests
       withProfileParameters:(nullable NSDictionary *)profileParameters;
+
+/**
+ * @brief Sends a click notification to Target if a click metric is defined for the provided location name.
+ *
+ * Click notification can be sent for a location provided a load request has been executed for that prefetched or regular mbox
+ * location before, indicating that the mbox was viewed. This request helps Target record the clicked event for the given location or mbox.
+ *
+ * @param name NSString value representing the name for location/mbox
+ * @param mboxParameters a dictionary of key-value pairs representing mbox parameters for this request
+ * @param productParameters a dictionary of key-value pairs representing product parameters for this request
+ * @param orderParameters a dictionary of key-value pairs representing order parameters for this request
+ * @param profileParameters a dictionary of key-value pairs representing profile parameters for this request
+ *
+ */
++ (void)locationClickedWithName:(nonnull NSString *)name
+                 mboxParameters: (nullable NSDictionary *) mboxParameters
+              productParameters: (nullable NSDictionary *) productParameters
+                orderParameters: (nullable NSDictionary *) orderParameters
+              profileParameters:(nullable NSDictionary *)profileParameters;
 
 /**
  *  @brief Clears data cached by Target Prefetch
