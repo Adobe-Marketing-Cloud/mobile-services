@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.17.0 (21 Sept, 2018)
+- Target – Added a new API to support reporting for users who click on a Target location
+
 4.16.1 (9 Aug, 2018)
 - Analytics – Invalid timed action durations are now ignored
 - Visitor ID Service – Fixed a bug that prevented the MID from being generated in an unknown privacy setting
