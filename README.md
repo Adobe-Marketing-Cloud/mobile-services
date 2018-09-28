@@ -1,6 +1,7 @@
+**Important: We've released a new, major version of the SDKs with a host of new features to the Adobe Cloud Platform SDKs. To access these SDKs, go to [Adobe Cloud Platform SDKs](https://github.com/Adobe-Marketing-Cloud/acp-sdks).**
+
 mobile-services
 ===============
-**Important: We've released a new, major version of the SDKs with a host of new features to the Adobe Cloud Platform SDKs. To access these SDKs, go to [Adobe Cloud Platform SDKs](https://github.com/Adobe-Marketing-Cloud/acp-sdks).**
 
 Native Mobile SDKs, dev tools and example apps.
 
