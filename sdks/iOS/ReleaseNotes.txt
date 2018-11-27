@@ -6,10 +6,10 @@ For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
 4.17.1 (27 Nov, 2018)
-- In App Messaging – Fixed an issue preventing token replacement from working properly on click-through URLs
+- In App Messaging – Expanded token replacement functionality in click-through URLs
 
 4.17.0 (21 Sep, 2018)
-- General – Added support to arm64_32 architecture for Apple Watch Series 4 devices.
+- General – Added support to arm64_32 architecture for Apple Watch Series 4 devices
 - Target – Added a new API to support reporting for users who click on a Target location
 
 4.16.1 (9 Aug, 2018)
