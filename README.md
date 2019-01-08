@@ -1,4 +1,4 @@
-**Important: We've released a new, major version of the SDKs with a host of new features to the Adobe Cloud Platform SDKs. To access these SDKs, go to [Adobe Cloud Platform SDKs](https://github.com/Adobe-Marketing-Cloud/acp-sdks).**
+**Important: As of September 2018, we've released a new, major version of the SDK. These new Adobe Experience Platform Mobile SDKs are configurable through [Experience Platform Launch](https://www.adobe.com/experience-platform/launch.html). Visit [Launch](https://launch.adobe.com) to get started. Experience Platform SDK repositories are here - [Github: Adobe Experience Platform SDKs](https://github.com/Adobe-Marketing-Cloud/acp-sdks).**
 
 mobile-services
 ===============
