@@ -8,11 +8,9 @@ This topic describes how to get started using Xamarin components for Mobile solu
 
 Last Updated:January 10, 2019
 
-This section contains the following information:
-
 Important: Adobe Mobile SDK is no longer available in the Xamarin Components Store or in the NuGet Gallery. To download the Xamarin components, go to [GitHub](https://github.com/Adobe-Marketing-Cloud/mobile-services).
 
-Android
+**Android**
 
 Import the ADBMobile Component to your Xamarin.Android Project:
 
@@ -22,26 +20,27 @@ Import the ADBMobile Component to your Xamarin.Android Project:
 4. Add your ADBMobileConfig.json file into the Assets folder of your project. 
 5. Add permissions for: INTERNET and ACCESS_NETWORK_STATE
 
+```
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+```
 6. Add the following activity and receiver if you are using In-app messaging:
 
-<activity 
-android:name="com.adobe.mobile.MessageFullScreenActivity" 
-android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+```
+<activity android:name="com.adobe.mobile.MessageFullScreenActivity"  android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 <receiver android:name="com.adobe.mobile.MessageNotificationHandler" />
-
+```
 7. Add the following receiver if you are using acquisition:
 
+```
 <receiver android:name="com.your.package.name.GPBroadcastReceiver" android:exported="true">
 <intent-filter>
 <action android:name="com.android.vending.INSTALL_REFERRER" />
 </intent-filter>
 </receiver>
+```
 
-
-iOS
+**iOS**
 
 Import the ADBMobile Component to your Xamarin.iOS Project:
 
