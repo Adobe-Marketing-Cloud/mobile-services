@@ -2,7 +2,7 @@
 
 See [our documentation](https://marketing.adobe.com/resources/help/en_US/mobile/download_sdk.html) for detailed instructions on how to integrate Adobe Mobile Services depending on your platform.
 
-Xamarin Components for Experience Cloud Solutions 4.x SDK
+## Xamarin Components for Experience Cloud Solutions 4.x SDK
 
 This topic describes how to get started using Xamarin components for Mobile solutions 4.x SDK.
 
@@ -10,7 +10,7 @@ Last Updated:January 10, 2019
 
 Important: Adobe Mobile SDK is no longer available in the Xamarin Components Store or in the NuGet Gallery. To download the Xamarin components, go to [GitHub](https://github.com/Adobe-Marketing-Cloud/mobile-services).
 
-**Android**
+### **Android**
 
 Import the ADBMobile Component to your Xamarin.Android Project:
 
@@ -40,7 +40,7 @@ Import the ADBMobile Component to your Xamarin.Android Project:
 </receiver>
 ```
 
-**iOS**
+### **iOS**
 
 Import the ADBMobile Component to your Xamarin.iOS Project:
 
