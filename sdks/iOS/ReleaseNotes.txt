@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.18.0 (17 Jan, 2019)
+- Configuration – Added a new API to allow overriding internal NSURLSession parameters
+- Target – Fixed a crashing bug caused when multiple loadRequests: calls were being made consecutively in environments with poor network connectivity
+- In App Messaging – Fixed a bug that would sometimes allow show-once local notifications to show more than once if their conditions were triggered quickly in succession
+
 4.17.1 (27 Nov, 2018)
 - In App Messaging – Expanded token replacement functionality in click-through URLs
 
