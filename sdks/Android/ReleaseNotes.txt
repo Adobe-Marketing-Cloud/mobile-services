@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.17.2 (17 Jan, 2019)
+- Target – Fixed a crashing bug caused by the SDK and app code simultaneously attempting to iterate the input List of the loadRequests method
+
 4.17.1 (27 Nov, 2018)
 - In App Messaging – Expanded token replacement functionality in click-through URLs.
 
