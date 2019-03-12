@@ -4,7 +4,7 @@
         "rsids" : "",
         "server" : "",
         "charset" : "UTF-8",
-        "ssl" : false,
+        "ssl" : true,
 		"offlineEnabled" : false,
         "lifecycleTimeout" : 300,
 		"referrerTimeout" : 0,
