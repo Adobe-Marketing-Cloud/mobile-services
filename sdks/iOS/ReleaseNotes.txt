@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.18.1 (14 Mar, 2019)
+- Target - The Session ID and EdgeHost will now be persisted across app sessions.
+- Target - Fixed an issue that was caused when multiple targetPrefetchContent: calls were being made consecutively.
+
 4.18.0 (17 Jan, 2019)
 - Configuration – Added a new API to allow overriding internal NSURLSession parameters
 - Target – Fixed a crashing bug caused when multiple loadRequests: calls were being made consecutively in environments with poor network connectivity
