@@ -12,8 +12,6 @@ Setup cocoapods (should be done only once per machine):
 3. Setup pod trunk
   - pod setup
 
-Create a new tag from master for cocoapod
-
 Steps to update pod spec (should be done per release):
 1. Copy released iOS SDK to the AdobeMobileLibrary folder, and rename binaries
   - AdobeMobileLibrary.a -> libAdobeMobile.a
@@ -23,7 +21,9 @@ Steps to update pod spec (should be done per release):
 2. Update the SDK version number in AdobeMobileSDK.podspec (update s.version and s.source tag)
 3. Push the change to cocoapod branch
 4. Tag the code with name vx.x.x-cocoapod, and push
-  - git push origin cocoapod --tag
+  - git tag newversion-cocoapod (e.g. git tag v4.18.1-cocoapod)
+  - git tag -l (you should see the new version created)
+  - git push origin v4.18.1-cocoapod
 5. Push the podspec changes
   - pod trunk push
 
