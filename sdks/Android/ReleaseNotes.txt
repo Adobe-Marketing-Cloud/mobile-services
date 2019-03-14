@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.17.3 (14 Mar, 2019)
+- Target - The Session ID and EdgeHost will now be persisted across app sessions
+
 4.17.2 (17 Jan, 2019)
 - Target – Fixed a crashing bug caused by the SDK and app code simultaneously attempting to iterate the input List of the loadRequests method
 
