@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AdobeMobileSDK"
-  s.version      = "4.18.2"
+  s.version      = "4.18.3"
   s.summary      = "Adobe Mobile Services SDK. Written and Supported by Adobe and is the only official Adobe Pod for the Adobe Mobile Services SDK."
   s.description  = <<-DESC
                    The Adobe Experience Cloud Mobile libraries allow you to capture native app activity (user, usage, behavior, gestures, etc.) and forward that data to Adobe collection servers for use in Analytics reporting. Many of the libraries also include Test&Target mbox capability for A/B and multivariate testing within your mobile app, and audience measurement capabilities through Adobe AudienceManager.
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.license      = {:type => "Commercial", :text => "Adobe Systems Incorporated All Rights Reserved"}
   s.author       = "Adobe Mobile SDK Team"
-  s.source       = { :git => 'https://github.com/Adobe-Marketing-Cloud/mobile-services.git', :tag => "v4.18.2-cocoapod" }
+  s.source       = { :git => 'https://github.com/Adobe-Marketing-Cloud/mobile-services.git', :tag => "v4.18.3-cocoapod" }
   s.platform     = :ios, '5.0'
 
   s.default_subspec = 'iOS'
