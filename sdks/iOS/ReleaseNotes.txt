@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.18.3 (14 May, 2019)
+- Visitor ID Service - Fixed a bug that prevented visitorGetUrlVariablesAsync from returning valid strings
+
 4.18.2 (11 Apr, 2019)
 - Target - Fixed an issue that prevented the purchasedProductIds from being correctly represented as an array for view notifications
 
