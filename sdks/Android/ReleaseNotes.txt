@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.17.6 (24 May, 2019)
+- Visitor ID Service - setPushIdentifier API call now sends a sync call to the Visitor ID Service every time it is called
+- Visitor ID Service - Increased the connect and read timeouts from 2 to 5 seconds
+
 4.17.5 (10 May, 2019)
 - General - Fixed a bug related to multi-threaded data access during rules evaluation
 

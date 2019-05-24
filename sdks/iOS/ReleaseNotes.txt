@@ -5,7 +5,7 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
-4.18.4 (23 May, 2019)
+4.18.4 (24 May, 2019)
 - Visitor ID Service - Increased the return timeout for visitorGetUrlVariablesAsync API to 30 seconds
 - Visitor ID Service - setPushIdentifier API call now sends a sync call to the Visitor ID Service every time it is called
 
