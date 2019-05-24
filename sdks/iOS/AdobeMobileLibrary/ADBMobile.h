@@ -2,9 +2,9 @@
 //  ADBMobile.h
 //  Adobe Experience Cloud -- iOS Library
 //
-//  Copyright 1996-2018. Adobe, Inc. All Rights Reserved
+//  Copyright 1996-2019. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.18.3
+//  SDK Version: 4.18.4
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
@@ -716,7 +716,8 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *  @brief Gets Visitor ID Service identifiers in URL query string form for consumption in hybrid mobile apps.
  *         There will be no leading '&' or '?' punctuation, as the caller is responsible for placing the string in the correct location
  *         of their resulting URL.
- *         If there is not a valid URL string to return, or if an error occurs, callback will contain nil.
+ *         If there is not a valid URL string to return, if an error occurs or the identifiers retrieval takes longer than 30 seconds,
+ *         callback will contain nil.
  *  @param callback a block pointer to call with an NSString value containing the visitor identifiers as a query string upon completion of the service request
  */
 + (void) visitorGetUrlVariablesAsync:(nullable void (^)(NSString* __nullable urlVariables))callback;
