@@ -18,7 +18,7 @@ Steps to update pod spec (should be done per release):
   - AdobeMobileLibrary_Watch.a -> libAdobeMobile_Watch.a
   - AdobeMobileLibrary_TV.a -> libAdobeMobile_TV.a
   - AdobeMobileLibrary_Extension.a -> libAdobeMobile_Extension.a
-2. Update the SDK version number in AdobeMobileSDK.podspec (update s.version and s.source tag)
+2. Update the SDK version number in AdobeMobileSDK.podspec (update s.version tag)
 3. Push the change to cocoapod branch
 4. Tag the code with name vx.x.x-cocoapod, and push
   - git tag newversion-cocoapod (e.g. git tag v4.18.1-cocoapod)
