@@ -1,8 +1,8 @@
-#Adobe Mobile Services Cordova Plugin
+# Adobe Mobile Services Cordova Plugin
 
-##Getting Started:
+## Getting Started:
 
-###Create and add plugin
+### Create and add plugin
 1. Create a cordova plugin
 	ex. cordova create sampleApp com.sample.test HelloWorld
 2. Navigate to the root of the recently created project
@@ -12,7 +12,7 @@
 4. Add MobileServices plugin
 	ex. cordova plugin add adobe-mobile-services
 
-###Configuration
+### Configuration
 1. Place the ADBMobileConfig.json file downloaded from Adobe Mobile Services in the `www` directory
 2. Setup is complete. The Adobe library is now accessible within the index.html file via "window.ADB"
 	
