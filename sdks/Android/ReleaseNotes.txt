@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.17.8 (18 July, 2019)
+- Target - All requests now include the client and the sessionId in the URL query parameters.
+- In App Messaging - Fixed an issue where, when a message was triggered with an empty clickthrough URL, Android apps crashed.
+- Visitor ID Service - The Visitor.appendToURL and Visitor.getUrlVariablesAsync APIs no longer double-encode their return values. The double-encoding was causing the return values from those APIs to be flagged by certain security reviews.
+
 4.17.7 (6 Jun, 2019)
 - General - Networking calls on Android API levels lower than 20 will now use TLS 1.1 or TLS 1.2
 - Analytics - Append push opt-in status to Lifecycle data when push notifications are enabled
