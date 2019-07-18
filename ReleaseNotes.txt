@@ -5,6 +5,18 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.18.6 (18 July, 2019)
+- Target - All requests now include the client and the sessionId in the URL query parameters.
+- Target - Fixed a memory leak.
+- Visitor ID Service - The visitorAppendToURL and visitorGetUrlVariablesAsync APIs no longer double-encode their return values. The double-encoding was causing the return values from those APIs to be flagged by certain security reviews.
+
+4.18.5 (5 June, 2019)
+- Analytics - Append push opt-in status to Lifecycle data when push notifications are enabled.
+
+4.18.4 (23 May, 2019)
+- Visitor ID Service - Increased the return timeout for visitorGetUrlVariablesAsync API to 30 seconds
+- Visitor ID Service - setPushIdentifier API call now sends a sync call to the Visitor ID Service every time it is called
+
 4.18.3 (14 May, 2019)
 - Visitor ID Service - Fixed a bug that prevented visitorGetUrlVariablesAsync from returning valid strings
 
