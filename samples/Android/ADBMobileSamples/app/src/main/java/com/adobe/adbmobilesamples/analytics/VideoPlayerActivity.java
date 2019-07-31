@@ -25,7 +25,7 @@ import com.adobe.mobile.*;
 
 public class VideoPlayerActivity extends Activity {
 
-	private static final String MOVIE_URL = "http://s7d2.scene7.com/is/content/mcmobile/new-building-AVS.m3u8";
+	private static final String MOVIE_URL = "https://s7d2.scene7.com/is/content/mcmobile/new-building-AVS.m3u8";
 	private static final String MEDIA_NAME = "MyAdobe";
 	private static final String PLAYER_NAME = "VideoView";
 	private static final String PLAYER_ID = "VideoView1";

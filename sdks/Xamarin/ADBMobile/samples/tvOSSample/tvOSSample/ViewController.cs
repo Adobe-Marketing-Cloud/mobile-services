@@ -366,7 +366,7 @@ namespace tvOSSample
 						ADBMobile.TrackLocalNotificationClickThrough(NSDictionary.FromObjectAndKey(NSObject.FromObject("value"), NSObject.FromObject("key")));
 						break;
 					case 58: // "trackAdobeDeepLink"
-						ADBMobile.TrackAdobeDeepLink(NSUrl.FromString("http://adobe.com"));
+						ADBMobile.TrackAdobeDeepLink(NSUrl.FromString("https://adobe.com"));
 						break;
 					case 59: // "acquisitionCampaignStartForApp"
 						ADBMobile.AcquisitionCampaignStartForApp("com.adobe.test", NSDictionary.FromObjectAndKey(NSObject.FromObject("value"), NSObject.FromObject("key")));
@@ -422,7 +422,7 @@ namespace tvOSSample
 						ShowAlert("visitor ids", ADBMobile.VisitorGetIDs().ToString());
 						break;
 					case 71: // "visitorAppendToURL"
-						ShowAlert("visitor appendToURL", ADBMobile.VisitorAppendToURL(NSUrl.FromString("http://adobe.com")).ToString());
+						ShowAlert("visitor appendToURL", ADBMobile.VisitorAppendToURL(NSUrl.FromString("https://adobe.com")).ToString());
 						break;
 					case 72: // "collectPII"
 						NSDictionary<NSString, NSString> data = (Foundation.NSDictionary<Foundation.NSString, Foundation.NSString>)NSDictionary.FromObjectAndKey(NSObject.FromObject("value"), NSObject.FromObject("key"));
