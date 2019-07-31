@@ -4,7 +4,7 @@
         "rsids" : "appleWatchExample",
         "server" : "localhost:50000",
         "charset" : "UTF-8",
-        "ssl" : false,
+        "ssl" : true,
 		"offlineEnabled" : true,
         "lifecycleTimeout" : 300,
 		"referrerTimeout" : 0,

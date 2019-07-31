@@ -3,7 +3,7 @@
     "analytics" : {
         "rsids": "adobemobiledemo",
         "server": "adobemobiledemo.d1.sc.omtrdc.net",
-        "ssl": false,
+        "ssl": true,
         "offlineEnabled": true,
         "charset": "UTF-8",
         "lifecycleTimeout": 5,
