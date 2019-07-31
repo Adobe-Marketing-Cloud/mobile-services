@@ -33,9 +33,9 @@ written permission of Adobe.
 #define kMboxSuccessEvent		@"gallerysuccess"
 
 #define kTARGET_DEFAULT			@"none"
-#define kURL_DEFAULT			@"http://yodawg.mobi/store"
-#define kURL_BOGO				@"http://yodawg.mobi/store/bogo"
-#define kURL_50_OFF				@"http://yodawg.mobi/store/50off"
+#define kURL_DEFAULT			@"https://yodawg.mobi/store"
+#define kURL_BOGO				@"https://yodawg.mobi/store/bogo"
+#define kURL_50_OFF				@"https://yodawg.mobi/store/50off"
 #define kMBOX_ORDER_CONFIRM		@"orderConfirm"
 
 #define kGalleryItemsCount		_galleryItems.count

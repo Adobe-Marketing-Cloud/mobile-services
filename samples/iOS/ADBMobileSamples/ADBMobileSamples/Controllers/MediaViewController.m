@@ -16,7 +16,7 @@ written permission of Adobe.
 #import "ADBMobile.h"
 
 #pragma mark - class constants
-static NSString *const VIDEO_URL	= @"http://s7d2.scene7.com/is/content/mcmobile/new-building-AVS.m3u8";
+static NSString *const VIDEO_URL	= @"https://s7d2.scene7.com/is/content/mcmobile/new-building-AVS.m3u8";
 static NSString *const MEDIA_NAME	= @"MyAdobe";
 static NSString *const PLAYER_NAME	= @"MPMoviePlayer";
 static NSString *const PLAYER_ID	= @"MPMoviePlayer1";

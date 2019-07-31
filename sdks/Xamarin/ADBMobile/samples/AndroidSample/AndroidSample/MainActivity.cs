@@ -369,7 +369,7 @@ namespace AndroidSample
 				Config.RegisterAdobeDataCallback(new AdobeDataCallback());
 				break;
 			case 52: // "trackAdobeDeepLink"
-				Config.TrackAdobeDeepLink(Android.Net.Uri.Parse("http://adobe.com?a.deeplink.id=121212"));
+				Config.TrackAdobeDeepLink(Android.Net.Uri.Parse("https://adobe.com?a.deeplink.id=121212"));
 				break;
 			case 53: // "acquisitionCampaignStartForApp"
 				ThreadPool.QueueUserWorkItem(o => doCampaignStartForApp());
@@ -417,7 +417,7 @@ namespace AndroidSample
 				}
 				break;
 			case 63: // "visitorAppendToURL"
-				Toast.MakeText(this, Visitor.AppendToURL("http://adobe.com"), ToastLength.Long).Show();
+				Toast.MakeText(this, Visitor.AppendToURL("https://adobe.com"), ToastLength.Long).Show();
 				break;
 			
 			}

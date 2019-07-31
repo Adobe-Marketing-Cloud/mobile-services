@@ -40,9 +40,9 @@ public class GalleryActivity extends Activity {
 
 	// string constants
 	private static final String S7_COMPANY              = "mcmobile";
-	private static final String URL_DEFAULT             = "http://yodawg.mobi/store";
-	private static final String URL_BOGO                = "http://yodawg.mobi/store/bogo";
-	private static final String URL_50_OFF              = "http://yodawg.mobi/store/50off";
+	private static final String URL_DEFAULT             = "https://yodawg.mobi/store";
+	private static final String URL_BOGO                = "https://yodawg.mobi/store/bogo";
+	private static final String URL_50_OFF              = "https://yodawg.mobi/store/50off";
 	private static final String LOCATION_ORDER_CONFIRM  = "orderConfirm";
 
 	private ProgressBar _progressBar;

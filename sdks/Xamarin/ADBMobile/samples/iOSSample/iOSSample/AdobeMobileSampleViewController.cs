@@ -395,7 +395,7 @@ namespace AdobeMobileSample
 						ADBMobile.TrackLocalNotificationClickThrough(NSDictionary.FromObjectAndKey(NSObject.FromObject("97f8db20-bb28-4c1a-8cda-78c6ba98f87d"), NSObject.FromObject("adb_m_id")));
 						break;
 					case 54: // "trackAdobeDeepLink"
-						ADBMobile.TrackAdobeDeepLink(NSUrl.FromString("http://adobe.com?a.deeplink.id=12345678"));
+						ADBMobile.TrackAdobeDeepLink(NSUrl.FromString("https://adobe.com?a.deeplink.id=12345678"));
 						break;
 					case 55: // "acquisitionCampaignStartForApp"
 						ADBMobile.AcquisitionCampaignStartForApp("com.adobe.test", NSDictionary.FromObjectAndKey(NSObject.FromObject("value"), NSObject.FromObject("key")));
@@ -437,7 +437,7 @@ namespace AdobeMobileSample
 						new UIAlertView("visitor ids", ADBMobile.VisitorGetIDs().ToString(), null, "OK", null).Show();
 						break;
 					case 65: // "visitorAppendToURL"
-						new UIAlertView("visitor appendToURL", ADBMobile.VisitorAppendToURL(NSUrl.FromString("http://adobe.com")).ToString(), null, "OK", null).Show();
+						new UIAlertView("visitor appendToURL", ADBMobile.VisitorAppendToURL(NSUrl.FromString("https://adobe.com")).ToString(), null, "OK", null).Show();
 						break;
 					default:
 						new UIAlertView("Option Invalid", "Could not find the API!", null, "OK", null).Show();
