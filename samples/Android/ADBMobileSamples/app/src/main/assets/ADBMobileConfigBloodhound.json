@@ -17,7 +17,7 @@
   "analytics": {
     "rsids": "adobemobiledemo_bloodhound",
     "server": "localhost:50000",
-    "ssl": false,
+    "ssl": true,
     "offlineEnabled": true,
     "charset": "ISO-8859-1",
     "lifecycleTimeout": 5,

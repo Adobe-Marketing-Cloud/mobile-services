@@ -19,7 +19,7 @@
     "analytics": {
         "rsids": "adobemobiledemo",
         "server": "adobemobiledemo.sc.omtrdc.net",
-        "ssl": false,
+        "ssl": true,
         "offlineEnabled": true,
         "charset": "ISO-8859-1",
         "lifecycleTimeout": 5,
