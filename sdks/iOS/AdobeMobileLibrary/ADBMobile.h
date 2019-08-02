@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2019. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.18.6
+//  SDK Version: 4.18.7
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
@@ -805,6 +805,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBTargetParameterMboxHost;         
 
 @property (nonatomic, strong, nonnull) NSString *defaultContent;                         ///< The default content that will be returned if Target servers are unreachable
 @property (nonatomic, strong, nullable) void (^callback)(NSString* __nullable content);  ///< Optional. When batch requesting Target locations, callback will be invoked when content is available for this location.
+@property (nonatomic, strong, nullable) NSDictionary *requestLocationParameters;         ///< Dictionary containing key-value pairs of request location parameters
 
 @end
 

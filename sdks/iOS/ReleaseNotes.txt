@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.18.7 (2 Aug, 2019)
+- General - Reverted a change that was introduced in version 4.18.6 which, in some environments, caused a crash on devices that were running an iOS version older than 11.0.
+- Target - Added the requestLocationParameters property in ADBTargetRequestObject, which enables the impressionId to be sent with Target requests.
+
 4.18.6 (18 July, 2019)
 - Target - All requests now include the client and the sessionId in the URL query parameters.
 - Target - Fixed a memory leak.
