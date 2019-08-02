@@ -5,6 +5,10 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.17.9 (2 Aug, 2019)
+- Visitor ID Service - Fixed the StrictMode violation when calling syncIdentifiers. This violation was caused by reading shared preferences on the main thread.
+- Target - Added the requestLocationParameters attribute in TargetRequestObject, which enables the impressionId to be sent with Target requests.
+
 4.17.8 (18 July, 2019)
 - Target - All requests now include the client and the sessionId in the URL query parameters.
 - In App Messaging - Fixed an issue where, when a message was triggered with an empty clickthrough URL, Android apps crashed.
