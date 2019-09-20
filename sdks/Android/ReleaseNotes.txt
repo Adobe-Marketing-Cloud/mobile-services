@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.17.10 (20 Sep, 2019)
+- General - Fixed locale string generation for some regions on Android API level 21 or newer.
+
 4.17.9 (2 Aug, 2019)
 - Visitor ID Service - Fixed the StrictMode violation when calling syncIdentifiers. This violation was caused by reading shared preferences on the main thread.
 - Target - Added the requestLocationParameters attribute in TargetRequestObject, which enables the impressionId to be sent with Target requests.
