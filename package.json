@@ -1,14 +1,14 @@
 {
     "name": "mobile-mc-sdk",
     "description": "Mobile SDKs and Sample Apps",
-    "version": "0.0.74",
+    "version": "0.0.75",
     "private": true,
     
     "versions": { 
 		"sdks": {
-			"ios": "4.18.7",
+			"ios": "4.18.8",
 			"osx": null,
-			"android": "4.17.9",
+			"android": "4.17.10",
 			"windows": "4.0.0",
 			"uwp": "4.0.0",
 			"xboxone": null,
