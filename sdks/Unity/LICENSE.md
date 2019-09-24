@@ -2,7 +2,7 @@ ADOBE MOBILE SERVICES SOFTWARE DEVELOPMENT KIT LICENSE AGREEMENT
 ----------------------------------------------------------------
 **Effective Date:**  first date you select “I Agree” or use the SDK
 
-Last Updated:   September 30, 2015
+Last Updated:   September 15, 2019
 
 The Adobe Mobile Services SDK (“AMS SDK”) (defined below) is licensed to you subject to the terms and conditions below which form a binding agreement between you and Adobe. **By selecting “I Agree”, or by downloading, installing, or making use of any portion of the AMS SDK, you are agreeing to the following terms and conditions. If you do not agree to the terms and conditions below, do not use the AMS SDK.**  If you agree to be bound by this agreement on behalf of your employer or other entity, you must have the legal authority to do so. If you are not authorized to so bind your employer or such entity, do not select “I Agree” to accept this agreement and do not use the AMS SDK.
 
@@ -106,4 +106,4 @@ For U.S. Government procurements, the AMS SDK is a commercial computer software 
 
 	14.4	**Entire Agreement**.  This Agreement is the entire agreement, superseding any prior written or oral agreements, between you and Adobe relating to the AMS SDK.
 
-AMS_SDK_Agreement_en_US-20150930_v1
+AMS_SDK_Agreement_en_US-20190915_v1
