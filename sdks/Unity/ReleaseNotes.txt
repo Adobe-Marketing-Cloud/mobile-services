@@ -5,7 +5,7 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/unity/
 
-Android 4.17.19, iOS 4.18.8 (15 Sept, 2019)
+Android 4.17.10, iOS 4.18.8 (15 Sept, 2019)
 - Updated Unity Plugin to use versions 4.18.8 of iOS and 4.17.19 of Android
 
 4.13.1 (20 Oct, 2016)
