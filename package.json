@@ -1,7 +1,7 @@
 {
     "name": "mobile-mc-sdk",
     "description": "Mobile SDKs and Sample Apps",
-    "version": "0.0.77",
+    "version": "0.0.78",
     "private": true,
     
     "versions": { 
