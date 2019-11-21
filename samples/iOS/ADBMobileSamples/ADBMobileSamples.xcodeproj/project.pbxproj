@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		0935EB071C7B8729007FBCF3 /* AdobeMobileLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54073E1E1B67EE3B00CD9E83 /* AdobeMobileLibrary.a */; };
 		09F8FF0C1C6BEBD40035B986 /* PostbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F8FF0B1C6BEBD40035B986 /* PostbackController.m */; };
-		E9DCE56717E7B13300292D1E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DCE56617E7B13300292D1E /* MediaPlayer.framework */; };
+		210DA16323872CD00032AE0A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210DA16223872CD00032AE0A /* WebKit.framework */; };
+		210DA16523872CDA0032AE0A /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210DA16423872CDA0032AE0A /* AVKit.framework */; };
 		F037D50F17E37B75006A2F4C /* imagelist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F037D50E17E37B75006A2F4C /* imagelist.plist */; };
 		F05CF6B517E2A7BA00146B88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05CF6B417E2A7BA00146B88 /* UIKit.framework */; };
 		F05CF6B717E2A7BA00146B88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05CF6B617E2A7BA00146B88 /* Foundation.framework */; };
@@ -46,6 +47,8 @@
 /* Begin PBXFileReference section */
 		09F8FF0A1C6BEBD40035B986 /* PostbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostbackController.h; path = Controllers/PostbackController.h; sourceTree = "<group>"; };
 		09F8FF0B1C6BEBD40035B986 /* PostbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostbackController.m; path = Controllers/PostbackController.m; sourceTree = "<group>"; };
+		210DA16223872CD00032AE0A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		210DA16423872CDA0032AE0A /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		54073E1E1B67EE3B00CD9E83 /* AdobeMobileLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary.a; sourceTree = "<group>"; };
 		E95D91C51829B958006BB662 /* ADBMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBMobile.h; sourceTree = "<group>"; };
 		E9DCE56617E7B13300292D1E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -103,10 +106,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				210DA16323872CD00032AE0A /* WebKit.framework in Frameworks */,
 				0935EB071C7B8729007FBCF3 /* AdobeMobileLibrary.a in Frameworks */,
-				E9DCE56717E7B13300292D1E /* MediaPlayer.framework in Frameworks */,
 				F05CF75417E2B80100146B88 /* libz.dylib in Frameworks */,
 				F05CF75217E2B7EF00146B88 /* Security.framework in Frameworks */,
+				210DA16523872CDA0032AE0A /* AVKit.framework in Frameworks */,
 				F05CF75017E2B7E100146B88 /* MobileCoreServices.framework in Frameworks */,
 				F05CF74E17E2B7D600146B88 /* CoreLocation.framework in Frameworks */,
 				F05CF74C17E2B7C600146B88 /* QuartzCore.framework in Frameworks */,
@@ -160,6 +164,8 @@
 		F05CF6B317E2A7BA00146B88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				210DA16423872CDA0032AE0A /* AVKit.framework */,
+				210DA16223872CD00032AE0A /* WebKit.framework */,
 				F05CF73517E2B2BB00146B88 /* AdobeMobile */,
 				F05CF74917E2B7B800146B88 /* CFNetwork.framework */,
 				F05CF6B817E2A7BA00146B88 /* CoreGraphics.framework */,
@@ -312,6 +318,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = F05CF6A817E2A7BA00146B88;

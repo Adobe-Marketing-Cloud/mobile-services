@@ -12,7 +12,7 @@ written permission of Adobe.
 **************************************************************************/
 
 #import "MediaViewController.h"
-#import <MediaPlayer/MediaPlayer.h> 
+#import <AVKit/AVKit.h>
 #import "ADBMobile.h"
 
 #pragma mark - class constants
@@ -20,10 +20,11 @@ static NSString *const VIDEO_URL	= @"https://s7d2.scene7.com/is/content/mcmobile
 static NSString *const MEDIA_NAME	= @"MyAdobe";
 static NSString *const PLAYER_NAME	= @"MPMoviePlayer";
 static NSString *const PLAYER_ID	= @"MPMoviePlayer1";
+static NSString *const RATE_KEY    = @"rate";
 static double const MEDIA_LENGTH	= 146;
 
 @interface MediaViewController () {
-MPMoviePlayerViewController *movieViewController;
+AVPlayerViewController *movieViewController;
 }
 
 @end
@@ -108,27 +109,23 @@ MPMoviePlayerViewController *movieViewController;
 #pragma mark - Media methods
 // set up the movie player and notifications
 - (void) configureMedia {
-	NSURL *movieURL = [NSURL URLWithString:VIDEO_URL];
-	movieViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
-	
-	[self configureNotifications:movieViewController.moviePlayer];
+    NSURL *movieURL = [NSURL URLWithString:VIDEO_URL];
+    AVPlayer *player = [AVPlayer playerWithURL:movieURL];
+    movieViewController = [AVPlayerViewController new];
+    movieViewController.player = player;
+    
+    [movieViewController.player addObserver:self forKeyPath:RATE_KEY options:0 context:nil];
+    [self configureNotifications:movieViewController];
 }
 
 // set up the notifications we are intereseted in for tracking
-- (void) configureNotifications:(MPMoviePlayerController *) movieController {
-	// this is where we will close our media item
-	[[NSNotificationCenter defaultCenter]
-	 addObserver: self
-	 selector: @selector(mediaFinishedCallback:)
-	 name: MPMoviePlayerPlaybackDidFinishNotification
-	 object: movieController];
-	
-	// this notifies us so we can play/pause/stop our tracking on a media item
-	[[NSNotificationCenter defaultCenter]
-	 addObserver: self
-	 selector: @selector(mediaPlaybackChangedCallback:)
-	 name: MPMoviePlayerPlaybackStateDidChangeNotification
-	 object: movieController];
+- (void) configureNotifications:(AVPlayerViewController *) movieController {
+    // this is where we will close our media item
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self
+     selector: @selector(mediaFinishedCallback:)
+     name: AVPlayerItemDidPlayToEndTimeNotification
+     object: nil];
 }
 
 // configure our tracking based on the switches from the UI
@@ -177,8 +174,9 @@ MPMoviePlayerViewController *movieViewController;
 
 // display and begin playing the media
 - (void) playMedia {
-	[self presentMoviePlayerViewControllerAnimated:movieViewController];
-	[movieViewController.moviePlayer play];
+    [self presentViewController:movieViewController animated:YES completion:^{
+      [movieViewController.player play];
+    }];
 }
 
 // this notifies us so we can close our media item
@@ -192,64 +190,26 @@ MPMoviePlayerViewController *movieViewController;
 	[ADBMobile mediaClose:MEDIA_NAME];
 }
 
-
-// this notifies us so we can play/pause/stop our tracking on a media item
-- (void) mediaPlaybackChangedCallback: (NSNotification*) notification {
-	MPMoviePlayerController *mediaController = notification.object;
-	if (mediaController.playbackState == MPMoviePlaybackStatePlaying) {
-		/*
-		 * Adobe Tracking - Media
-		 *
-		 * sets the media item into a playing state
-		 * if this is the initial play, it begins the tracking and monitor for the media item
-		 */
-		[ADBMobile mediaPlay:MEDIA_NAME offset: isnan(mediaController.currentPlaybackTime) ? 0.0 : mediaController.currentPlaybackTime];
-	}
-	else if (mediaController.playbackState == MPMoviePlaybackStateSeekingBackward) {
-		/*
-		 * Adobe Tracking - Media
-		 *
-		 * stops the media item
-		 * we need to stop here because we are no longer in a playing state
-		 */
-		[ADBMobile mediaStop:MEDIA_NAME offset:mediaController.currentPlaybackTime];
-	}
-	else if (mediaController.playbackState == MPMoviePlaybackStateSeekingForward) {
-		/*
-		 * Adobe Tracking - Media
-		 *
-		 * stops the media item
-		 * we need to stop here because we are no longer in a playing state
-		 */
-		[ADBMobile mediaStop:MEDIA_NAME offset:mediaController.currentPlaybackTime];
-	}
-	else if (mediaController.playbackState == MPMoviePlaybackStatePaused) {
-		/*
-		 * Adobe Tracking - Media
-		 *
-		 * stops the media item
-		 * we need to stop here because we are no longer in a playing state
-		 */
-		[ADBMobile mediaStop:MEDIA_NAME offset:mediaController.currentPlaybackTime];
-	}
-	else if (mediaController.playbackState == MPMoviePlaybackStateInterrupted) {
-		/*
-		 * Adobe Tracking - Media
-		 *
-		 * stops the media item
-		 * we need to stop here because we are no longer in a playing state
-		 */
-		[ADBMobile mediaStop:MEDIA_NAME offset:mediaController.currentPlaybackTime];
-	}
-	else if (mediaController.playbackState == MPMoviePlaybackStateStopped) {
-		/*
-		 * Adobe Tracking - Media
-		 *
-		 * stops the media item
-		 * we need to stop here because we are no longer in a playing state
-		 */
-		[ADBMobile mediaStop:MEDIA_NAME offset:mediaController.currentPlaybackTime];
-	}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:RATE_KEY]) {
+        if (movieViewController.player.rate == 0) {
+            /*
+             * Adobe Tracking - Media
+             *
+             * stops the media item
+             * we need to stop here because we are no longer in a playing state
+             */
+            [ADBMobile mediaStop:MEDIA_NAME offset:movieViewController.player.currentTime.value];
+        } else {
+            /*
+             * Adobe Tracking - Media
+             *
+             * sets the media item into a playing state
+             * if this is the initial play, it begins the tracking and monitor for the media item
+             */
+            [ADBMobile mediaPlay:MEDIA_NAME offset: isnan(movieViewController.player.currentTime.value) ? 0.0 : movieViewController.player.currentTime.value];
+        }
+    }
 }
 
 @end
