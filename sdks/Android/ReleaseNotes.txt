@@ -9,7 +9,7 @@ https://marketing.adobe.com/resources/help/en_US/mobile/android/
 - Acquisition - Added a new API, Analytics.processGooglePlayInstallReferrerUrl(final String url), to support Google Play Install Referrer APIs.
   - For more information, read https://android-developers.googleblog.com/2019/11/still-using-installbroadcast-switch-to.html
 
-4.17.10 (19 Sep, 2019)
+4.17.10 (20 Sep, 2019)
 - General - Fixed locale string generation for some regions on Android API level 21 or newer.
 
 4.17.9 (2 Aug, 2019)
