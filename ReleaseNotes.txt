@@ -5,6 +5,13 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.19.1 (12 Mar, 2020)
+- General - Resolved a potential crash caused when Swift enums are included in context data for tracking calls.
+- Target – Target Session Id will now be added as a context data parameter ‘a.target.sessionId’ in the internal Analytics for Target hit sent to Adobe Analytics.
+
+4.19.0 (4 Feb, 2020)
+- Lifecycle - Added a new API, pauseCollectingLifecycleData, to mitigate the abnormal session length data being reported by some older iOS devices.
+
 4.18.9 (8 Nov, 2019)
 - In App Messaging - Fixed a bug where cached or bundled images could not be loaded in the full screen messages.
 
