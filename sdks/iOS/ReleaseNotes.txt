@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.19.2 (24 Mar, 2020)
+- General - Fixed some leaks in Target code.
+
 4.19.1 (12 Mar, 2020)
 - General - Resolved a potential crash caused when Swift enums are included in context data for tracking calls.
 - Target – Target Session Id will now be added as a context data parameter ‘a.target.sessionId’ in the internal Analytics for Target hit sent to Adobe Analytics.
