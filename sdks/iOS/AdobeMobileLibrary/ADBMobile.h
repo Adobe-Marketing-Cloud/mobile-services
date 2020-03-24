@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2020. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.19.1
+//  SDK Version: 4.19.2
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
