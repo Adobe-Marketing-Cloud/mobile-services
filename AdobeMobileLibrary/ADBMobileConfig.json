@@ -4,14 +4,14 @@
         "rsids" : "",
         "server" : "",
         "charset" : "UTF-8",
-        "ssl" : false,
-		"offlineEnabled" : false,
+        "ssl" : true,
+	"offlineEnabled" : false,
         "lifecycleTimeout" : 300,
-		"referrerTimeout" : 0,
+	"referrerTimeout" : 0,
         "batchLimit" : 0,
         "privacyDefault" : "optedin",
-		"backdateSessionInfo" : false,
-		"poi" : []
+	"backdateSessionInfo" : false,
+	"poi" : []
     },
 	"target" : {
 		"clientCode" : "",
