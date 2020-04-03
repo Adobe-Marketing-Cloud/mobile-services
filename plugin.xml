@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
            id="adobe-mobile-services"
-      version="4.19.2">
+      version="4.19.3">
     <name>ADBMobile</name>
     <description>Adobe Mobile Services Plugin</description>
 
@@ -45,6 +45,6 @@
 			 <receiver android:name="com.adobe.mobile.MessageNotificationHandler" />
 		 </config-file>
 		 <source-file src="sdks/Cordova/ADBMobile/Android/ADBMobile_PhoneGap.java" target-dir="src/com/adobe/" />
-		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.18.1.jar" target-dir="app/libs" />
+		 <source-file src="sdks/Android/AdobeMobileLibrary/adobeMobileLibrary-4.18.2.jar" target-dir="app/libs" />
 	 </platform>
 </plugin>

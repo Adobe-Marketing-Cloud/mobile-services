@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/android/
 
+4.18.2 (3 Apr, 2020)
+- In App Messaging - For security reasons, WebViews created by the SDK now set property 'setAllowFileAccess' equal to false.
+
 4.18.1 (12 Mar, 2020)
 - Target – Target Session Id will now be added as a context data parameter ‘a.target.sessionId’ in the internal Analytics for Target hit sent to Adobe Analytics.
 
@@ -12,7 +15,7 @@ https://marketing.adobe.com/resources/help/en_US/mobile/android/
 - Acquisition - Added a new API, Analytics.processGooglePlayInstallReferrerUrl(final String url), to support Google Play Install Referrer APIs.
   - For more information, read https://android-developers.googleblog.com/2019/11/still-using-installbroadcast-switch-to.html
 
-4.17.10 (20 Sep, 2019)
+4.17.10 (19 Sep, 2019)
 - General - Fixed locale string generation for some regions on Android API level 21 or newer.
 
 4.17.9 (2 Aug, 2019)
