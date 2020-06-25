@@ -29,6 +29,7 @@ Important: After August 31, 2021, customers can continue to download and use the
 		 <source-file src="sdks/iOS/AdobeMobileLibrary/AdobeMobileLibrary.a" framework="true" />
 		 <framework src="libsqlite3.dylib" />
 		 <framework src="SystemConfiguration.framework" />
+         <framework src="WebKit.framework" />
 	 </platform>
 
      <!-- android -->
