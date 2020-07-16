@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.19.3 (16 July, 2020)
+- General – Fixed a bug that prevented deeplink URLs with multiple equals sign in query param from being properly handled.
+
 4.19.2 (24 Mar, 2020)
 - General - Fixed some leaks in Target code.
 
