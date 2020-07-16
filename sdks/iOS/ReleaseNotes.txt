@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.19.3 (16 July, 2020)
+- General – Fixed a bug that prevented deeplink URLs with multiple equals sign in query param from being properly handled.
+
 4.19.2 (24 Mar, 2020)
 - General - Fixed some leaks in Target code.
 
@@ -227,7 +230,7 @@ https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 - Analytics - Fixed a issue that could cause sqlite exception.
 
 4.5.4 (23 June, 2015)
-- In App Messaging - fixed a bug where messages were being inappropriately removed from the 'disallowed' list on launch
+- In App Messaging - fixed a bug where messages were being inappropriately removed from the blacklist on launch
 
 4.5.3 (18 June, 2015)
 - In App Messaging - fixed a bug where messages were incorrectly triggered if all messages were disabled at once
