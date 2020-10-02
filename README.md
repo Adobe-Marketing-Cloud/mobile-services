@@ -5,7 +5,7 @@
 mobile-services
 ===============
 
-Native Mobile SDKs, dev tools and example apps.
+Native Mobile SDKs, dev tools, and example apps.
 
 If you have questions about the SDK, please check out our forums and documentation.
 
