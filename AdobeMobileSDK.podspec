@@ -14,8 +14,7 @@ Pod::Spec.new do |s|
 
   s.cocoapods_version = ">= 1.10"
   s.default_subspec = "iOS"
-  s.xcconfig = { "HEADER_SEARCH_PATHS" => "${PROJECT_DIR}/**" }
-
+  
   s.subspec "iOS" do |ios|
     ios.platform = :ios, "10.0"
     ios.source_files = "AdobeMobileLibrary/ADBMobile.h", "AdobeMobileLibrary/Empty.m"
