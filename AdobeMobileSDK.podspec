@@ -14,9 +14,9 @@ Pod::Spec.new do |s|
 
   s.cocoapods_version = ">= 1.10"
   s.default_subspec = "iOS"
-  
+
   s.subspec "iOS" do |ios|
-    ios.platform = :ios, "10.0"
+    ios.platform = :ios, "8.0"
     ios.source_files = "AdobeMobileLibrary/ADBMobile.h", "AdobeMobileLibrary/Empty.m"
     ios.vendored_frameworks = "AdobeMobileLibrary/AdobeMobile.xcframework"
     ios.frameworks = "UIKit", "SystemConfiguration", "WebKit"
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec "Extension" do |extension|
-    extension.platform = :ios, "10.0"
+    extension.platform = :ios, "8.0"
     extension.source_files = "AdobeMobileLibrary/ADBMobile.h", "AdobeMobileLibrary/Empty.m"
     extension.vendored_frameworks = "AdobeMobileLibrary/AdobeMobileExtension.xcframework"
     extension.frameworks = "UIKit", "SystemConfiguration", "WebKit"
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec "TVOS" do |tvos|
-    tvos.platform  = :tvos, "10.0"
+    tvos.platform  = :tvos, "9.0"
     tvos.source_files = "AdobeMobileLibrary/ADBMobile.h", "AdobeMobileLibrary/Empty.m"
     tvos.vendored_frameworks = "AdobeMobileLibrary/AdobeMobileTV.xcframework"
     tvos.frameworks = "UIKit", "SystemConfiguration"
