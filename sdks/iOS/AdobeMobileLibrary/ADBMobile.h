@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2020. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.20.0
+//  SDK Version: 4.21.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
@@ -708,6 +708,7 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 /**
  *	@brief Returns all visitorIDs that have been synced
  *  @return an array of readonly ADBVisitorIDs
+ *  @note This method is synchronous and should not be called from the UI thread.
  */
 + (nullable NSArray *) visitorGetIDs;
 
