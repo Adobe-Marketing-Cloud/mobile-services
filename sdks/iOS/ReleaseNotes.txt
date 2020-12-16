@@ -5,6 +5,11 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.21.0 (16 Dec, 2020)
+- General - The SDK is now distributed using XCFrameworks in order to support hardware with the new Apple M1 architecture while maintaining support for existing Intel architecture.
+  - IMPORTANT: Upgrading to AdobeMobile XCFrameworks requires Xcode 12.0 or newer
+  - IMPORTANT: If using Cocoapods, upgrading to AdobeMobile XCFrameworks requires Cocoapods 1.10.0 or newer
+
 4.20.0 (4 Nov, 2020)
 - Visitor ID Service - Added device_consent status parameter when setAdvertisingIdentifier is called after ad tracking is enabled/disabled.
 - Analytics - Fixed a bug that was delaying Analytics hits from being sent on an install when iAd.framework is linked and the device has "Limited Ad Tracking" enabled.
