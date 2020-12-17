@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.license      = {:type => "Commercial", :text => "Adobe Systems Incorporated All Rights Reserved"}
   s.author       = "Adobe Mobile SDK Team"
-  s.source       = { :git => 'https://github.com/Adobe-Marketing-Cloud/mobile-services.git', :tag => "v4.20.0-cocoapod" }
+  s.source       = { :git => 'https://github.com/Adobe-Marketing-Cloud/mobile-services.git', :tag => "v4.21.0-cocoapod" }
 
   s.cocoapods_version = ">= 1.10"
   s.default_subspec = "iOS"
