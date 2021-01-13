@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.21.1 (13 Jan, 2021)
+- General - Fixed an issue that could cause sqlite exception during app shut down.
+
 4.21.0 (16 Dec, 2020)
 - General - The SDK is now distributed using XCFrameworks in order to support hardware with the new Apple M1 architecture while maintaining support for existing Intel architecture.
   - IMPORTANT: Upgrading to AdobeMobile XCFrameworks requires Xcode 12.0 or newer
