@@ -2,9 +2,9 @@
 //  ADBMobile.h
 //  Adobe Experience Cloud -- iOS Library
 //
-//  Copyright 1996-2020. Adobe, Inc. All Rights Reserved
+//  Copyright 1996-2021. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.21.1
+//  SDK Version: 4.21.2
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
