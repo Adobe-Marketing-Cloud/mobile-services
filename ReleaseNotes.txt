@@ -5,6 +5,9 @@ Included are notes from the latest major revision to current.
 For full SDK documentation, please visit:
 https://marketing.adobe.com/resources/help/en_US/mobile/ios/
 
+4.21.2 (13 Apr, 2021)
+- Visitor ID Service - Fixed an issue where empty advertising identifiers were synced to the Visitor ID Service.
+
 4.21.1 (13 Jan, 2021)
 - General - Fixed an issue that could cause sqlite exception during app shut down.
 
