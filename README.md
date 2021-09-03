@@ -1,4 +1,4 @@
- ⛔️ DEPRECATED ⛔️ 
+ ⛔️  DEPRECATED ⛔️ 
 
 **Important: These SDK libraries are no longer supported by Adobe. The Adobe Experience Platform Mobile SDK (previously referred to as v5) will exclusively support upcoming Adobe Experience Cloud features and functionality. Please see 4x SDK end of support [FAQ](https://aep-sdks.gitbook.io/docs/version-4-sdk-end-of-support-faq)**
 
